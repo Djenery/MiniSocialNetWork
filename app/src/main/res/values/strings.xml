@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MiniSocialNetWork</string>
+    <string name="my_profile_settings_tv">Settings</string>
+    <string name="my_profile_full_person_name">Full person name</string>
+    <string name="my_profile_career">Career</string>
+    <string name="my_profile_address_tv">Address</string>
+    <string name="my_profile_edit_profile_bn">Edit profile</string>
+    <string name="my_profile_button_view_my_contacts">View my contacts</string>
+</resources>
