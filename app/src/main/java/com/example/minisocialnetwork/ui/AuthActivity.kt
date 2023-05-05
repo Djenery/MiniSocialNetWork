@@ -14,7 +14,6 @@ import com.example.minisocialnetwork.util.FieldsValidations.isMixedCase
 
 
 class AuthActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivitySingUpBinding
 
 
@@ -24,7 +23,7 @@ class AuthActivity : AppCompatActivity() {
         setContentView(binding.root)
         setUpListeners()
         binding.singUpRegisterBt.setOnClickListener {
-            pressRegisterButton()
+            passDataToAnotherActivity()
         }
     }
 
@@ -73,12 +72,13 @@ class AuthActivity : AppCompatActivity() {
         return true
     }
 
-    private fun pressRegisterButton() {
+    private fun passDataToAnotherActivity() {
         if (isValidate()) {
             startActivity(
                 Intent(this, MyProfileActivity::class.java)
                     .putExtra("email", binding.singUpEMailEt.text.toString())
             )
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         }
     }
 

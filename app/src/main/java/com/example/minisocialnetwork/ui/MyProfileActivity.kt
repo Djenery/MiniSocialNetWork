@@ -2,6 +2,7 @@ package com.example.minisocialnetwork.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.minisocialnetwork.R
 import com.example.minisocialnetwork.databinding.ActivityMyProfileBinding
 import com.example.minisocialnetwork.util.ParsingData
 
@@ -15,6 +16,10 @@ class MyProfileActivity : AppCompatActivity() {
         setContentView(binding.root)
         setUserName()
 
+    }
+
+    override fun finish() {
+        super.finish()
     }
 
     private fun setUserName() {
