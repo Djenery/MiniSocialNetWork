@@ -6,4 +6,17 @@
     <string name="my_profile_address_tv">Address</string>
     <string name="my_profile_edit_profile_bn">Edit profile</string>
     <string name="my_profile_button_view_my_contacts">View my contacts</string>
+    <string name="sing_up_activity_title">Let\'s get acquainted</string>
+    <string name="sing_up_activity_fill_out_profile">Fill out the profile and go to the application!</string>
+    <string name="sing_up_activity_e_mail">E-mail</string>
+    <string name="sing_up_activity_password">Password</string>
+    <string name="sing_up_e_mail_edit_text">email</string>
+    <string name="sing_up_password_et">Password</string>
+    <string name="sing_up_check_box_remember_me">Remember me</string>
+    <string name="sing_up_with_google_button">singUpWithGoogleButton</string>
+    <string name="sing_up_activity_or_tv">or</string>
+    <string name="sing_up_button_register">REGISTER</string>
+    <string name="message_terms_and_conditions">By clicking Register you agree to our\n Terms and Conditions</string>
+    <string name="message_already_have_an_account">Already have an account?</string>
+    <string name="sing_in">Sing in</string>
 </resources>

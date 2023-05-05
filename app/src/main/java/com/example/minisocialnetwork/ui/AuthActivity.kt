@@ -1,4 +1,4 @@
-package com.example.minisocialnetwork
+package com.example.minisocialnetwork.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,11 +6,11 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import com.example.minisocialnetwork.R
 import com.example.minisocialnetwork.databinding.ActivitySingUpBinding
-import com.example.minisocialnetwork.FieldsValidations.isValidEmail
-import com.example.minisocialnetwork.FieldsValidations.isStringContainNumber
-import com.example.minisocialnetwork.FieldsValidations.isMixedCase
-import com.example.minisocialnetwork.databinding.ActivityMyProfileBinding
+import com.example.minisocialnetwork.util.FieldsValidations.isValidEmail
+import com.example.minisocialnetwork.util.FieldsValidations.isStringContainNumber
+import com.example.minisocialnetwork.util.FieldsValidations.isMixedCase
 
 
 class AuthActivity : AppCompatActivity() {
@@ -24,22 +24,14 @@ class AuthActivity : AppCompatActivity() {
         setContentView(binding.root)
         setUpListeners()
         binding.singUpRegisterBt.setOnClickListener {
-            if (isValidate()) {
-                startActivity(
-                    Intent(this, MyProfileActivity::class.java)
-                        .putExtra("email", binding.singUpEMailEt.text.toString())
-                )
-            }
+            pressRegisterButton()
         }
-
     }
 
     private fun setUpListeners() {
         binding.singUpEMailEt.addTextChangedListener(FieldsValidation(binding.singUpEMail))
         binding.singUpPasswordT.addTextChangedListener(FieldsValidation(binding.singUpPassword))
     }
-
-    private fun isValidate() = validateEmail() && validatePassword()
 
     private fun validateEmail(): Boolean {
         if (binding.singUpEMailEt.text.toString().trim().isEmpty()) {
@@ -81,6 +73,17 @@ class AuthActivity : AppCompatActivity() {
         return true
     }
 
+    private fun pressRegisterButton() {
+        if (isValidate()) {
+            startActivity(
+                Intent(this, MyProfileActivity::class.java)
+                    .putExtra("email", binding.singUpEMailEt.text.toString())
+            )
+        }
+    }
+
+    private fun isValidate() = validateEmail() && validatePassword()
+
 
     inner class FieldsValidation(private val view: View) : TextWatcher {
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -90,18 +93,13 @@ class AuthActivity : AppCompatActivity() {
         }
 
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            when (view.id) {
-                R.id.sing_up_e_mail -> {
-                    validateEmail()
-                }
-
-                R.id.sing_up_password -> {
-                    validatePassword()
-                }
+            if (view.id == R.id.sing_up_e_mail) {
+                validateEmail()
+            } else {
+                validatePassword()
             }
         }
     }
-
 
 }
 

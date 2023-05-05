@@ -10,7 +10,36 @@
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <!--TextInputEditText style-->
+    <style name="edit_text_auth_activity">
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:theme">@style/TextColor</item>
+        <item name="errorEnabled">true</item>
+        <item name="errorTextAppearance">@style/Error</item>
+        <item name="barrierDirection">bottom</item>
+        <item name="hintAnimationEnabled">@string/sing_up_activity_e_mail</item>
+        <item name="hintEnabled">true</item>
+        <item name="expandedHintEnabled">true</item>
+        <item name="hintTextAppearance">@style/MyHintTextAppearance</item>
+        <item name="android:textColorHint">@color/white</item>
+        <item name="boxBackgroundMode">none</item>
+
+    </style>
+    <style name="Error" parent="TextAppearance.AppCompat">
+        <item name="paddingStart">20dp</item>
+    </style>
+
+    <style name="TextColor" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/white</item>
+        <item name="colorControlActivated">@color/white</item>
+        <item name="colorControlHighlight">@color/white</item>
+    </style>
+    <style name="MyHintTextAppearance" parent="TextAppearance.Design.Hint">
+        <item name="android:textSize">15sp</item>
+    </style>
+
+
 </resources>
