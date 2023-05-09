@@ -36,12 +36,10 @@ class AuthActivity : AppCompatActivity() {
         storeUserData = StoreUserData(this)
         getLoginData()
         setUpListeners()
-        autoLogin()
         binding.singUpRegisterBt.setOnClickListener {
             clickButton()
         }
     }
-
 
     private fun clickButton() {
         if (isValidate()) {
@@ -64,9 +62,8 @@ class AuthActivity : AppCompatActivity() {
         }
     }
 
-
-    private fun autoLogin() {
-        if (binding.singUpCheckbox.isChecked) {
+    private fun autoLogin(isAutoLogin: Boolean) {
+        if (isAutoLogin) {
             passDataToAnotherActivity()
         }
     }
@@ -84,11 +81,10 @@ class AuthActivity : AppCompatActivity() {
         }
         lifecycle.coroutineScope.launch {
             storeUserData.getCheckBoxState().collect {
-                binding.singUpCheckbox.isChecked = it
+                autoLogin(it)
             }
         }
     }
-
 
     private fun setUpListeners() {
         binding.singUpEMailEt.addTextChangedListener(FieldsValidation(binding.singUpEMail))
@@ -140,7 +136,6 @@ class AuthActivity : AppCompatActivity() {
         intent.putExtra("email", binding.singUpEMailEt.text.toString())
         startActivity(intent)
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
-        finish()
     }
 
     private fun isValidate() = validateEmail() && validatePassword()
