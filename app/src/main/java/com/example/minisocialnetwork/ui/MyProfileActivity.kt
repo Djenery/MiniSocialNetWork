@@ -20,6 +20,7 @@ class MyProfileActivity : AppCompatActivity() {
 
     override fun finish() {
         super.finish()
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
     }
 
     private fun setUserName() {
