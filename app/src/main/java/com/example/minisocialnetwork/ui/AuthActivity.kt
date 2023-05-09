@@ -23,17 +23,19 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
 
-private val Context.dataStore by preferencesDataStore(name = "user_login_info")
+
 
 class AuthActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySingUpBinding
 
+    private val Context.dataStore by preferencesDataStore(name = "user_login_info")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySingUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        autoLogin()
+        getLoginData()
         setUpListeners()
+        autoLogin()
         binding.singUpRegisterBt.setOnClickListener {
             clickButton()
         }
@@ -51,11 +53,11 @@ class AuthActivity : AppCompatActivity() {
         with(binding) {
             if (singUpCheckbox.isChecked) {
                 lifecycleScope.launch {
-                    saveData(
-                        singUpEMailEt.text.toString(),
-                        singUpPasswordT.text.toString(),
-                        singUpCheckbox.isChecked
-                    )
+                    dataStore.edit {
+                        it[PreferencesKeys.EMAIL_KEY] = singUpEMailEt.text.toString()
+                        it[PreferencesKeys.PASSWORD_KEY] = singUpPasswordT.text.toString()
+                        it[PreferencesKeys.CHECK_BOS_KEY] = singUpCheckbox.isChecked
+                    }
                 }
             }
         }
@@ -63,26 +65,19 @@ class AuthActivity : AppCompatActivity() {
 
 
     private fun autoLogin() {
-        getLoginData()
-        val checked = binding.singUpCheckbox.isChecked
-        if (checked) {
+        if (binding.singUpCheckbox.isChecked) {
             passDataToAnotherActivity()
         }
     }
 
     private fun getLoginData() {
-        lifecycleScope.launch {
-            dataStore.data.collect {
-                val checked = it[PreferencesKeys.CHECK_BOS_KEY] ?: false
-                if (checked) {
-                    binding.singUpEMailEt.setText(it[PreferencesKeys.EMAIL_KEY].orEmpty())
-                    binding.singUpPasswordT.setText(it[PreferencesKeys.PASSWORD_KEY].orEmpty())
-                    binding.singUpCheckbox.isChecked = true
-                }
+            dataStore.data.map {
+                binding.singUpEMailEt.setText(it[PreferencesKeys.EMAIL_KEY] ?: "")
+                binding.singUpPasswordT.setText(it[PreferencesKeys.PASSWORD_KEY] ?: "")
+                binding.singUpCheckbox.isChecked = it[PreferencesKeys.CHECK_BOS_KEY] ?: false
             }
-        }
-
     }
+
 
     private fun setUpListeners() {
         binding.singUpEMailEt.addTextChangedListener(FieldsValidation(binding.singUpEMail))
@@ -137,14 +132,6 @@ class AuthActivity : AppCompatActivity() {
     }
 
     private fun isValidate() = validateEmail() && validatePassword()
-
-    private suspend fun saveData(email: String, password: String, checked: Boolean) {
-        dataStore.edit {
-            it[PreferencesKeys.EMAIL_KEY] = email
-            it[PreferencesKeys.PASSWORD_KEY] = password
-            it[PreferencesKeys.CHECK_BOS_KEY] = checked
-        }
-    }
 
     private object PreferencesKeys {
         val EMAIL_KEY = stringPreferencesKey("email")
