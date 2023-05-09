@@ -12,27 +12,28 @@ import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import androidx.lifecycle.coroutineScope
 import androidx.lifecycle.lifecycleScope
 import com.example.minisocialnetwork.R
 import com.example.minisocialnetwork.databinding.ActivitySingUpBinding
+import com.example.minisocialnetwork.datastore.StoreUserData
 import com.example.minisocialnetwork.util.FieldsValidations.isValidEmail
 import com.example.minisocialnetwork.util.FieldsValidations.isStringContainNumber
 import com.example.minisocialnetwork.util.FieldsValidations.isMixedCase
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
-
-
 
 
 class AuthActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySingUpBinding
 
-    private val Context.dataStore by preferencesDataStore(name = "user_login_info")
+    private lateinit var storeUserData: StoreUserData
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySingUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        storeUserData = StoreUserData(this)
         getLoginData()
         setUpListeners()
         autoLogin()
@@ -52,12 +53,12 @@ class AuthActivity : AppCompatActivity() {
     private fun saveDataIfChecked() {
         with(binding) {
             if (singUpCheckbox.isChecked) {
-                lifecycleScope.launch {
-                    dataStore.edit {
-                        it[PreferencesKeys.EMAIL_KEY] = singUpEMailEt.text.toString()
-                        it[PreferencesKeys.PASSWORD_KEY] = singUpPasswordT.text.toString()
-                        it[PreferencesKeys.CHECK_BOS_KEY] = singUpCheckbox.isChecked
-                    }
+                CoroutineScope(IO).launch {
+                    storeUserData.saveData(
+                        singUpEMailEt.text.toString(),
+                        singUpPasswordT.text.toString(),
+                        singUpCheckbox.isChecked
+                    )
                 }
             }
         }
@@ -71,11 +72,21 @@ class AuthActivity : AppCompatActivity() {
     }
 
     private fun getLoginData() {
-            dataStore.data.map {
-                binding.singUpEMailEt.setText(it[PreferencesKeys.EMAIL_KEY] ?: "")
-                binding.singUpPasswordT.setText(it[PreferencesKeys.PASSWORD_KEY] ?: "")
-                binding.singUpCheckbox.isChecked = it[PreferencesKeys.CHECK_BOS_KEY] ?: false
+        lifecycle.coroutineScope.launch {
+            storeUserData.getEmail().collect {
+                binding.singUpEMailEt.setText(it)
             }
+        }
+        lifecycle.coroutineScope.launch {
+            storeUserData.getPassword().collect {
+                binding.singUpPasswordT.setText(it)
+            }
+        }
+        lifecycle.coroutineScope.launch {
+            storeUserData.getCheckBoxState().collect {
+                binding.singUpCheckbox.isChecked = it
+            }
+        }
     }
 
 
@@ -129,16 +140,10 @@ class AuthActivity : AppCompatActivity() {
         intent.putExtra("email", binding.singUpEMailEt.text.toString())
         startActivity(intent)
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+        finish()
     }
 
     private fun isValidate() = validateEmail() && validatePassword()
-
-    private object PreferencesKeys {
-        val EMAIL_KEY = stringPreferencesKey("email")
-        val PASSWORD_KEY = stringPreferencesKey("password")
-        val CHECK_BOS_KEY = booleanPreferencesKey("checkBox")
-    }
-
 
     inner class FieldsValidation(private val view: View) : TextWatcher {
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -148,7 +153,7 @@ class AuthActivity : AppCompatActivity() {
         }
 
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            if (view.id == R.id.sing_up_e_mail) {
+            if (view == binding.singUpEMail) {
                 validateEmail()
             } else {
                 validatePassword()
