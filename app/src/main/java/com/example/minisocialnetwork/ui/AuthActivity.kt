@@ -1,19 +1,12 @@
 package com.example.minisocialnetwork.ui
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.ContactsContract.CommonDataKinds.Email
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
-import androidx.datastore.preferences.core.booleanPreferencesKey
-import androidx.datastore.preferences.core.edit
-import androidx.datastore.preferences.core.stringPreferencesKey
-import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.coroutineScope
-import androidx.lifecycle.lifecycleScope
 import com.example.minisocialnetwork.R
 import com.example.minisocialnetwork.databinding.ActivitySingUpBinding
 import com.example.minisocialnetwork.datastore.StoreUserData
