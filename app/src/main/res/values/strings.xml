@@ -22,4 +22,7 @@
     <string name="icon_link_to_facebook">icon link to facebook page</string>
     <string name="icon_link_to_linkedin">icon link to linkedin page</string>
     <string name="icon_link_to_instagram">icon link to instagram page</string>
+    <string name="google_text_in_button">GOOGLE</string>
+    <string name="person_image">image person</string>
+    <string name="my_profile_user_name">User name</string>
 </resources>

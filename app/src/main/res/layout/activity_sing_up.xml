@@ -10,10 +10,10 @@
         android:id="@+id/sing_up_activity_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="26dp"
         android:text="@string/sing_up_activity_title"
         android:textColor="@color/white"
-        android:textSize="30sp"
+        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -26,7 +26,7 @@
         android:layout_marginTop="10dp"
         android:text="@string/sing_up_activity_fill_out_profile"
         android:textColor="#E6DBDB"
-        android:textSize="15sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/sing_up_activity_title" />
@@ -53,7 +53,8 @@
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="18sp"
+            tools:ignore="TouchTargetSizeCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -80,7 +81,7 @@
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <CheckBox
@@ -94,31 +95,38 @@
         android:focusable="true"
         android:buttonTint="@color/white"
         android:text="@string/sing_up_check_box_remember_me"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:textColor="#BDBBBB"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/sing_up_password" />
+
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/sing_up_with_google_bt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/button_google"
+        android:layout_marginEnd="16dp"
+        android:drawableStart="@drawable/group_google_icon"
+        android:paddingStart="120dp"
+        android:paddingEnd="100dp"
+        android:text="@string/google_text_in_button"
+        android:background="@color/white"
+        android:textSize="18sp"
         android:clickable="true"
         android:contentDescription="@string/sing_up_with_google_button"
         android:focusable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sing_up_checkbox" />
+        app:layout_constraintTop_toBottomOf="@id/sing_up_checkbox"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/sing_up_activity_or_tv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="4dp"
         android:gravity="center"
         android:text="@string/sing_up_activity_or_tv"
         android:textColor="@color/white"
@@ -131,15 +139,15 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/sing_up_register_bt"
         android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/sing_up_register_button_file"
         android:letterSpacing="0.2"
         android:text="@string/sing_up_button_register"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sing_up_activity_or_tv" />
@@ -152,7 +160,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sing_up_register_bt"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="4dp"
         android:gravity="center"
         android:text="@string/message_terms_and_conditions"
         android:textColor="@color/grey"
@@ -167,9 +175,9 @@
         app:layout_constraintEnd_toStartOf="@+id/message_sing_in"
         app:layout_constraintTop_toBottomOf="@+id/message_terms_and_conditions"
         app:layout_constraintHorizontal_chainStyle="packed"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="14dp"
         android:text="@string/message_already_have_an_account"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textColor="@color/grey"
         />
 
@@ -177,13 +185,13 @@
         android:id="@+id/message_sing_in"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="12dp"
         android:clickable="true"
         android:focusable="true"
         android:text="@string/sing_in"
         android:textColor="@color/white"
-        android:textSize="25sp"
+        android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/message_already_have_an_account"

@@ -8,4 +8,5 @@
     <dimen name="_15dp_width_margins_et_auth_activity">15dp</dimen>
     <dimen name="_40dp_my_profile_edit_bn">40dp</dimen>
     <dimen name="_40dp_social_media_links">40dp</dimen>
+    <dimen name="_22sp_my_profile_setting_tv">22sp</dimen>
 </resources>
