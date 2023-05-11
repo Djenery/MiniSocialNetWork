@@ -5,17 +5,39 @@
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidLineId"
+        android:id="@+id/guidLineMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.5" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidLineFirst"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.04" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/sing_up_guideline_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05"
+        />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/sing_up_guideline_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95"
+        />
+
     <View
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#242235"
-        app:layout_constraintBottom_toBottomOf="@id/guidLineId"
+        app:layout_constraintBottom_toBottomOf="@id/guidLineMain"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -106,7 +128,7 @@
         app:layout_constraintEnd_toStartOf="@id/my_profile_linkedin_icon_iv"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintTop_toBottomOf="@id/guidLineId"
+        app:layout_constraintTop_toBottomOf="@id/guidLineMain"
         android:layout_marginTop="@dimen/_40dp_social_media_links"
         android:contentDescription="@string/icon_link_to_facebook"
         android:src="@drawable/group_facebook"
@@ -119,7 +141,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toStartOf="@id/my_profile_instagram_icon_iv"
         app:layout_constraintStart_toEndOf="@id/my_profile_facebook_icon_iv"
-        app:layout_constraintTop_toBottomOf="@id/guidLineId"
+        app:layout_constraintTop_toBottomOf="@id/guidLineMain"
         android:contentDescription="@string/icon_link_to_linkedin"
         android:layout_marginTop="@dimen/_40dp_social_media_links"
         android:src="@drawable/group_linkedin"
@@ -133,7 +155,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/my_profile_linkedin_icon_iv"
-        app:layout_constraintTop_toBottomOf="@id/guidLineId"
+        app:layout_constraintTop_toBottomOf="@id/guidLineMain"
         android:layout_marginTop="@dimen/_40dp_social_media_links"
         android:contentDescription="@string/icon_link_to_instagram"
         android:src="@drawable/group_instagram"

@@ -6,30 +6,67 @@
     android:layout_height="match_parent"
     android:background="#242235">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/sing_up_guideline_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.04"
+        />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/sing_up_guideline_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05"
+        />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/sing_up_guideline_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95"
+        />
+
+
     <TextView
         android:id="@+id/sing_up_activity_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
         android:text="@string/sing_up_activity_title"
         android:textColor="@color/white"
         android:textSize="22sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/sing_up_guideline_end"
+        app:layout_constraintStart_toStartOf="@+id/sing_up_guideline_start"
+        app:layout_constraintTop_toBottomOf="@+id/sing_up_guideline_top"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/sing_up_guideline_first"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1"
         />
 
     <TextView
         android:id="@+id/sing_up_activity_fill_out_hint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:text="@string/sing_up_activity_fill_out_profile"
         android:textColor="#E6DBDB"
         android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sing_up_activity_title" />
+        app:layout_constraintEnd_toEndOf="@+id/sing_up_guideline_end"
+        app:layout_constraintStart_toStartOf="@+id/sing_up_guideline_start"
+        app:layout_constraintTop_toBottomOf="@id/sing_up_guideline_first" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/sing_up_guideline_second"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15"
+        />
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -37,14 +74,12 @@
         style="@style/edit_text_auth_activity"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_15dp_width_margins_et_auth_activity"
-        android:layout_marginEnd="@dimen/_15dp_width_margins_et_auth_activity"
         android:hint="@string/sing_up_activity_e_mail"
         app:endIconMode="clear_text"
         app:endIconTint="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sing_up_activity_fill_out_hint"
+        app:layout_constraintEnd_toEndOf="@+id/sing_up_guideline_end"
+        app:layout_constraintStart_toStartOf="@+id/sing_up_guideline_start"
+        app:layout_constraintTop_toBottomOf="@id/sing_up_guideline_second"
         app:boxStrokeColor="@color/white">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -57,23 +92,27 @@
             tools:ignore="TouchTargetSizeCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/sing_up_guideline_third"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.31"
+        />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/sing_up_password"
         style="@style/edit_text_auth_activity"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_15dp_width_margins_et_auth_activity"
-        android:layout_marginEnd="@dimen/_15dp_width_margins_et_auth_activity"
+        app:layout_constraintEnd_toEndOf="@+id/sing_up_guideline_end"
+        app:layout_constraintStart_toStartOf="@+id/sing_up_guideline_start"
+        app:layout_constraintTop_toBottomOf="@id/sing_up_guideline_third"
         app:errorEnabled="true"
         android:hint="@string/sing_up_password_et"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sing_up_e_mail"
         app:passwordToggleEnabled="true"
         app:passwordToggleTint="@color/white"
-        app:boxStrokeColor="@color/white"
-        >
+        app:boxStrokeColor="@color/white">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/sing_up_password_еt"
@@ -84,12 +123,18 @@
             android:textSize="18sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/sing_up_guideline_fourth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.472"
+        />
+
     <CheckBox
         android:id="@+id/sing_up_checkbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="5dp"
         android:background="@android:color/transparent"
         android:clickable="true"
         android:focusable="true"
@@ -97,85 +142,112 @@
         android:text="@string/sing_up_check_box_remember_me"
         android:textSize="15sp"
         android:textColor="#BDBBBB"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sing_up_password" />
+        app:layout_constraintStart_toStartOf="@+id/sing_up_guideline_start"
+        app:layout_constraintTop_toBottomOf="@id/sing_up_guideline_fourth" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/sing_up_guideline_fifth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.564"
+        />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/sing_up_with_google_bt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="16dp"
         android:drawableStart="@drawable/group_google_icon"
         android:paddingStart="120dp"
         android:paddingEnd="100dp"
         android:text="@string/google_text_in_button"
-        android:background="@color/white"
+        android:background="@drawable/google_button_background"
         android:textSize="18sp"
         android:clickable="true"
         android:contentDescription="@string/sing_up_with_google_button"
         android:focusable="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sing_up_checkbox"
+        app:layout_constraintEnd_toEndOf="@+id/sing_up_guideline_end"
+        app:layout_constraintStart_toStartOf="@+id/sing_up_guideline_start"
+        app:layout_constraintTop_toBottomOf="@id/sing_up_guideline_fifth"
         tools:ignore="TouchTargetSizeCheck" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/sing_up_guideline_sixth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.66"
+        />
 
     <TextView
         android:id="@+id/sing_up_activity_or_tv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
         android:gravity="center"
         android:text="@string/sing_up_activity_or_tv"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sing_up_with_google_bt" />
+        app:layout_constraintEnd_toEndOf="@id/sing_up_guideline_end"
+        app:layout_constraintStart_toStartOf="@id/sing_up_guideline_start"
+        app:layout_constraintTop_toBottomOf="@+id/sing_up_guideline_sixth" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/sing_up_guideline_seventh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.72"
+        />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/sing_up_register_bt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/sing_up_register_button_file"
+        android:background="@drawable/sing_up_register_bt"
         android:letterSpacing="0.2"
         android:text="@string/sing_up_button_register"
         android:textColor="@color/white"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sing_up_activity_or_tv" />
+        app:layout_constraintEnd_toEndOf="@id/sing_up_guideline_end"
+        app:layout_constraintStart_toStartOf="@id/sing_up_guideline_start"
+        app:layout_constraintTop_toBottomOf="@+id/sing_up_guideline_seventh" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/sing_up_guideline_eighth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.818" />
 
     <TextView
         android:id="@+id/message_terms_and_conditions"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sing_up_register_bt"
-        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="@id/sing_up_guideline_end"
+        app:layout_constraintStart_toStartOf="@id/sing_up_guideline_start"
+        app:layout_constraintTop_toBottomOf="@+id/sing_up_guideline_eighth"
         android:gravity="center"
         android:text="@string/message_terms_and_conditions"
         android:textColor="@color/grey"
         />
 
-    <TextView
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/sing_up_guideline_ninth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.9"
+        />
 
+    <TextView
         android:id="@+id/message_already_have_an_account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/sing_up_guideline_start"
         app:layout_constraintEnd_toStartOf="@+id/message_sing_in"
-        app:layout_constraintTop_toBottomOf="@+id/message_terms_and_conditions"
+        app:layout_constraintTop_toBottomOf="@+id/sing_up_guideline_ninth"
         app:layout_constraintHorizontal_chainStyle="packed"
-        android:layout_marginTop="14dp"
         android:text="@string/message_already_have_an_account"
         android:textSize="18sp"
         android:textColor="@color/grey"
@@ -186,19 +258,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="12dp"
         android:clickable="true"
         android:focusable="true"
         android:text="@string/sing_in"
         android:textColor="@color/white"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/sing_up_guideline_end"
         app:layout_constraintStart_toEndOf="@+id/message_already_have_an_account"
-        app:layout_constraintTop_toBottomOf="@+id/message_terms_and_conditions"
+        app:layout_constraintTop_toBottomOf="@+id/sing_up_guideline_ninth"
         tools:ignore="TouchTargetSizeCheck" />
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

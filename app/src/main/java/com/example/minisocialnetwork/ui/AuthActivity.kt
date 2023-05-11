@@ -3,9 +3,6 @@ package com.example.minisocialnetwork.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.view.View
 import androidx.lifecycle.coroutineScope
 import com.example.minisocialnetwork.R
 import com.example.minisocialnetwork.databinding.ActivitySingUpBinding
@@ -80,8 +77,16 @@ class AuthActivity : AppCompatActivity() {
     }
 
     private fun setUpListeners() {
-        binding.singUpEMailEt.addTextChangedListener(FieldsValidation(binding.singUpEMail))
-        binding.singUpPasswordT.addTextChangedListener(FieldsValidation(binding.singUpPassword))
+        binding.singUpEMailEt.setOnFocusChangeListener { v, hasFocus ->
+            if (!hasFocus){
+                validateEmail()
+            }
+        }
+        binding.singUpPasswordT.setOnFocusChangeListener { v, hasFocus ->
+            if (!hasFocus){
+                validatePassword()
+            }
+        }
     }
 
     private fun validateEmail(): Boolean {
@@ -133,20 +138,6 @@ class AuthActivity : AppCompatActivity() {
 
     private fun isValidate() = validateEmail() && validatePassword()
 
-    inner class FieldsValidation(private val view: View) : TextWatcher {
-        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-        }
 
-        override fun afterTextChanged(s: Editable?) {
-        }
-
-        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            if (view == binding.singUpEMail) {
-                validateEmail()
-            } else {
-                validatePassword()
-            }
-        }
-    }
 
 }

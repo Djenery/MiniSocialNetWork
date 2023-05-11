@@ -11,9 +11,10 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
 class StoreUserData(private val context: Context) {
-    private val Context.dataStore: DataStore<Preferences> by preferencesDataStore("userData")
+
 
     companion object {
+        private val Context.dataStore: DataStore<Preferences> by preferencesDataStore("userData")
         val EMAIL_KEY = stringPreferencesKey("email")
         val PASSWORD_KEY = stringPreferencesKey("password")
         val CHECKBOX_KEY = booleanPreferencesKey("checkBox")
