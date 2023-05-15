@@ -25,7 +25,7 @@ class MyProfileActivity : AppCompatActivity() {
 
     private fun setUserName() {
         val result = intent.getStringExtra("email")
-        binding.myProfileFullPersonName.text = ParsingData().getUserName(result!!)
+        binding.tvMyProfileUserName.text = ParsingData().getUserName(result!!)
 
     }
 }

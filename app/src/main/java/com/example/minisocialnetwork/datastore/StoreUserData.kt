@@ -7,37 +7,33 @@ import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
-import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 
 class StoreUserData(private val context: Context) {
-
-
     companion object {
         private val Context.dataStore: DataStore<Preferences> by preferencesDataStore("userData")
         val EMAIL_KEY = stringPreferencesKey("email")
         val PASSWORD_KEY = stringPreferencesKey("password")
-        val CHECKBOX_KEY = booleanPreferencesKey("checkBox")
     }
 
-    fun getEmail() = context.dataStore.data.map {
-        it[EMAIL_KEY] ?: ""
+    suspend fun getEmail(): String {
+        return context.dataStore.data.map { preferences ->
+            preferences[EMAIL_KEY] ?: ""
+        }.first()
     }
 
-    fun getPassword() = context.dataStore.data.map {
-        it[PASSWORD_KEY] ?: ""
+    suspend fun getPassword(): String {
+        return context.dataStore.data.map { preferences ->
+            preferences[EMAIL_KEY] ?: ""
+        }.first()
     }
 
-    fun getCheckBoxState() = context.dataStore.data.map {
-        it[CHECKBOX_KEY] ?: false
-    }
 
-    suspend fun saveData(email: String, password: String, checkBox: Boolean) {
+    suspend fun saveLoginToDataStore(email: String, password: String) {
         context.dataStore.edit {
             it[EMAIL_KEY] = email
             it[PASSWORD_KEY] = password
-            it[CHECKBOX_KEY] = checkBox
-
         }
     }
 

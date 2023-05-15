@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        style="@style/background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_sing_up_land_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.15" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_sing_up_land_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.85" />
+
+
+        <TextView
+            android:id="@+id/sing_up_activity_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sing_up_activity_title"
+            android:textColor="@color/white"
+            android:textSize="@dimen/title_sing_up"
+            app:layout_constraintEnd_toEndOf="@+id/guideline_sing_up_land_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_sing_up_land_start"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/sing_up_activity_fill_out_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sing_up_activity_fill_out_profile"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/small_text"
+            app:layout_constraintEnd_toEndOf="@+id/guideline_sing_up_land_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_sing_up_land_start"
+            app:layout_constraintTop_toBottomOf="@id/sing_up_activity_title" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/sing_up_e_mail"
+            style="@style/edit_text_auth_activity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/sing_up_activity_e_mail"
+            app:boxStrokeColor="@color/white"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/white"
+            app:layout_constraintEnd_toEndOf="@+id/guideline_sing_up_land_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_sing_up_land_start"
+            app:layout_constraintTop_toBottomOf="@id/sing_up_activity_fill_out_hint">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/sing_up_e_mail_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/white"
+                android:textSize="@dimen/input_sing_up"
+                tools:ignore="TouchTargetSizeCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/sing_up_password"
+            style="@style/edit_text_auth_activity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/sing_up_password_et"
+            app:boxStrokeColor="@color/white"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="@+id/guideline_sing_up_land_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_sing_up_land_start"
+
+            app:layout_constraintTop_toBottomOf="@id/sing_up_e_mail"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/white">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/sing_up_password_еt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:textColor="@color/white"
+                android:textSize="@dimen/input_sing_up" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <CheckBox
+            android:id="@+id/sing_up_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:buttonTint="@color/white"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/sing_up_check_box_remember_me"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/checkbox_text_sing_up"
+            app:layout_constraintStart_toStartOf="@+id/guideline_sing_up_land_start"
+            app:layout_constraintTop_toBottomOf="@id/sing_up_password" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/sing_up_guideline_fifth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.62" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/sing_up_with_google_bt"
+            style="@style/background_button"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            app:layout_constraintEnd_toEndOf="@+id/guideline_sing_up_land_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_sing_up_land_start"
+            app:layout_constraintTop_toBottomOf="@id/sing_up_guideline_fifth">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_sing_up_google_bt_first"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.48" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_sing_up_google_bt_second"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.486" />
+
+            <ImageView
+                android:id="@+id/iv_sing_up_google_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/group_google_icon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_sing_up_google_bt_first"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_sing_up_google_button"
+                style="@style/button_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/google_text_in_button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/guideline_sing_up_google_bt_second"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/sing_up_activity_or_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_semi_bold"
+            android:gravity="center"
+            android:text="@string/sing_up_activity_or_tv"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_between_buttons_sing_up"
+            app:layout_constraintEnd_toEndOf="@id/guideline_sing_up_land_end"
+            app:layout_constraintStart_toStartOf="@id/guideline_sing_up_land_start"
+            app:layout_constraintTop_toBottomOf="@+id/sing_up_with_google_bt" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/sing_up_register_bt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sing_up_register_bt"
+            android:letterSpacing="0.2"
+            android:text="@string/sing_up_button_register"
+            android:textColor="@color/white"
+            android:textSize="@dimen/button_text_sing_up"
+            app:layout_constraintEnd_toEndOf="@id/guideline_sing_up_land_end"
+            app:layout_constraintStart_toStartOf="@id/guideline_sing_up_land_start"
+            app:layout_constraintTop_toBottomOf="@+id/sing_up_activity_or_tv" />
+
+        <TextView
+            android:id="@+id/message_terms_and_conditions"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/message_terms_and_conditions"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/small_text"
+            app:layout_constraintEnd_toEndOf="@id/guideline_sing_up_land_end"
+            app:layout_constraintStart_toStartOf="@id/guideline_sing_up_land_start"
+            app:layout_constraintTop_toBottomOf="@+id/sing_up_register_bt" />
+
+
+        <TextView
+            android:id="@+id/message_already_have_an_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/message_already_have_an_account"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/bottom_text_sing_up"
+            app:layout_constraintEnd_toStartOf="@+id/message_sing_in"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="@id/guideline_sing_up_land_start"
+            app:layout_constraintTop_toBottomOf="@+id/message_terms_and_conditions" />
+
+        <TextView
+            android:id="@+id/message_sing_in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/sing_in"
+            android:textColor="@color/white"
+            android:textSize="@dimen/bottom_text_sing_up"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/guideline_sing_up_land_end"
+            app:layout_constraintStart_toEndOf="@+id/message_already_have_an_account"
+            app:layout_constraintTop_toBottomOf="@+id/message_terms_and_conditions"
+            tools:ignore="TouchTargetSizeCheck" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
