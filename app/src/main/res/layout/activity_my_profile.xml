@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    style="@style/background_my_profile">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_my_profile_main"
@@ -23,26 +24,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.05"
-        />
+        app:layout_constraintGuide_percent="0.05" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_vertical_end"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.95"
-        />
+        app:layout_constraintGuide_percent="0.95" />
 
     <View
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#242235"
+        android:background="@color/dark_blue"
         app:layout_constraintBottom_toBottomOf="@id/guideline_my_profile_main"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent">
 
     </View>
 
@@ -55,20 +53,18 @@
         android:textColor="@color/white"
         android:textSize="@dimen/_22sp_my_profile_setting_tv"
         app:layout_constraintStart_toStartOf="@+id/guideline_vertical_start"
-        app:layout_constraintTop_toTopOf="@+id/guideline_my_profile_top"
-        />
+        app:layout_constraintTop_toTopOf="@+id/guideline_my_profile_top" />
 
-        <ImageView
-            android:id="@+id/iv_my_profile_icon_user"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/me_round"
-            android:contentDescription="@string/person_image"
-            app:layout_constraintVertical_chainStyle="packed"
-            app:layout_constraintEnd_toEndOf="@id/tv_my_profile_user_name"
-            app:layout_constraintStart_toStartOf="@+id/tv_my_profile_user_name"
-            app:layout_constraintBottom_toTopOf="@id/guideline_my_profile_iv"
-            />
+    <ImageView
+        android:id="@+id/iv_my_profile_icon_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/person_image"
+        android:src="@mipmap/me_round"
+        app:layout_constraintBottom_toTopOf="@id/guideline_my_profile_iv"
+        app:layout_constraintEnd_toEndOf="@id/tv_my_profile_user_name"
+        app:layout_constraintStart_toStartOf="@+id/tv_my_profile_user_name"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_my_profile_iv"
@@ -92,12 +88,11 @@
         android:text="@string/my_profile_user_name"
         android:textColor="@color/white"
         android:textSize="15sp"
-        app:layout_constraintVertical_chainStyle="spread"
-        app:layout_constraintTop_toBottomOf="@id/guideline_my_profile_iv"
         app:layout_constraintBottom_toTopOf="@id/tv_my_profile_career"
-        app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
         app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
-        />
+        app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
+        app:layout_constraintTop_toBottomOf="@id/guideline_my_profile_iv"
+        app:layout_constraintVertical_chainStyle="spread" />
 
     <TextView
         android:id="@+id/tv_my_profile_career"
@@ -107,10 +102,10 @@
         android:text="@string/my_profile_career"
         android:textColor="#78909C"
         android:textSize="15sp"
-        app:layout_constraintTop_toBottomOf="@id/tv_my_profile_user_name"
-        app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
-        app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
         app:layout_constraintBottom_toTopOf="@id/tv_my_profile_address"
+        app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
+        app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
+        app:layout_constraintTop_toBottomOf="@id/tv_my_profile_user_name"
 
         />
 
@@ -122,11 +117,10 @@
         android:text="@string/my_profile_address_tv"
         android:textColor="#78909C"
         android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@id/guideline_my_profile_text_views"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_my_profile_career"
-        app:layout_constraintBottom_toTopOf="@id/guideline_my_profile_text_views"
-        />
+        app:layout_constraintTop_toBottomOf="@id/tv_my_profile_career" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_my_profile_social_media"
@@ -139,40 +133,38 @@
         android:id="@+id/my_profile_facebook_icon_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@id/my_profile_linkedin_icon_iv"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintTop_toBottomOf="@id/guideline_my_profile_social_media"
-        android:contentDescription="@string/icon_link_to_facebook"
-        android:src="@drawable/group_facebook"
         android:clickable="true"
-        android:focusable="true" />
+        android:contentDescription="@string/icon_link_to_facebook"
+        android:focusable="true"
+        style="@style/facebook_icon"
+        app:layout_constraintEnd_toStartOf="@id/my_profile_linkedin_icon_iv"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline_my_profile_social_media" />
 
     <ImageView
         android:id="@+id/my_profile_linkedin_icon_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:clickable="true"
+        android:contentDescription="@string/icon_link_to_linkedin"
+        android:focusable="true"
+        style="@style/linkedin_icon"
         app:layout_constraintEnd_toStartOf="@id/my_profile_instagram_icon_iv"
         app:layout_constraintStart_toEndOf="@id/my_profile_facebook_icon_iv"
-        app:layout_constraintTop_toBottomOf="@id/guideline_my_profile_social_media"
-        android:contentDescription="@string/icon_link_to_linkedin"
-        android:src="@drawable/group_linkedin"
-        android:clickable="true"
-        android:focusable="true"
-        />
+        app:layout_constraintTop_toBottomOf="@id/guideline_my_profile_social_media" />
 
     <ImageView
         android:id="@+id/my_profile_instagram_icon_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:clickable="true"
+        android:contentDescription="@string/icon_link_to_instagram"
+        android:focusable="true"
+        style="@style/instagram_icon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/my_profile_linkedin_icon_iv"
-        app:layout_constraintTop_toBottomOf="@id/guideline_my_profile_social_media"
-        android:contentDescription="@string/icon_link_to_instagram"
-        android:src="@drawable/group_instagram"
-        android:clickable="true"
-        android:focusable="true"
-        />
+        app:layout_constraintTop_toBottomOf="@id/guideline_my_profile_social_media" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_my_profile_button_first"
@@ -184,16 +176,16 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/my_profile_button_edit"
+        style="@style/edit_bt_background"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/my_profile_edit_profile_bn"
-        android:textAllCaps="false"
         android:clickable="true"
         android:focusable="true"
-        android:background="@drawable/my_profile_button_edit_file"
-        app:layout_constraintTop_toBottomOf="@id/guideline_my_profile_button_first"
+        android:text="@string/my_profile_edit_profile_bn"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
         app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
-        app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end" />
+        app:layout_constraintTop_toBottomOf="@id/guideline_my_profile_button_first" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_my_profile_button_second"
@@ -206,17 +198,13 @@
         android:id="@+id/my_profile_button_view_my_contacts"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/my_profile_button_view_my_contacts_file"
+        style="@style/view_my_contacts_bt_background"
         android:clickable="true"
         android:focusable="true"
         android:text="@string/my_profile_button_view_my_contacts"
-        android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@id/guideline_my_profile_button_second"
-        app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
         app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
-        />
-
-
+        app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
+        app:layout_constraintTop_toBottomOf="@id/guideline_my_profile_button_second" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

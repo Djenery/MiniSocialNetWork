@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">MiniSocialNetWork</string>
     <string name="my_profile_settings_tv">Settings</string>
-    <string name="my_profile_full_person_name">Full person name</string>
     <string name="my_profile_career">Career</string>
     <string name="my_profile_address_tv">Address</string>
     <string name="my_profile_edit_profile_bn">Edit profile</string>
@@ -9,11 +8,8 @@
     <string name="sing_up_activity_title">Let\'s get acquainted</string>
     <string name="sing_up_activity_fill_out_profile">Fill out the profile and go to the application!</string>
     <string name="sing_up_activity_e_mail">E-mail</string>
-    <string name="sing_up_activity_password">Password</string>
-    <string name="sing_up_e_mail_edit_text">email</string>
     <string name="sing_up_password_et">Password</string>
     <string name="sing_up_check_box_remember_me">Remember me</string>
-    <string name="sing_up_with_google_button">singUpWithGoogleButton</string>
     <string name="sing_up_activity_or_tv">or</string>
     <string name="sing_up_button_register">REGISTER</string>
     <string name="message_terms_and_conditions">By clicking Register you agree to our\n Terms and Conditions</string>
@@ -22,7 +18,7 @@
     <string name="icon_link_to_facebook">icon link to facebook page</string>
     <string name="icon_link_to_linkedin">icon link to linkedin page</string>
     <string name="icon_link_to_instagram">icon link to instagram page</string>
-    <string name="google_text_in_button">     GOOGLE</string>
+    <string name="google_text_in_button">GOOGLE</string>
     <string name="person_image">image person</string>
     <string name="my_profile_user_name">User name</string>
     <string name="description_google_icon">google icon</string>

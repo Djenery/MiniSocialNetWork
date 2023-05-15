@@ -15,19 +15,51 @@
     </style>
 
     <!--background for night mode-->
-    <style name="background">
-        <item name="android:background">#000000</item>
+    <style name="background_sing_up">
+        <item name="android:background">@color/black</item>
     </style>
 
-    <style name="background_button">
+    <style name="background_google_bt_sing_up">
         <item name="android:background">@drawable/google_button_background_dark</item>
     </style>
 
-    <style name="button_text_style">
+    <style name="button_text_style_sing_up">
         <item name="android:textColor">@color/white </item>
         <item name="android:textSize">@dimen/button_text_sing_up</item>
         <item name="android:fontFamily">@font/open_sans_semi_bold</item>
     </style>
 
+
+    <!--background my profile activity for light mode-->
+    <style name="background_my_profile">
+        <item name="android:background">@color/black</item>
+    </style>
+
+    <style name="edit_bt_background">
+        <item name="android:background">@drawable/edit_bt_my_profile_dark</item>
+        <item name="android:textColor">@color/white </item>
+        <item name="android:textSize">@dimen/button_text_sing_up</item>
+        <item name="android:fontFamily">@font/open_sans_semi_bold</item>
+    </style>
+
+    <style name="view_my_contacts_bt_background">
+        <item name="android:background">@drawable/view_my_contacts_bt_my_profile_dark</item>
+        <item name="android:textColor">@color/orange </item>
+        <item name="android:textSize">@dimen/button_text_sing_up</item>
+        <item name="android:fontFamily">@font/open_sans_semi_bold</item>
+    </style>
+
+
+    <style name="facebook_icon">
+        <item name="android:src">@drawable/dark_group_facebook</item>
+    </style>
+
+    <style name="instagram_icon">
+        <item name="android:src">@drawable/dark_group_instagram</item>
+    </style>
+
+    <style name="linkedin_icon">
+        <item name="android:src">@drawable/dark_group_linkedin</item>
+    </style>
 
 </resources>
