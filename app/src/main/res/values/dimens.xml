@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="_30sp_my_profile_setting_tv">30sp</dimen>
-    <dimen name="_15sp_my_profile_setting_tv">15sp</dimen>
-    <dimen name="_22sp_my_profile_setting_tv">22sp</dimen>
+    <dimen name="tv_settings_my_profile">22sp</dimen>
     <dimen name="title_sing_up">24sp</dimen>
     <dimen name="small_text">12sp</dimen>
     <dimen name="input_sing_up">18sp</dimen>
@@ -10,4 +8,6 @@
     <dimen name="button_text_sing_up">16sp</dimen>
     <dimen name="bottom_text_sing_up">14sp</dimen>
     <dimen name="text_between_buttons_sing_up">18sp</dimen>
+    <dimen name="tv_my_profile_user_name">18sp</dimen>
+    <dimen name="tv_secondary_my_profile">14sp</dimen>
 </resources>

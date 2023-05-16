@@ -46,7 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/sing_up_activity_fill_out_profile"
-        android:textColor="#E6DBDB"
+        android:textColor="@color/grey"
         android:textSize="@dimen/small_text"
         app:layout_constraintEnd_toEndOf="@+id/guideline_vertical_end"
         app:layout_constraintStart_toStartOf="@+id/guideline_vertical_start"
@@ -246,7 +246,6 @@
         android:id="@+id/message_sing_in"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:clickable="true"
         android:focusable="true"
         android:fontFamily="@font/open_sans_semi_bold"
