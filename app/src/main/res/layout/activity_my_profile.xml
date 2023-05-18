@@ -165,7 +165,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.74" />
+        app:layout_constraintGuide_percent="0.80" />
 
 
     <androidx.appcompat.widget.AppCompatButton
@@ -174,16 +174,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/my_profile_edit_profile_bn"
+        app:layout_constraintVertical_chainStyle="spread"
         app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
         app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
-        app:layout_constraintTop_toBottomOf="@id/guideline_my_profile_button_first" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_my_profile_button_second"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.84" />
+        app:layout_constraintTop_toBottomOf="@id/guideline_my_profile_button_first"
+        app:layout_constraintBottom_toTopOf="@id/my_profile_button_view_my_contacts"
+        />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/my_profile_button_view_my_contacts"
@@ -193,7 +189,9 @@
         android:text="@string/my_profile_button_view_my_contacts"
         app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
         app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
-        app:layout_constraintTop_toBottomOf="@id/guideline_my_profile_button_second" />
+        app:layout_constraintTop_toBottomOf="@id/my_profile_button_edit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

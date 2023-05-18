@@ -37,7 +37,7 @@
     </style>
 
     <style name="edit_bt_background">
-        <item name="android:background">@drawable/edit_bt_my_profile_light</item>
+        <item name="android:background">@drawable/edit_bt_selector</item>
         <item name="android:textColor">@color/black </item>
         <item name="android:textSize">@dimen/button_text_sing_up</item>
         <item name="android:fontFamily">@font/open_sans_semi_bold</item>

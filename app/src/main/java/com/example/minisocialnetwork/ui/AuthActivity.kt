@@ -8,6 +8,12 @@ import androidx.lifecycle.coroutineScope
 import com.example.minisocialnetwork.R
 import com.example.minisocialnetwork.databinding.ActivitySingUpBinding
 import com.example.minisocialnetwork.datastore.StoreUserData
+import com.example.minisocialnetwork.util.Constants.EMAIL
+import com.example.minisocialnetwork.util.Constants.ERROR_AT_LEAST_ONE_DIGIT
+import com.example.minisocialnetwork.util.Constants.ERROR_EMPTY_STRING
+import com.example.minisocialnetwork.util.Constants.ERROR_INVALID_EMAIL
+import com.example.minisocialnetwork.util.Constants.ERROR_TOO_SHORT_PASSWORD
+import com.example.minisocialnetwork.util.Constants.ERROR_UPPER_AND_LOWER
 import com.example.minisocialnetwork.util.FieldsValidations.isValidEmail
 import com.example.minisocialnetwork.util.FieldsValidations.isStringContainNumber
 import com.example.minisocialnetwork.util.FieldsValidations.isMixedCase
@@ -76,10 +82,10 @@ class AuthActivity : AppCompatActivity() {
 
     private fun validateEmail(): Boolean {
         if (binding.singUpEMailEt.text.toString().trim().isEmpty()) {
-            binding.singUpEMail.error = "Required Field!"
+            binding.singUpEMail.error = ERROR_EMPTY_STRING
             return false
         } else if (!isValidEmail(binding.singUpEMailEt.text.toString())) {
-            binding.singUpEMail.error = "Invalid email!"
+            binding.singUpEMail.error = ERROR_INVALID_EMAIL
             return false
         } else {
             binding.singUpEMail.isErrorEnabled = false
@@ -89,17 +95,16 @@ class AuthActivity : AppCompatActivity() {
 
     private fun validatePassword(): Boolean {
         if (binding.singUpPasswordT.text.toString().trim().isEmpty()) {
-            binding.singUpPassword.error = "Required Field!"
+            binding.singUpPassword.error = ERROR_EMPTY_STRING
             return false
         } else if (binding.singUpPasswordT.text.toString().length < 8) {
-            binding.singUpPassword.error = "password can't be less than 8"
+            binding.singUpPassword.error = ERROR_TOO_SHORT_PASSWORD
             return false
         } else if (!isStringContainNumber(binding.singUpPasswordT.text.toString())) {
-            binding.singUpPassword.error = "Required at least 1 digit"
+            binding.singUpPassword.error = ERROR_AT_LEAST_ONE_DIGIT
             return false
         } else if (!isMixedCase(binding.singUpPasswordT.text.toString())) {
-            binding.singUpPassword.error =
-                "Password must contain upper and lower case letters"
+            binding.singUpPassword.error = ERROR_UPPER_AND_LOWER
             return false
         } else {
             binding.singUpPassword.isErrorEnabled = false
@@ -109,7 +114,7 @@ class AuthActivity : AppCompatActivity() {
 
     private fun passDataToAnotherActivity() {
         val intent = Intent(this, MyProfileActivity::class.java)
-        intent.putExtra("email", binding.singUpEMailEt.text.toString())
+        intent.putExtra(EMAIL, binding.singUpEMailEt.text.toString())
         startActivity(intent)
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         finish()
