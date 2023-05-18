@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.minisocialnetwork.R
 import com.example.minisocialnetwork.databinding.ActivityMyProfileBinding
+import com.example.minisocialnetwork.util.Constants.EMAIL
 import com.example.minisocialnetwork.util.ParsingData
 
 class MyProfileActivity : AppCompatActivity() {
@@ -24,8 +25,8 @@ class MyProfileActivity : AppCompatActivity() {
     }
 
     private fun setUserName() {
-        val result = intent.getStringExtra("email")
-        binding.tvMyProfileUserName.text = ParsingData().getUserName(result!!)
+        val result = intent.getStringExtra(EMAIL)
+        binding.tvMyProfileUserName.text = ParsingData.getUserName(result!!)
 
     }
 }

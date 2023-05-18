@@ -10,6 +10,4 @@
     <dimen name="text_between_buttons_sing_up">18sp</dimen>
     <dimen name="tv_my_profile_user_name">18sp</dimen>
     <dimen name="tv_secondary_my_profile">14sp</dimen>
-    <dimen name="tv_add_contacts_my_contacts">16sp</dimen>
-    <dimen name="medium_text">16sp</dimen>
 </resources>

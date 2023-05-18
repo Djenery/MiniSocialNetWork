@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.11" />
+        app:layout_constraintGuide_percent="0.18" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_vertical_start"
@@ -57,7 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.2" />
+        app:layout_constraintGuide_percent="0.28" />
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -106,14 +106,15 @@
             android:textSize="@dimen/input_sing_up" />
     </com.google.android.material.textfield.TextInputLayout>
 
-
     <CheckBox
         android:id="@+id/sing_up_checkbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:buttonTint="@color/white"
         android:checked="true"
+        android:buttonTint="@color/white"
+        android:button="@drawable/checkbox_selector"
+        android:paddingStart="@dimen/checkbox_text_padding"
+        android:paddingEnd="@dimen/checkbox_text_padding"
         android:text="@string/sing_up_check_box_remember_me"
         android:textColor="@color/grey"
         android:textSize="@dimen/checkbox_text_sing_up"
@@ -125,7 +126,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.568" />
+        app:layout_constraintGuide_percent="0.66" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/sing_up_with_google_bt"
@@ -206,7 +207,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.772" />
+        app:layout_constraintGuide_percent="0.88" />
 
     <TextView
         android:id="@+id/message_terms_and_conditions"
@@ -225,7 +226,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.84" />
+        app:layout_constraintGuide_percent="0.94" />
 
     <TextView
         android:id="@+id/message_already_have_an_account"
