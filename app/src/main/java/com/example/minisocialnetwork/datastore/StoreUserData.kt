@@ -13,6 +13,7 @@ import com.example.minisocialnetwork.util.Constants.NO_CHAR
 import com.example.minisocialnetwork.util.Constants.PASSWORD
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
+import kotlin.coroutines.Continuation
 
 class StoreUserData(private val context: Context) {
     companion object {
