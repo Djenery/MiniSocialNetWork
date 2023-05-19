@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.coroutineScope
+import androidx.lifecycle.lifecycleScope
 import com.example.minisocialnetwork.R
 import com.example.minisocialnetwork.databinding.ActivitySingUpBinding
 import com.example.minisocialnetwork.datastore.StoreUserData
@@ -19,6 +20,7 @@ import com.example.minisocialnetwork.util.FieldsValidations.isStringContainNumbe
 import com.example.minisocialnetwork.util.FieldsValidations.isMixedCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 
 
@@ -45,7 +47,7 @@ class AuthActivity : AppCompatActivity() {
     private fun saveData() {
         with(binding) {
             if (singUpCheckbox.isChecked) {
-                CoroutineScope(IO).launch {
+                lifecycleScope.launch(IO) {
                     storeUserData.saveLoginToDataStore(
                         singUpEMailEt.text.toString(),
                         singUpPasswordT.text.toString()
@@ -56,7 +58,7 @@ class AuthActivity : AppCompatActivity() {
     }
 
     private fun autoLogin() {
-        lifecycle.coroutineScope.launch {
+        lifecycleScope.launch(Main) {
             val email = storeUserData.getEmail()
             val password = storeUserData.getPassword()
             if (email.isNotEmpty() && password.isNotEmpty()) {
