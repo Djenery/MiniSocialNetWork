@@ -3,7 +3,6 @@ package com.example.minisocialnetwork.datastore
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
@@ -13,11 +12,12 @@ import com.example.minisocialnetwork.util.Constants.NO_CHAR
 import com.example.minisocialnetwork.util.Constants.PASSWORD
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
-import kotlin.coroutines.Continuation
 
 class StoreUserData(private val context: Context) {
     companion object {
-        private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(DATA_STORE_NAME)
+        private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(
+            DATA_STORE_NAME
+        )
         val EMAIL_KEY = stringPreferencesKey(EMAIL)
         val PASSWORD_KEY = stringPreferencesKey(PASSWORD)
     }
@@ -41,6 +41,5 @@ class StoreUserData(private val context: Context) {
             it[PASSWORD_KEY] = password
         }
     }
-
 
 }

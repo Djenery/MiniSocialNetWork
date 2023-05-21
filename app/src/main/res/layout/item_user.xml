@@ -47,7 +47,7 @@
         android:id="@+id/iv_item_user_user_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/person_icon"
+        android:src="@drawable/ic_person"
         android:contentDescription="@string/user_icon_item_user"
         app:layout_constraintStart_toStartOf="@id/guideline_item_user_start"
         app:layout_constraintTop_toTopOf="@id/guideline_item_user_top"
