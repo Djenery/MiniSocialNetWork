@@ -6,7 +6,8 @@ object Constants {
     const val EMAIL = "email"
     const val PASSWORD = "password"
     const val DATA_STORE_NAME = "userData"
-    const val NO_CHAR = ""
+    const val ITEM_VERTICAL_MARGIN = 16 // the desired indent size in dp
+    const val UNDO = "UNDO"
     const val ERROR_EMPTY_STRING = "Required Field!"
     const val ERROR_INVALID_EMAIL = "Invalid email!"
     const val ERROR_TOO_SHORT_PASSWORD = "password can't be less than 8"

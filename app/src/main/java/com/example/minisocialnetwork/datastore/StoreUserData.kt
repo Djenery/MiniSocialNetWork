@@ -8,7 +8,6 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.example.minisocialnetwork.util.Constants.DATA_STORE_NAME
 import com.example.minisocialnetwork.util.Constants.EMAIL
-import com.example.minisocialnetwork.util.Constants.NO_CHAR
 import com.example.minisocialnetwork.util.Constants.PASSWORD
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
@@ -24,13 +23,13 @@ class StoreUserData(private val context: Context) {
 
     suspend fun getEmail(): String {
         return context.dataStore.data.map { preferences ->
-            preferences[EMAIL_KEY] ?: NO_CHAR
+            preferences[EMAIL_KEY].orEmpty()
         }.first()
     }
 
     suspend fun getPassword(): String {
         return context.dataStore.data.map { preferences ->
-            preferences[EMAIL_KEY] ?: NO_CHAR
+            preferences[EMAIL_KEY].orEmpty()
         }.first()
     }
 

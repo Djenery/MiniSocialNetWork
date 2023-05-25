@@ -4,13 +4,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.example.minisocialnetwork.databinding.ItemUserBinding
-import com.example.minisocialnetwork.model.Contact
+import com.example.minisocialnetwork.domain.contracts.RemoveItemListener
+import com.example.minisocialnetwork.domain.model.Contact
 
-class ContactsAdapter :
-    ListAdapter<Contact, ContactsViewHolder>(ContactsDiffUtil()) {
+class ContactsAdapter(private val listener: RemoveItemListener) :
+    ListAdapter<Contact, ContactsViewHolder>(ContactsDiffUtil()){
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactsViewHolder {
         return ContactsViewHolder(
-            ItemUserBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemUserBinding.inflate(LayoutInflater.from(parent.context), parent, false), listener
         )
     }
 

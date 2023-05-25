@@ -1,14 +1,15 @@
-package com.example.minisocialnetwork.ui
+package com.example.minisocialnetwork.ui.auth
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MotionEvent
 import androidx.core.widget.doOnTextChanged
-import androidx.lifecycle.coroutineScope
 import androidx.lifecycle.lifecycleScope
 import com.example.minisocialnetwork.R
 import com.example.minisocialnetwork.databinding.ActivitySingUpBinding
 import com.example.minisocialnetwork.datastore.StoreUserData
+import com.example.minisocialnetwork.ui.myProfile.MyProfileActivity
 import com.example.minisocialnetwork.util.Constants.EMAIL
 import com.example.minisocialnetwork.util.Constants.ERROR_AT_LEAST_ONE_DIGIT
 import com.example.minisocialnetwork.util.Constants.ERROR_EMPTY_STRING
@@ -18,7 +19,7 @@ import com.example.minisocialnetwork.util.Constants.ERROR_UPPER_AND_LOWER
 import com.example.minisocialnetwork.util.FieldsValidations.isValidEmail
 import com.example.minisocialnetwork.util.FieldsValidations.isStringContainNumber
 import com.example.minisocialnetwork.util.FieldsValidations.isMixedCase
-import kotlinx.coroutines.CoroutineScope
+import com.example.minisocialnetwork.util.extentions.hideKeyboardOnOutsideTouch
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
@@ -34,8 +35,8 @@ class AuthActivity : AppCompatActivity() {
         storeUserData = StoreUserData(this)
         autoLogin()
         setUpListeners()
-
     }
+
 
     private fun clickButton() {
         if (isValidate()) {
@@ -78,8 +79,14 @@ class AuthActivity : AppCompatActivity() {
             }
             singUpRegisterBt.setOnClickListener {
                 clickButton()
+
             }
         }
+    }
+
+    override fun dispatchTouchEvent(event: MotionEvent): Boolean {
+        hideKeyboardOnOutsideTouch(event)
+        return super.dispatchTouchEvent(event)
     }
 
     private fun validateEmail(): Boolean {
@@ -92,6 +99,7 @@ class AuthActivity : AppCompatActivity() {
         } else {
             binding.singUpEMail.isErrorEnabled = false
         }
+
         return true
     }
 

@@ -1,10 +1,7 @@
-package com.example.minisocialnetwork.ui
+package com.example.minisocialnetwork.ui.myProfile
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.transition.Slide
-import android.view.Window
-import com.example.minisocialnetwork.R
 import com.example.minisocialnetwork.databinding.ActivityMyProfileBinding
 import com.example.minisocialnetwork.util.Constants.EMAIL
 import com.example.minisocialnetwork.util.ParsingData
@@ -24,8 +21,8 @@ class MyProfileActivity : AppCompatActivity() {
 
 
     private fun setUserName() {
-        val result = intent.getStringExtra(EMAIL)
-        binding.tvMyProfileUserName.text = ParsingData.getUserName(result!!)
+        val result = intent.getStringExtra(EMAIL).toString()
+        binding.tvMyProfileUserName.text = ParsingData.getUserName(result)
 
     }
 }

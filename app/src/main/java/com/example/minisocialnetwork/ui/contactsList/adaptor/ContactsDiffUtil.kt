@@ -1,7 +1,7 @@
 package com.example.minisocialnetwork.ui.contactsList.adaptor
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.minisocialnetwork.model.Contact
+import com.example.minisocialnetwork.domain.model.Contact
 
 class ContactsDiffUtil : DiffUtil.ItemCallback<Contact>() {
     override fun areItemsTheSame(oldItem: Contact, newItem: Contact): Boolean {

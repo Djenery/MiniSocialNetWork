@@ -20,12 +20,14 @@
     <string name="icon_link_to_instagram">icon link to instagram page</string>
     <string name="google_text_in_button">GOOGLE</string>
     <string name="person_image">image person</string>
-    <string name="user_name">User name</string>
+    <string name="user_name">Username</string>
     <string name="description_google_icon">google icon</string>
-    <string name="back_to_previous_activity">back to previous activity</string>
+    <string name="go_back">go back</string>
     <string name="look_for_contact">look for contact</string>
     <string name="contacts_my_contacts">Contacts</string>
     <string name="add_contacts_my_contacts">Add contacts</string>
     <string name="user_icon_item_user">user icon</string>
     <string name="profession">Profession</string>
+    <string name="save">save</string>
+    <string name="tv_add_contact_title">Add contact</string>
 </resources>

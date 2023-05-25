@@ -23,10 +23,12 @@
     <string name="person_image">зображення людини</string>
     <string name="user_name">Ім\'я користувача</string>
     <string name="description_google_icon">значок Google</string>
-    <string name="back_to_previous_activity">назад до попередньої актівіті</string>
+    <string name="go_back">назад до попередньої актівіті</string>
     <string name="look_for_contact">шукати контакт</string>
     <string name="contacts_my_contacts">Контакти</string>
     <string name="add_contacts_my_contacts">Додати контакти</string>
     <string name="user_icon_item_user">зображення користувача</string>
     <string name="profession">Професія</string>
+    <string name="save">зберігти</string>
+    <string name="tv_add_contact_title">Дотати контакт</string>
 </resources>

@@ -1,6 +1,7 @@
 package com.example.minisocialnetwork.datastore
 
-import com.example.minisocialnetwork.model.Contact
+import com.example.minisocialnetwork.domain.model.Contact
+import com.example.minisocialnetwork.util.AutoIdIncrement
 import com.github.javafaker.Faker
 import kotlin.random.Random
 
@@ -10,7 +11,7 @@ object FakeContacts {
         val faker = Faker.instance()
         val generatedContacts = (1..10).map {
             Contact(
-                id = it.toLong(),
+                id = AutoIdIncrement.getId(),
                 photo = getRandomPhoto(),
                 name = faker.name().name(),
                 profession = faker.job().title()
