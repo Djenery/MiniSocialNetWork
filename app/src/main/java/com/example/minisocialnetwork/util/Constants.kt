@@ -3,10 +3,15 @@ package com.example.minisocialnetwork.util
 object Constants {
     const val AT_SIGN = '@'
     const val EMPTY_STR = " "
+
     const val EMAIL = "email"
     const val PASSWORD = "password"
     const val DATA_STORE_NAME = "userData"
-    const val NO_CHAR = ""
+
+    const val DIGITS = ".*[0-9].*"
+    const val LOWERCASE_LETTERS = ".*[a-z].*"
+    const val UPPERCASE_LETTERS = ".*[A-Z].*"
+
     const val ERROR_EMPTY_STRING = "Required Field!"
     const val ERROR_INVALID_EMAIL = "Invalid email!"
     const val ERROR_TOO_SHORT_PASSWORD = "password can't be less than 8"
