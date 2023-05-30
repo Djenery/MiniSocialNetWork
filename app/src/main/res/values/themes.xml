@@ -25,6 +25,7 @@
 
     <style name="button_text_style_sing_up">
         <item name="android:textColor">@color/black </item>
+        <item name="android:background">@drawable/google_button_background_light</item>
         <item name="android:textSize">@dimen/button_text_sing_up</item>
         <item name="android:fontFamily">@font/open_sans_semi_bold</item>
     </style>

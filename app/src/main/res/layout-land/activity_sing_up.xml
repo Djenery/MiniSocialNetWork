@@ -121,50 +121,34 @@
             app:layout_constraintGuide_percent="0.652" />
 
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:id="@+id/sing_up_with_google_bt"
-            style="@style/background_google_bt_sing_up"
             android:layout_width="0dp"
             android:layout_height="40dp"
+            android:orientation="horizontal"
+            style="@style/background_google_bt_sing_up"
+            android:gravity="center"
             app:layout_constraintEnd_toEndOf="@+id/guideline_sing_up_land_end"
             app:layout_constraintStart_toStartOf="@+id/guideline_sing_up_land_start"
-            app:layout_constraintTop_toBottomOf="@id/sing_up_guideline_fifth">
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline_sing_up_google_bt_first"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.48" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline_sing_up_google_bt_second"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.486" />
+            app:layout_constraintTop_toBottomOf="@id/sing_up_guideline_fifth"
+            tools:ignore="UseCompoundDrawables">
 
             <ImageView
-                android:id="@+id/iv_sing_up_google_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/description_google_icon"
                 android:src="@drawable/group_google_icon"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/guideline_sing_up_google_bt_first"
-                app:layout_constraintHorizontal_chainStyle="packed"
-                app:layout_constraintTop_toTopOf="parent" />
+                />
 
             <TextView
-                android:id="@+id/tv_sing_up_google_button"
-                style="@style/button_text_style_sing_up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/bt_google_text_margin"
+                android:id="@+id/tv_sing_up_google_button"
+                style="@style/button_text_style_sing_up"
                 android:text="@string/google_text_in_button"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/guideline_sing_up_google_bt_second"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/sing_up_activity_or_tv"
