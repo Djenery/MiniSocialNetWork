@@ -11,14 +11,14 @@
     <string name="sing_up_password_et">Password</string>
     <string name="sing_up_check_box_remember_me">Remember me</string>
     <string name="sing_up_activity_or_tv">or</string>
-    <string name="sing_up_button_register">REGISTER</string>
+    <string name="sing_up_button_register">register</string>
     <string name="message_terms_and_conditions">By clicking Register you agree to our\n Terms and Conditions</string>
     <string name="message_already_have_an_account">Already have an account?</string>
     <string name="sing_in">Sing in</string>
     <string name="icon_link_to_facebook">icon link to facebook page</string>
     <string name="icon_link_to_linkedin">icon link to linkedin page</string>
     <string name="icon_link_to_instagram">icon link to instagram page</string>
-    <string name="google_text_in_button">GOOGLE</string>
+    <string name="google_text_in_button" translatable="false">google</string>
     <string name="person_image">image person</string>
     <string name="user_name">Username</string>
     <string name="description_google_icon">google icon</string>

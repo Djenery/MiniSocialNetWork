@@ -16,7 +16,6 @@ class MyContactsViewModel : ViewModel() {
 
     init {
         _contactsList.value = FakeContacts.getContacts()
-        Log.d("aaaa", "viewModel $contactsList")
     }
 
 
@@ -24,7 +23,6 @@ class MyContactsViewModel : ViewModel() {
         _contactsList.value = contactsList.value?.toMutableList()?.apply {
             add(Contact(AutoIdIncrement.getId(), FakeContacts.getRandomPhoto(), name, profession))
         }
-        Log.d("aaaa", "contact added $contactsList")
     }
 
 

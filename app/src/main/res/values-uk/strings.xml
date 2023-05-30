@@ -12,14 +12,13 @@
     <string name="sing_up_password_et">Пароль</string>
     <string name="sing_up_check_box_remember_me">Запам\'ятати мене</string>
     <string name="sing_up_activity_or_tv">або</string>
-    <string name="sing_up_button_register">ЗАРЕЄСТРУВАТИСЯ</string>
+    <string name="sing_up_button_register">зареєструватися</string>
     <string name="message_terms_and_conditions">Натискаючи «Зареєструватися», ви погоджуєтеся з нашими Правила та умови</string>
     <string name="message_already_have_an_account">Вже маєте аккаунт?</string>
     <string name="sing_in">Увійти</string>
     <string name="icon_link_to_facebook">значок посилання на сторінку facebook</string>
     <string name="icon_link_to_linkedin">значок посилання на сторінку linkedin</string>
     <string name="icon_link_to_instagram">значок посилання на сторінку instagram</string>
-    <string name="google_text_in_button">GOOGLE</string>
     <string name="person_image">зображення людини</string>
     <string name="user_name">Ім\'я користувача</string>
     <string name="description_google_icon">значок Google</string>

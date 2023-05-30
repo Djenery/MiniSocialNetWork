@@ -1,9 +1,9 @@
 package com.example.minisocialnetwork.ui.auth
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MotionEvent
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.lifecycleScope
 import com.example.minisocialnetwork.R
@@ -16,9 +16,9 @@ import com.example.minisocialnetwork.util.Constants.ERROR_EMPTY_STRING
 import com.example.minisocialnetwork.util.Constants.ERROR_INVALID_EMAIL
 import com.example.minisocialnetwork.util.Constants.ERROR_TOO_SHORT_PASSWORD
 import com.example.minisocialnetwork.util.Constants.ERROR_UPPER_AND_LOWER
-import com.example.minisocialnetwork.util.FieldsValidations.isValidEmail
-import com.example.minisocialnetwork.util.FieldsValidations.isStringContainNumber
 import com.example.minisocialnetwork.util.FieldsValidations.isMixedCase
+import com.example.minisocialnetwork.util.FieldsValidations.isStringContainNumber
+import com.example.minisocialnetwork.util.FieldsValidations.isValidEmail
 import com.example.minisocialnetwork.util.extentions.hideKeyboardOnOutsideTouch
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main

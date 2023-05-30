@@ -14,13 +14,17 @@
 
     </style>
 
+
+
+
+
    <!--background sing up activity for light mode-->
     <style name="background_sing_up">
         <item name="android:background">@color/dark_blue</item>
     </style>
     
     <style name="background_google_bt_sing_up">
-        <item name="android:background">@drawable/google_button_background_light</item>
+        <item name="android:background">@color/white</item>
     </style>
 
     <style name="button_text_style_sing_up">

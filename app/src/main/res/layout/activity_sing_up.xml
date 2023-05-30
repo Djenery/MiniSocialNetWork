@@ -110,9 +110,9 @@
         android:id="@+id/sing_up_checkbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:checked="true"
-        android:buttonTint="@color/white"
         android:button="@drawable/checkbox_selector"
+        android:buttonTint="@color/white"
+        android:checked="true"
         android:paddingStart="@dimen/checkbox_text_padding"
         android:paddingEnd="@dimen/checkbox_text_padding"
         android:text="@string/sing_up_check_box_remember_me"
@@ -128,51 +128,23 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.66" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.example.minisocialnetwork.ui.auth.custom.MyCustomButton
         android:id="@+id/sing_up_with_google_bt"
-        style="@style/background_google_bt_sing_up"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
+        android:background="@color/white"
+        android:fontFamily="@font/open_sans_semi_bold"
+        android:text="@string/google_text_in_button"
+        android:textColor="@color/black"
+        android:textSize="@dimen/medium_text"
+        app:cornerRadius="6dp"
+        app:icon="@drawable/group_google_icon"
+        app:iconPadding="@dimen/bt_google_sing_up_icon_padding"
+
         app:layout_constraintEnd_toEndOf="@+id/guideline_vertical_end"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline_vertical_start"
-        app:layout_constraintTop_toBottomOf="@id/sing_up_guideline_fifth">
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline_sing_up_google_bt_first"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.42" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline_sing_up_google_bt_second"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.44" />
-
-        <ImageView
-            android:id="@+id/iv_sing_up_google_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/description_google_icon"
-            android:src="@drawable/group_google_icon"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/guideline_sing_up_google_bt_first"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tv_sing_up_google_button"
-            style="@style/button_text_style_sing_up"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/google_text_in_button"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/guideline_sing_up_google_bt_second"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintTop_toBottomOf="@id/sing_up_guideline_fifth" />
 
     <TextView
         android:id="@+id/sing_up_activity_or_tv"

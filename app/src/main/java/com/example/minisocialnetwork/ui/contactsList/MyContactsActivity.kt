@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.minisocialnetwork.R
 import com.example.minisocialnetwork.databinding.ActivityMyContactsBinding
 import com.example.minisocialnetwork.domain.contracts.AddContactListener
 import com.example.minisocialnetwork.domain.contracts.RemoveItemListener
@@ -40,6 +41,10 @@ class MyContactsActivity : AppCompatActivity(), AddContactListener, RemoveItemLi
     private fun setListeners() {
         binding.tvAddContactMyContacts.setOnClickListener {
             AddContactDialogFragment().show(supportFragmentManager, AddContactDialogFragment.TAG)
+        }
+        binding.viewMyContactsArrowBack.setOnClickListener {
+            finish()
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
         }
     }
 
