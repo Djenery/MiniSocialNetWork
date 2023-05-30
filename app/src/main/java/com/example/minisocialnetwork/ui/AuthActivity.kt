@@ -1,10 +1,9 @@
 package com.example.minisocialnetwork.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
-import androidx.lifecycle.coroutineScope
 import androidx.lifecycle.lifecycleScope
 import com.example.minisocialnetwork.R
 import com.example.minisocialnetwork.databinding.ActivitySingUpBinding
@@ -15,10 +14,9 @@ import com.example.minisocialnetwork.util.Constants.ERROR_EMPTY_STRING
 import com.example.minisocialnetwork.util.Constants.ERROR_INVALID_EMAIL
 import com.example.minisocialnetwork.util.Constants.ERROR_TOO_SHORT_PASSWORD
 import com.example.minisocialnetwork.util.Constants.ERROR_UPPER_AND_LOWER
-import com.example.minisocialnetwork.util.FieldsValidations.isValidEmail
-import com.example.minisocialnetwork.util.FieldsValidations.isStringContainNumber
 import com.example.minisocialnetwork.util.FieldsValidations.isMixedCase
-import kotlinx.coroutines.CoroutineScope
+import com.example.minisocialnetwork.util.FieldsValidations.isStringContainNumber
+import com.example.minisocialnetwork.util.FieldsValidations.isValidEmail
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
@@ -37,26 +35,6 @@ class AuthActivity : AppCompatActivity() {
 
     }
 
-    private fun clickButton() {
-        if (isValidate()) {
-            saveData()
-            passDataToAnotherActivity()
-        }
-    }
-
-    private fun saveData() {
-        with(binding) {
-            if (singUpCheckbox.isChecked) {
-                lifecycleScope.launch(IO) {
-                    storeUserData.saveLoginToDataStore(
-                        singUpEMailEt.text.toString(),
-                        singUpPasswordT.text.toString()
-                    )
-                }
-            }
-        }
-    }
-
     private fun autoLogin() {
         lifecycleScope.launch(Main) {
             val email = storeUserData.getEmail()
@@ -68,6 +46,14 @@ class AuthActivity : AppCompatActivity() {
         }
     }
 
+    private fun passDataToAnotherActivity() {
+        val intent = Intent(this, MyProfileActivity::class.java)
+        intent.putExtra(EMAIL, binding.singUpEMailEt.text.toString())
+        startActivity(intent)
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+        finish()
+    }
+
     private fun setUpListeners() {
         with(binding) {
             singUpEMailEt.doOnTextChanged { _, _, _, _ ->
@@ -77,7 +63,10 @@ class AuthActivity : AppCompatActivity() {
                 validatePassword()
             }
             singUpRegisterBt.setOnClickListener {
-                clickButton()
+                if (isValidate()) {
+                    saveData()
+                    passDataToAnotherActivity()
+                }
             }
         }
     }
@@ -114,15 +103,20 @@ class AuthActivity : AppCompatActivity() {
         return true
     }
 
-    private fun passDataToAnotherActivity() {
-        val intent = Intent(this, MyProfileActivity::class.java)
-        intent.putExtra(EMAIL, binding.singUpEMailEt.text.toString())
-        startActivity(intent)
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
-        finish()
-    }
-
     private fun isValidate() = validateEmail() && validatePassword()
+
+    private fun saveData() {
+        with(binding) {
+            if (singUpCheckbox.isChecked) {
+                lifecycleScope.launch(IO) {
+                    storeUserData.saveLoginToDataStore(
+                        singUpEMailEt.text.toString(),
+                        singUpPasswordT.text.toString()
+                    )
+                }
+            }
+        }
+    }
 
 
 }
