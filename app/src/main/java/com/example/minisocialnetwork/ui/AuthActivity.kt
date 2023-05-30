@@ -32,7 +32,6 @@ class AuthActivity : AppCompatActivity() {
         storeUserData = StoreUserData(this)
         autoLogin()
         setUpListeners()
-
     }
 
     private fun autoLogin() {
