@@ -2,10 +2,17 @@ package com.example.minisocialnetwork.util
 
 import com.example.minisocialnetwork.util.Constants.AT_SIGN
 import com.example.minisocialnetwork.util.Constants.EMPTY_STR
-import java.lang.StringBuilder
 
+/**
+ * Object for parsing data related to user information.
+ */
 object ParsingData {
 
+    /**
+     * Extracts the username from an email address.
+     * @param email The email address from which to extract the username.
+     * @return The extracted username with proper formatting.
+     */
     fun getUserName(email: String): String {
         val userName = StringBuilder()
         var counter = 0
