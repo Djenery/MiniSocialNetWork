@@ -21,7 +21,9 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 
-
+/**
+ * Activity class for user authentication.
+ */
 class AuthActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySingUpBinding
     private lateinit var storeUserData: StoreUserData
@@ -34,6 +36,9 @@ class AuthActivity : AppCompatActivity() {
         setUpListeners()
     }
 
+    /**
+     * Checks if dataStore contains data if does then redirect user to another activity
+     */
     private fun autoLogin() {
         lifecycleScope.launch(Main) {
             val email = storeUserData.getEmail()
@@ -45,6 +50,9 @@ class AuthActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Passes data to another activity
+     */
     private fun passDataToAnotherActivity() {
         val intent = Intent(this, MyProfileActivity::class.java)
         intent.putExtra(EMAIL, binding.singUpEMailEt.text.toString())
@@ -53,6 +61,9 @@ class AuthActivity : AppCompatActivity() {
         finish()
     }
 
+    /**
+     * Set listeners which user can interact with in current activity
+     */
     private fun setUpListeners() {
         with(binding) {
             singUpEMailEt.doOnTextChanged { _, _, _, _ ->
@@ -70,6 +81,32 @@ class AuthActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Checks if email and password fields are valid.
+     * @return true if fields are valid to all checks otherwise false
+     */
+    private fun isValidate() = validateEmail() && validatePassword()
+
+    /**
+     * Saves email and password inputs in dataStore.
+     */
+    private fun saveData() {
+        with(binding) {
+            if (singUpCheckbox.isChecked) {
+                lifecycleScope.launch(IO) {
+                    storeUserData.saveLoginToDataStore(
+                        singUpEMailEt.text.toString(),
+                        singUpPasswordT.text.toString()
+                    )
+                }
+            }
+        }
+    }
+
+    /**
+     * Checks if email field is valid
+     * @return true if password is valid to all checks, false otherwise
+     */
     private fun validateEmail(): Boolean {
         if (binding.singUpEMailEt.text.toString().trim().isEmpty()) {
             binding.singUpEMail.error = ERROR_EMPTY_STRING
@@ -83,6 +120,10 @@ class AuthActivity : AppCompatActivity() {
         return true
     }
 
+    /**
+     * Checks if password field is valid
+     * @return true if password is valid to all checks, false otherwise
+     */
     private fun validatePassword(): Boolean {
         if (binding.singUpPasswordT.text.toString().trim().isEmpty()) {
             binding.singUpPassword.error = ERROR_EMPTY_STRING
@@ -100,21 +141,6 @@ class AuthActivity : AppCompatActivity() {
             binding.singUpPassword.isErrorEnabled = false
         }
         return true
-    }
-
-    private fun isValidate() = validateEmail() && validatePassword()
-
-    private fun saveData() {
-        with(binding) {
-            if (singUpCheckbox.isChecked) {
-                lifecycleScope.launch(IO) {
-                    storeUserData.saveLoginToDataStore(
-                        singUpEMailEt.text.toString(),
-                        singUpPasswordT.text.toString()
-                    )
-                }
-            }
-        }
     }
 
 

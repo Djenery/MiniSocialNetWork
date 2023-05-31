@@ -6,6 +6,9 @@ import com.example.minisocialnetwork.databinding.ActivityMyProfileBinding
 import com.example.minisocialnetwork.util.Constants.EMAIL
 import com.example.minisocialnetwork.util.ParsingData
 
+/**
+ * Activity class for displaying the user's profile.
+ */
 class MyProfileActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMyProfileBinding
@@ -17,6 +20,9 @@ class MyProfileActivity : AppCompatActivity() {
         setUserName()
     }
 
+    /**
+     * Set the user name in the UI.
+     */
     private fun setUserName() {
         val result = intent.getStringExtra(EMAIL)
         binding.tvMyProfileUserName.text = ParsingData.getUserName(result!!)
