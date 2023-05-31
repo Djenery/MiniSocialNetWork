@@ -12,6 +12,10 @@ import com.example.minisocialnetwork.util.Constants.PASSWORD
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 
+/**
+ * Class responsible for storing and retrieving user data using DataStore.
+ * @param context The application context.
+ */
 class StoreUserData(private val context: Context) {
     companion object {
         private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(
@@ -21,12 +25,20 @@ class StoreUserData(private val context: Context) {
         val PASSWORD_KEY = stringPreferencesKey(PASSWORD)
     }
 
+    /**
+     * Retrieves the saved email from DataStore.
+     * @return The saved email, or an empty string if not available.
+     */
     suspend fun getEmail(): String {
         return context.dataStore.data.map { preferences ->
             preferences[EMAIL_KEY].orEmpty()
         }.first()
     }
 
+    /**
+     * Retrieves the saved password from DataStore.
+     * @return The saved password, or an empty string if not available.
+     */
     suspend fun getPassword(): String {
         return context.dataStore.data.map { preferences ->
             preferences[EMAIL_KEY].orEmpty()
@@ -34,6 +46,11 @@ class StoreUserData(private val context: Context) {
     }
 
 
+    /**
+     * Saves the login credentials to DataStore.
+     * @param email The email to save.
+     * @param password The password to save.
+     */
     suspend fun saveLoginToDataStore(email: String, password: String) {
         context.dataStore.edit {
             it[EMAIL_KEY] = email

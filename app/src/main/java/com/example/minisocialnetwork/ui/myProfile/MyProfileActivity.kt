@@ -9,6 +9,9 @@ import com.example.minisocialnetwork.ui.contactsList.MyContactsActivity
 import com.example.minisocialnetwork.util.Constants.EMAIL
 import com.example.minisocialnetwork.util.ParsingData
 
+/**
+ * Activity class for displaying the user's profile.
+ */
 class MyProfileActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMyProfileBinding
@@ -19,9 +22,11 @@ class MyProfileActivity : AppCompatActivity() {
         setContentView(binding.root)
         setUserName()
         setListeners()
-
-
     }
+
+    /**
+     * Set click listeners for UI elements.
+     */
 
     private fun setListeners() {
         binding.btMyProfileViewMyContacts.setOnClickListener {
@@ -31,7 +36,9 @@ class MyProfileActivity : AppCompatActivity() {
         }
     }
 
-
+    /**
+     * Set the user name in the UI.
+     */
     private fun setUserName() {
         val result = intent.getStringExtra(EMAIL).toString()
         binding.tvMyProfileUserName.text = ParsingData.getUserName(result)

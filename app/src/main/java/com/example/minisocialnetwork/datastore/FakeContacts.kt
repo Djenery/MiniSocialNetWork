@@ -5,8 +5,14 @@ import com.example.minisocialnetwork.util.AutoIdIncrement
 import com.github.javafaker.Faker
 import kotlin.random.Random
 
+/**
+ * Creates fake contacts for MyContactsActivity
+ */
 object FakeContacts {
 
+    /**
+     * Gets list of faked contacts
+     */
     fun getContacts(): List<Contact> {
         val faker = Faker.instance()
         val generatedContacts = (1..10).map {
@@ -20,6 +26,9 @@ object FakeContacts {
         return generatedContacts
     }
 
+    /**
+     * Gets random photo from chosen list.
+     */
     fun getRandomPhoto() = IMAGES[Random.nextInt(0, 9)]
 
     private val IMAGES = mutableListOf(

@@ -1,7 +1,6 @@
 package com.example.minisocialnetwork.ui.contactsList
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -18,7 +17,9 @@ import com.example.minisocialnetwork.util.extentions.onItemTouch
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 
-
+/**
+ * The main activity for managing contacts.
+ */
 class MyContactsActivity : AppCompatActivity(), AddContactListener, RemoveItemListener {
     private lateinit var binding: ActivityMyContactsBinding
     private val adapter: ContactsAdapter by lazy {
@@ -27,6 +28,12 @@ class MyContactsActivity : AppCompatActivity(), AddContactListener, RemoveItemLi
 
     private val viewModel: MyContactsViewModel by viewModels()
 
+    /**
+     * Called when the activity is starting.
+     *
+     * @param savedInstanceState If the activity is being re-initialized
+     * after previously being shut down, this Bundle contains the data it most recently supplied.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMyContactsBinding.inflate(layoutInflater)
@@ -34,21 +41,11 @@ class MyContactsActivity : AppCompatActivity(), AddContactListener, RemoveItemLi
         initRecyclerView()
         setObservers()
         setListeners()
-
     }
 
-
-    private fun setListeners() {
-        binding.tvAddContactMyContacts.setOnClickListener {
-            AddContactDialogFragment().show(supportFragmentManager, AddContactDialogFragment.TAG)
-        }
-        binding.viewMyContactsArrowBack.setOnClickListener {
-            finish()
-            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
-        }
-    }
-
-
+    /**
+     * Initializes the RecyclerView for displaying contacts.
+     */
     private fun initRecyclerView() {
         with(binding) {
             recyclerViewMyContacts.layoutManager = LinearLayoutManager(this@MyContactsActivity)
@@ -61,6 +58,11 @@ class MyContactsActivity : AppCompatActivity(), AddContactListener, RemoveItemLi
         }
     }
 
+    /**
+     * Called when an item is removed from the RecyclerView.
+     *
+     * @param position The position of the removed item.
+     */
     override fun onRemoveItem(position: Int) {
         val contact = adapter.currentList[position]
         val listPosition = adapter.currentList.indexOf(contact)
@@ -73,18 +75,38 @@ class MyContactsActivity : AppCompatActivity(), AddContactListener, RemoveItemLi
         }.show()
     }
 
+    /**
+     * Sets up observers for the ViewModel's contacts list.
+     */
     private fun setObservers() {
         lifecycleScope.launch {
             viewModel.contactsList.observe(this@MyContactsActivity) { contacts ->
-                Log.d("aaaa", "contacts $contacts")
                 adapter.submitList(contacts.toMutableList())
             }
         }
     }
 
+    /**
+     * Sets up listeners for UI elements.
+     */
+    private fun setListeners() {
+        binding.tvAddContactMyContacts.setOnClickListener {
+            AddContactDialogFragment().show(supportFragmentManager, AddContactDialogFragment.TAG)
+        }
+        binding.viewMyContactsArrowBack.setOnClickListener {
+            finish()
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+        }
+    }
+
+    /**
+     * Called when a contact is added through the AddContactDialogFragment.
+     *
+     * @param name The name of the contact.
+     * @param profession The profession of the contact.
+     */
     override fun onAddContact(name: String, profession: String) {
         viewModel.addContact(name, profession)
     }
-
 
 }

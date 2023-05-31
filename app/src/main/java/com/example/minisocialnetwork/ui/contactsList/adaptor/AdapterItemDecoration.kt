@@ -6,8 +6,18 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.example.minisocialnetwork.util.Constants.ITEM_VERTICAL_MARGIN
 
+
+/**
+
+Item decoration for a RecyclerView that adds vertical and top indentation to each item.
+
+This class extends RecyclerView.ItemDecoration and overrides the getItemOffsets method
+
+to apply vertical and top indentation to each item in the RecyclerView.
+ */
 class IndentItemDecoration :
     RecyclerView.ItemDecoration() {
+
 
     override fun getItemOffsets(
         outRect: Rect,
