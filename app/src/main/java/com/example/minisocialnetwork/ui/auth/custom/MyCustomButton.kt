@@ -22,6 +22,8 @@ import kotlin.properties.Delegates
  */
 class MyCustomButton(context: Context, attrs: AttributeSet) :
     androidx.appcompat.widget.AppCompatButton(context, attrs) {
+    // TODO https://kotlinlang.org/docs/coding-conventions.html#class-layout
+    // TODO https://kotlinlang.org/docs/coding-conventions.html#modifiers-order
 
     private var icon: Drawable? = null
         set(value) {

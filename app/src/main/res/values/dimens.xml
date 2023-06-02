@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- TODO Dimens are not properly commented and not grouped.-->
     <dimen name="tv_settings_my_profile">22sp</dimen>
     <dimen name="title_sing_up">24sp</dimen>
     <dimen name="small_text">12sp</dimen>
@@ -10,6 +11,7 @@
     <dimen name="text_between_buttons_sing_up">18sp</dimen>
     <dimen name="tv_my_profile_user_name">18sp</dimen>
     <dimen name="tv_secondary_my_profile">14sp</dimen>
+<!--    Recycler screen-->
     <dimen name="tv_add_contacts_my_contacts">14sp</dimen>
     <dimen name="checkbox_text_padding">8dp</dimen>
     <dimen name="medium_text">16sp</dimen>

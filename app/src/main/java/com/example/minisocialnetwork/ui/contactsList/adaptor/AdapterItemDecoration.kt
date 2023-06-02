@@ -17,6 +17,7 @@ to apply vertical and top indentation to each item in the RecyclerView.
  */
 class IndentItemDecoration :
     RecyclerView.ItemDecoration() {
+    // TODO delete all double blank lines in project.
 
 
     override fun getItemOffsets(

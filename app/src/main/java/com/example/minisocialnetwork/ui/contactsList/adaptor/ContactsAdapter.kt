@@ -7,7 +7,7 @@ import com.example.minisocialnetwork.databinding.ItemUserBinding
 import com.example.minisocialnetwork.domain.contracts.RemoveItemListener
 import com.example.minisocialnetwork.domain.model.Contact
 
-
+// TODO Why package is called adaptOr?
 /**
 
 Adapter class for the Contacts RecyclerView.

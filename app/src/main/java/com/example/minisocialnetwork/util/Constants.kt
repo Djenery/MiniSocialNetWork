@@ -17,6 +17,7 @@ object Constants {
     const val UNDO = "UNDO"
 
 
+    // TODO These values have to be in string value resources.
     const val ERROR_EMPTY_STRING = "Required Field!"
     const val ERROR_INVALID_EMAIL = "Invalid email!"
     const val ERROR_TOO_SHORT_PASSWORD = "password can't be less than 8"

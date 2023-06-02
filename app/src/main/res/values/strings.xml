@@ -1,4 +1,5 @@
 <resources>
+    <!-- TODO Strings are not properly commented and not grouped.-->
     <string name="app_name">MiniSocialNetWork</string>
     <string name="my_profile_settings_tv">Settings</string>
     <string name="my_profile_career">Career</string>
