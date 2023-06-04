@@ -24,6 +24,7 @@ class MyProfileActivity : AppCompatActivity() {
         setListeners()
     }
 
+
     /**
      * Set click listeners for UI elements.
      */
