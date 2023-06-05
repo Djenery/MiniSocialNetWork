@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- TODO Dimens are not properly commented and not grouped.-->
+    <!-- sizes for my_profile layout -->
+    <dimen name="tv_my_profile_user_name">18sp</dimen>
+    <dimen name="tv_secondary_my_profile">14sp</dimen>
     <dimen name="tv_settings_my_profile">22sp</dimen>
+
+    <!-- sizes for sing_up layout -->
     <dimen name="title_sing_up">24sp</dimen>
-    <dimen name="small_text">12sp</dimen>
     <dimen name="input_sing_up">18sp</dimen>
     <dimen name="checkbox_text_sing_up">14sp</dimen>
+    <dimen name="checkbox_text_padding">8dp</dimen>
     <dimen name="button_text_sing_up">16sp</dimen>
     <dimen name="bottom_text_sing_up">14sp</dimen>
     <dimen name="text_between_buttons_sing_up">18sp</dimen>
-    <dimen name="tv_my_profile_user_name">18sp</dimen>
-    <dimen name="tv_secondary_my_profile">14sp</dimen>
-<!--    Recycler screen-->
-    <dimen name="tv_add_contacts_my_contacts">14sp</dimen>
-    <dimen name="checkbox_text_padding">8dp</dimen>
-    <dimen name="medium_text">16sp</dimen>
-    <dimen name="recyclerView_bottom_margin">16dp</dimen>
     <dimen name="bt_google_sing_up_icon_padding">16dp</dimen>
+
+    <!-- common used sized -->
+    <dimen name="medium_text">16sp</dimen>
+    <dimen name="small_text">12sp</dimen>
+
+    <!-- Recycler screen -->
+    <dimen name="recyclerView_bottom_margin">16dp</dimen>
+
+    <!-- sizes for sing_up layout -->
+    <dimen name="tv_add_contacts_my_contacts">14sp</dimen>
 </resources>

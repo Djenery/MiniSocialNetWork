@@ -1,4 +1,4 @@
-package com.example.minisocialnetwork.ui.contactsList.adaptor
+package com.example.minisocialnetwork.ui.contactsList.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,7 +7,6 @@ import com.example.minisocialnetwork.databinding.ItemUserBinding
 import com.example.minisocialnetwork.domain.contracts.RemoveItemListener
 import com.example.minisocialnetwork.domain.model.Contact
 
-// TODO Why package is called adaptOr?
 /**
 
 Adapter class for the Contacts RecyclerView.
@@ -36,7 +35,9 @@ class ContactsAdapter(private val listener: RemoveItemListener) :
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactsViewHolder {
         return ContactsViewHolder(
-            ItemUserBinding.inflate(LayoutInflater.from(parent.context), parent, false), listener
+            ItemUserBinding.inflate(
+                LayoutInflater.from(parent.context), parent, false
+            ), listener
         )
     }
 

@@ -21,7 +21,8 @@ class AddContactDialogFragment : DialogFragment() {
 
     /**
      * Called to create the view hierarchy of the dialog fragment.
-     * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment.
+     * @param inflater The LayoutInflater object that
+     * can be used to inflate any views in the fragment.
      * @param container The parent view that the fragment's UI should be attached to.
      * @param savedInstanceState This fragment is being re-constructed from a previous saved state.
      * @return Return the View for the fragment's UI.
@@ -37,7 +38,8 @@ class AddContactDialogFragment : DialogFragment() {
     /**
      * Called immediately after the view is created.
      * @param view The View object returned by onCreateView.
-     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed
+     * from a previous saved state.
      */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

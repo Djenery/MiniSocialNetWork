@@ -30,7 +30,8 @@ object FieldsValidations {
     /**
      * Checks if the provided password contains both lowercase and uppercase letters.
      * @param password The password to be checked.
-     * @return `true` if the password contains both lowercase and uppercase letters, `false` otherwise.
+     * @return `true` if the password contains both lowercase and uppercase letters,
+     * `false` otherwise.
      */
     fun isMixedCase(password: String): Boolean {
         val lowerCasePatternMatcher = Pattern.compile(LOWERCASE_LETTERS).matcher(password)

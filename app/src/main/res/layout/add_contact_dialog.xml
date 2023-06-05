@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/background_my_profile"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    >
+    android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_add_contacts_main"
@@ -51,11 +50,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
-        android:contentDescription="@string/go_back"
+        android:contentDescription="@string/bt_go_back"
         android:src="@drawable/arrow_back"
+        app:layout_constraintBottom_toBottomOf="@+id/guideline_add_contacts_main"
         app:layout_constraintStart_toEndOf="@id/guideline_vertical_start"
         app:layout_constraintTop_toTopOf="@id/guideline_add_contact_top"
-        app:layout_constraintBottom_toBottomOf="@+id/guideline_add_contacts_main"
         tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
@@ -66,11 +65,10 @@
         android:text="@string/tv_add_contact_title"
         android:textColor="@color/white"
         android:textSize="@dimen/medium_text"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_add_contacts_main"
         app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
         app:layout_constraintStart_toStartOf="@+id/guideline_vertical_start"
-        app:layout_constraintTop_toTopOf="@+id/guideline_add_contact_top"
-        app:layout_constraintBottom_toBottomOf="@id/guideline_add_contacts_main"
-        />
+        app:layout_constraintTop_toTopOf="@+id/guideline_add_contact_top" />
 
 
     <com.google.android.material.textfield.TextInputEditText
@@ -78,7 +76,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:hint="@string/user_name"
+        android:hint="@string/tv_user_name"
         android:inputType="textEmailAddress"
         android:textColor="@color/black"
         android:textSize="@dimen/input_sing_up"
@@ -107,20 +105,17 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="@string/save"
+        android:text="@string/bt_add_contacts_dialog_save"
         app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
         app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
-        app:layout_constraintTop_toBottomOf="@+id/et_add_contact_profession"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/et_add_contact_profession" />
 
     <Space
         android:layout_width="wrap_content"
         android:layout_height="20dp"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/bt_add_contact_save"
         app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
         app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
-        />
-
+        app:layout_constraintTop_toBottomOf="@id/bt_add_contact_save" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

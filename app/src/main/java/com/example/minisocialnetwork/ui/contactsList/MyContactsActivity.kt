@@ -10,8 +10,8 @@ import com.example.minisocialnetwork.R
 import com.example.minisocialnetwork.databinding.ActivityMyContactsBinding
 import com.example.minisocialnetwork.domain.contracts.AddContactListener
 import com.example.minisocialnetwork.domain.contracts.RemoveItemListener
-import com.example.minisocialnetwork.ui.contactsList.adaptor.ContactsAdapter
-import com.example.minisocialnetwork.ui.contactsList.adaptor.IndentItemDecoration
+import com.example.minisocialnetwork.ui.contactsList.adapter.ContactsAdapter
+import com.example.minisocialnetwork.ui.contactsList.adapter.IndentItemDecoration
 import com.example.minisocialnetwork.util.Constants.UNDO
 import com.example.minisocialnetwork.util.extentions.onItemTouch
 import com.google.android.material.snackbar.Snackbar
@@ -108,5 +108,4 @@ class MyContactsActivity : AppCompatActivity(), AddContactListener, RemoveItemLi
     override fun onAddContact(name: String, profession: String) {
         viewModel.addContact(name, profession)
     }
-
 }

@@ -1,4 +1,4 @@
-package com.example.minisocialnetwork.ui.contactsList.adaptor
+package com.example.minisocialnetwork.ui.contactsList.adapter
 
 import androidx.recyclerview.widget.DiffUtil
 import com.example.minisocialnetwork.domain.model.Contact

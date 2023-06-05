@@ -11,11 +11,6 @@ import com.example.minisocialnetwork.databinding.ActivitySingUpBinding
 import com.example.minisocialnetwork.datastore.StoreUserData
 import com.example.minisocialnetwork.ui.myProfile.MyProfileActivity
 import com.example.minisocialnetwork.util.Constants.EMAIL
-import com.example.minisocialnetwork.util.Constants.ERROR_AT_LEAST_ONE_DIGIT
-import com.example.minisocialnetwork.util.Constants.ERROR_EMPTY_STRING
-import com.example.minisocialnetwork.util.Constants.ERROR_INVALID_EMAIL
-import com.example.minisocialnetwork.util.Constants.ERROR_TOO_SHORT_PASSWORD
-import com.example.minisocialnetwork.util.Constants.ERROR_UPPER_AND_LOWER
 import com.example.minisocialnetwork.util.FieldsValidations.isMixedCase
 import com.example.minisocialnetwork.util.FieldsValidations.isStringContainNumber
 import com.example.minisocialnetwork.util.FieldsValidations.isValidEmail
@@ -38,7 +33,6 @@ class AuthActivity : AppCompatActivity() {
         autoLogin()
         setListeners()
     }
-
 
     /**
      * Checks if dataStore contains data if does then redirect user to another activity
@@ -112,16 +106,17 @@ class AuthActivity : AppCompatActivity() {
      * @return true if password is valid to all checks, false otherwise
      */
     private fun validateEmail(): Boolean {
-        if (binding.singUpEMailEt.text.toString().trim().isEmpty()) {
-            binding.singUpEMail.error = ERROR_EMPTY_STRING
-            return false
-        } else if (!isValidEmail(binding.singUpEMailEt.text.toString())) {
-            binding.singUpEMail.error = ERROR_INVALID_EMAIL
-            return false
-        } else {
-            binding.singUpEMail.isErrorEnabled = false
+        with(binding) {
+            if (singUpEMailEt.text.toString().trim().isEmpty()) {
+                singUpEMail.error = R.string.error_empty_string.toString()
+                return false
+            } else if (!isValidEmail(singUpEMailEt.text.toString())) {
+                singUpEMail.error = R.string.error_invalid_email.toString()
+                return false
+            } else {
+                singUpEMail.isErrorEnabled = false
+            }
         }
-
         return true
     }
 
@@ -130,20 +125,22 @@ class AuthActivity : AppCompatActivity() {
      * @return true if password is valid to all checks, false otherwise
      */
     private fun validatePassword(): Boolean {
-        if (binding.singUpPasswordT.text.toString().trim().isEmpty()) {
-            binding.singUpPassword.error = ERROR_EMPTY_STRING
-            return false
-        } else if (binding.singUpPasswordT.text.toString().length < 8) {
-            binding.singUpPassword.error = ERROR_TOO_SHORT_PASSWORD
-            return false
-        } else if (!isStringContainNumber(binding.singUpPasswordT.text.toString())) {
-            binding.singUpPassword.error = ERROR_AT_LEAST_ONE_DIGIT
-            return false
-        } else if (!isMixedCase(binding.singUpPasswordT.text.toString())) {
-            binding.singUpPassword.error = ERROR_UPPER_AND_LOWER
-            return false
-        } else {
-            binding.singUpPassword.isErrorEnabled = false
+        with(binding) {
+            if (singUpPasswordT.text.toString().trim().isEmpty()) {
+                singUpPassword.error = R.string.error_empty_string.toString()
+                return false
+            } else if (singUpPasswordT.text.toString().length < 8) {
+                singUpPassword.error = R.string.error_too_short_passowrd.toString()
+                return false
+            } else if (!isStringContainNumber(singUpPasswordT.text.toString())) {
+                singUpPassword.error = R.string.error_atleast_one_digit.toString()
+                return false
+            } else if (!isMixedCase(singUpPasswordT.text.toString())) {
+                singUpPassword.error = R.string.error_upper_and_lower_case.toString()
+                return false
+            } else {
+                singUpPassword.isErrorEnabled = false
+            }
         }
         return true
     }

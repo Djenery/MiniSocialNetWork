@@ -15,15 +15,16 @@ import kotlin.properties.Delegates
 /**
 
  * Custom button widget that extends the AppCompatButton class.
- * This button allows customization of its appearance by setting various attributes, such as icon, icon padding,
- * corner radius, and text casing.
+ * This button allows customization of its appearance by setting various attributes,
+ * such as icon, icon padding, corner radius, and text casing.
  * @param context The context in which the button is created.
  * @param attrs The attribute set containing the custom attributes for the button.
  */
-class MyCustomButton(context: Context, attrs: AttributeSet) :
+class MyCustomButton @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null
+) :
     androidx.appcompat.widget.AppCompatButton(context, attrs) {
-    // TODO https://kotlinlang.org/docs/coding-conventions.html#class-layout
-    // TODO https://kotlinlang.org/docs/coding-conventions.html#modifiers-order
 
     private var icon: Drawable? = null
         set(value) {
@@ -62,7 +63,7 @@ class MyCustomButton(context: Context, attrs: AttributeSet) :
      * @param context The context in which the button is created.
      * @param attrs The attribute set containing the custom attributes for the button.
      */
-    private fun initAttributes(context: Context, attrs: AttributeSet) {
+    private fun initAttributes(context: Context, attrs: AttributeSet?) {
         val styledTypeArray = context.obtainStyledAttributes(
             attrs, R.styleable.MyCustomButton, 0, 0
         )
@@ -82,7 +83,6 @@ class MyCustomButton(context: Context, attrs: AttributeSet) :
             background = getDrawable(0)
             recycle()
         }
-
     }
 
     /**

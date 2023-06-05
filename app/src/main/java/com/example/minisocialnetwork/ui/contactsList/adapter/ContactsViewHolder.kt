@@ -1,4 +1,4 @@
-package com.example.minisocialnetwork.ui.contactsList.adaptor
+package com.example.minisocialnetwork.ui.contactsList.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.minisocialnetwork.databinding.ItemUserBinding
@@ -16,7 +16,6 @@ class ContactsViewHolder(
     private val listener: RemoveItemListener
 ) : RecyclerView.ViewHolder(binding.root) {
 
-
     /**
      * Binds the data of a Contact item to the item view.
      * @param item The Contact item to bind.
@@ -29,7 +28,6 @@ class ContactsViewHolder(
         }
     }
 
-
     /**
      * Sets the click listener for the user item view.
      * The listener triggers the removal of the item at the current adapter position.
@@ -40,9 +38,7 @@ class ContactsViewHolder(
             if (position != RecyclerView.NO_POSITION) {
                 listener.onRemoveItem(position)
             }
-
         }
     }
-
 }
 
