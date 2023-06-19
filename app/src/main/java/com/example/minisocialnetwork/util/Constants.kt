@@ -12,16 +12,10 @@ object Constants {
     const val PASSWORD = "password"
     const val DATA_STORE_NAME = "userData"
 
+    const val TRANSITION_NAME_IMAGE = "TRANSITION_NAME_IMAGE"
+    const val TRANSITION_NAME_USER_NAME = "TRANSITION_NAME_USER_NAME"
+    const val TRANSITION_NAME_CAREER = "TRANSITION_NAME_CAREER"
+
 
     const val ITEM_VERTICAL_MARGIN = 16 // the desired indent size in dp
-    const val UNDO = "UNDO"
-
-
-    const val ERROR_EMPTY_STRING = "Required Field!"
-    const val ERROR_INVALID_EMAIL = "Invalid email!"
-    const val ERROR_TOO_SHORT_PASSWORD = "password can't be less than 8"
-    const val ERROR_AT_LEAST_ONE_DIGIT = "Required at least 1 digit"
-    const val ERROR_UPPER_AND_LOWER = "Password must contain upper and lower case letters"
-
-
 }

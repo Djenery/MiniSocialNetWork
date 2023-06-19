@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/myContactsFragment">
+
+    <fragment
+        android:id="@+id/myContactsFragment"
+        android:name="com.example.minisocialnetwork.presentation.contactsList.MyContactsFragment"
+        android:label="fragment_my_contacts"
+        tools:layout="@layout/fragment_my_contacts">
+        <action
+            android:id="@+id/action_myContactsFragment_to_detailViewFragment2"
+            app:destination="@id/detailViewFragment2"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailViewFragment2"
+        android:name="com.example.minisocialnetwork.presentation.detail.DetailViewFragment"
+        android:label="DetailViewFragment">
+        <argument
+            android:name="Contact"
+            app:argType="com.example.minisocialnetwork.domain.model.Contact" />
+    </fragment>
 
 </navigation>

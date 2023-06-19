@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/background_my_profile"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    style="@style/background_my_profile">
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_my_profile_main"
@@ -49,7 +49,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/audio_wide"
-        android:text="@string/my_profile_settings_tv"
+        android:text="@string/tv_my_profile_settings"
         android:textColor="@color/white"
         android:textSize="@dimen/tv_settings_my_profile"
         app:layout_constraintStart_toStartOf="@+id/guideline_vertical_start"
@@ -59,7 +59,7 @@
         android:id="@+id/iv_my_profile_icon_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/person_image"
+        android:contentDescription="@string/iv_my_profile_person"
         android:src="@mipmap/me_round"
         app:layout_constraintBottom_toTopOf="@id/guideline_my_profile_iv"
         app:layout_constraintEnd_toEndOf="@id/tv_my_profile_user_name"
@@ -85,9 +85,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/audio_wide"
-        android:text="@string/user_name"
+        android:text="@string/tv_user_name"
         android:textColor="@color/white"
-        android:textSize="@dimen/tv_my_profile_user_name"
+        android:textSize="@dimen/tv_user_name"
         app:layout_constraintBottom_toTopOf="@id/tv_my_profile_career"
         app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
         app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
@@ -99,22 +99,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/audio_wide"
-        android:text="@string/my_profile_career"
+        android:text="@string/tv_profession"
         android:textColor="@color/semi_transparent_blue_gray"
         android:textSize="@dimen/tv_secondary_my_profile"
         app:layout_constraintBottom_toTopOf="@id/tv_my_profile_address"
         app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
         app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
-        app:layout_constraintTop_toBottomOf="@id/tv_my_profile_user_name"
-
-        />
+        app:layout_constraintTop_toBottomOf="@id/tv_my_profile_user_name" />
 
     <TextView
         android:id="@+id/tv_my_profile_address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/audio_wide"
-        android:text="@string/my_profile_address_tv"
+        android:text="@string/tv_address"
         android:textColor="@color/semi_transparent_blue_gray"
         android:textSize="@dimen/tv_secondary_my_profile"
         app:layout_constraintBottom_toTopOf="@id/guideline_my_profile_text_views"
@@ -131,10 +129,10 @@
 
     <ImageView
         android:id="@+id/my_profile_facebook_icon_iv"
+        style="@style/facebook_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/icon_link_to_facebook"
-        style="@style/facebook_icon"
+        android:contentDescription="@string/iv_link_to_facebook"
         app:layout_constraintEnd_toStartOf="@id/my_profile_linkedin_icon_iv"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
@@ -142,20 +140,20 @@
 
     <ImageView
         android:id="@+id/my_profile_linkedin_icon_iv"
+        style="@style/linkedin_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/icon_link_to_linkedin"
-        style="@style/linkedin_icon"
+        android:contentDescription="@string/iv_link_to_linkedin"
         app:layout_constraintEnd_toStartOf="@id/my_profile_instagram_icon_iv"
         app:layout_constraintStart_toEndOf="@id/my_profile_facebook_icon_iv"
         app:layout_constraintTop_toBottomOf="@id/guideline_my_profile_social_media" />
 
     <ImageView
         android:id="@+id/my_profile_instagram_icon_iv"
+        style="@style/instagram_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/icon_link_to_instagram"
-        style="@style/instagram_icon"
+        android:contentDescription="@string/iv_link_to_instagram"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/my_profile_linkedin_icon_iv"
         app:layout_constraintTop_toBottomOf="@id/guideline_my_profile_social_media" />
@@ -173,25 +171,23 @@
         style="@style/edit_bt_background"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/my_profile_edit_profile_bn"
-        app:layout_constraintVertical_chainStyle="spread"
+        android:text="@string/bt_my_profile_edit_profile"
+        app:layout_constraintBottom_toTopOf="@id/bt_my_profile_view_my_contacts"
         app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
         app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
         app:layout_constraintTop_toBottomOf="@id/guideline_my_profile_button_first"
-        app:layout_constraintBottom_toTopOf="@id/bt_my_profile_view_my_contacts"
-        />
+        app:layout_constraintVertical_chainStyle="spread" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/bt_my_profile_view_my_contacts"
+        style="@style/view_my_contacts_bt_background"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        style="@style/view_my_contacts_bt_background"
-        android:text="@string/my_profile_button_view_my_contacts"
+        android:text="@string/bt_my_profile_view_my_contacts"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
         app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
-        app:layout_constraintTop_toBottomOf="@id/my_profile_button_edit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
+        app:layout_constraintTop_toBottomOf="@id/my_profile_button_edit" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

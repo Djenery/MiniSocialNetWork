@@ -4,119 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.contactsList.MyContactsActivity">
+    tools:context=".presentation.contactsList.MyContactsActivity">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_my_contacts_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.2"
-        />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_my_contacts_first_hor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.12"
-        />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_my_contacts_top"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.024"
-        />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_vertical_start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.05" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_vertical_end"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.95" />
-
-    <View
-        android:id="@+id/view_my_contacts"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@color/dark_blue"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/guideline_my_contacts_view"
-        />
-
-    <ImageView
-        android:id="@+id/view_my_contacts_arrow_back"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:clickable="true"
-        android:contentDescription="@string/look_for_contact"
-        android:focusable="true"
-        android:src="@drawable/arrow_back"
-        app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
-        app:layout_constraintTop_toBottomOf="@id/guideline_my_contacts_top"
-        tools:ignore="TouchTargetSizeCheck" />
-
-    <ImageView
-        android:id="@+id/view_my_contacts_magnifier"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:contentDescription="@string/go_back"
-        android:focusable="true"
-        android:src="@drawable/magnifier"
-        app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
-        app:layout_constraintTop_toBottomOf="@id/guideline_my_contacts_top"
-        tools:ignore="TouchTargetSizeCheck" />
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:text="@string/contacts_my_contacts"
-        android:textColor="@color/white"
-        android:fontFamily="@font/open_sans_semi_bold"
-        android:textSize="@dimen/title_sing_up"
-        app:layout_constraintTop_toTopOf="@id/guideline_my_contacts_top"
-        app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
-        app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
-        />
-
-    <TextView
-        android:id="@+id/tv_add_contact_my_contacts"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:fontFamily="@font/open_sans_semi_bold"
-        android:text="@string/add_contacts_my_contacts"
-        android:textColor="@color/white"
-        android:textSize="@dimen/tv_add_contacts_my_contacts"
-
-        app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
-        app:layout_constraintTop_toTopOf="@id/guideline_my_contacts_first_hor"
-        tools:ignore="TouchTargetSizeCheck" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_my_contacts"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="@dimen/recyclerView_bottom_margin"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
-        app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
-        app:layout_constraintTop_toTopOf="@id/guideline_my_contacts_view"
-        tools:listitem="@layout/item_user" />
+        android:layout_height="match_parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

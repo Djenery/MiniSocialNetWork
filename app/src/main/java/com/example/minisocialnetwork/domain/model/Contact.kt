@@ -1,5 +1,7 @@
 package com.example.minisocialnetwork.domain.model
 
+import java.io.Serializable
+
 /**
  * Data class representing a contact.
  * @property id The unique identifier of the contact.
@@ -12,5 +14,5 @@ data class Contact(
     val photo: String,
     val name: String,
     val profession: String
-)
+) : Serializable
 

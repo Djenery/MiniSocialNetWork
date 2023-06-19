@@ -1,33 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">MiniSocialNetWork</string>
-    <string name="my_profile_settings_tv">Налаштування</string>
-    <string name="my_profile_career">Кар\'єра</string>
-    <string name="my_profile_address_tv">Адреса</string>
-    <string name="my_profile_edit_profile_bn">Редагувати профіль</string>
-    <string name="my_profile_button_view_my_contacts">Переглянути мої контакти</string>
-    <string name="sing_up_activity_title">Давай знайомитись</string>
-    <string name="sing_up_activity_fill_out_profile">Заповнюйте профіль і переходьте до заявки!</string>
-    <string name="sing_up_activity_e_mail">Електронна пошта</string>
-    <string name="sing_up_password_et">Пароль</string>
-    <string name="sing_up_check_box_remember_me">Запам\'ятати мене</string>
-    <string name="sing_up_activity_or_tv">або</string>
-    <string name="sing_up_button_register">зареєструватися</string>
-    <string name="message_terms_and_conditions">Натискаючи «Зареєструватися», ви погоджуєтеся з нашими Правила та умови</string>
-    <string name="message_already_have_an_account">Вже маєте аккаунт?</string>
-    <string name="sing_in">Увійти</string>
-    <string name="icon_link_to_facebook">значок посилання на сторінку facebook</string>
-    <string name="icon_link_to_linkedin">значок посилання на сторінку linkedin</string>
-    <string name="icon_link_to_instagram">значок посилання на сторінку instagram</string>
-    <string name="person_image">зображення людини</string>
-    <string name="user_name">Ім\'я користувача</string>
-    <string name="description_google_icon">значок Google</string>
-    <string name="go_back">назад до попередньої актівіті</string>
-    <string name="look_for_contact">шукати контакт</string>
-    <string name="contacts_my_contacts">Контакти</string>
-    <string name="add_contacts_my_contacts">Додати контакти</string>
-    <string name="user_icon_item_user">зображення користувача</string>
-    <string name="profession">Професія</string>
-    <string name="save">зберігти</string>
-    <string name="tv_add_contact_title">Дотати контакт</string>
+    <!--  Strings for my profile layout  -->
+    <string name="tv_my_profile_settings">Налаштування</string>
+    <string name="iv_my_profile_person">зображення людини</string>
+    <string name="bt_my_profile_edit_profile">Редагувати профіль</string>
+    <string name="bt_my_profile_view_my_contacts">Переглянути мої контакти</string>
+
+    <!--  Strings for sing_up layout  -->
+    <string name="tv_sing_up_title">Давай знайомитись</string>
+    <string name="tv_sing_up_fill_out_profile">Заповнюйте профіль і переходьте до заявки!</string>
+    <string name="et_sing_up_e_mail">Електронна пошта</string>
+    <string name="et_sing_up_password">Пароль</string>
+    <string name="cb_sing_up_remember_me">Запам\'ятати мене</string>
+    <string name="tv_sing_up_or">або</string>
+    <string name="bt_sing_up_register">зареєструватися</string>
+    <string name="tv_sing_up_message_terms_and_conditions">Натискаючи «Зареєструватися»,
+        ви погоджуєтеся з нашими Правила та умови</string>
+    <string name="tv_sing_up_message_already_have_an_account">Вже маєте аккаунт?</string>
+    <string name="tv_sing_up_sing_in">Увійти</string>
+
+    <!--  Strings for my_contacts layout  -->
+    <string name="bt_my_contacts_look_for_contact">шукати контакт</string>
+    <string name="tv_my_contacts_contacts">Контакти</string>
+    <string name="my_contacts_add_contacts">Додати контакти</string>
+
+    <!--  Strings for my_profile, add_contacts_dialog, detail view and item_user layouts  -->
+    <string name="tv_profession">Професія</string>
+    <string name="tv_address">Адреса</string>
+
+    <!--  Strings for add_contacts_dialog layout  -->
+    <string name="bt_add_contacts_dialog_save">зберігти</string>
+    <string name="tv_add_contact">Дотати контакт</string>
+
+    <!--  Strings for item_user layout  -->
+    <string name="iv_user_icon">зображення користувача</string>
+    <string name="iv_item_user_delete_ic">значок видалення</string>
+
+    <!--  Strings for my profile and detail view layout  -->
+    <string name="iv_link_to_facebook">значок посилання на сторінку facebook</string>
+    <string name="iv_link_to_linkedin">значок посилання на сторінку linkedin</string>
+    <string name="iv_link_to_instagram">значок посилання на сторінку instagram</string>
+
+    <!--  Strings for my_contacts layout and add_contacts_dialog layouts  -->
+    <string name="bt_go_back">назад до попередньої актівіті</string>
+
+    <!--  Strings for my_profile, add_contacts_dialog and item_user layouts  -->
+    <string name="tv_user_name">Ім\'я користувача</string>
+
+    <!--  Strings for email and password validation in sing_up  -->
+    <string name="error_empty_string">Обов\'язкове поле!</string>
+    <string name="error_invalid_email">Недійсна електронна адреса!</string>
+    <string name="error_too_short_passowrd">Пароль не може бути менше 8</string>
+    <string name="error_at_least_one_digit">Потрібна принаймні 1 цифра</string>
+    <string name="error_upper_and_lower_case">Пароль повинен містити великі та малі літери</string>
+    <string name="bt_detail_view_message">повідомлення</string>
+    <string name="tv_detail_view_profile">Профіль</string>
 </resources>
