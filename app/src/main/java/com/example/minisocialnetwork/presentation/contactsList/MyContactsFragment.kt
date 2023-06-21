@@ -1,15 +1,19 @@
 package com.example.minisocialnetwork.presentation.contactsList
 
 import android.os.Bundle
+import android.transition.TransitionInflater
 import android.view.View
-import androidx.fragment.app.Fragment
+import android.widget.ImageView
+import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.minisocialnetwork.R
 import com.example.minisocialnetwork.databinding.FragmentMyContactsBinding
+import com.example.minisocialnetwork.domain.model.Contact
 import com.example.minisocialnetwork.domain.repository.AddContactListener
 import com.example.minisocialnetwork.domain.repository.ItemListener
 import com.example.minisocialnetwork.presentation.base.BaseFragment
@@ -33,8 +37,8 @@ class MyContactsFragment :
                 removeItem(position)
             }
 
-            override fun onClickItem(position: Int) {
-                clickItem(position)
+            override fun onClickItem(contact: Contact, imageView: ImageView) {
+                clickItem(contact, imageView)
             }
 
         })
@@ -42,6 +46,8 @@ class MyContactsFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        sharedElementReturnTransition =
+            TransitionInflater.from(context).inflateTransition(android.R.transition.move)
         initRecyclerView()
         setObservers()
         setListeners()
@@ -54,9 +60,13 @@ class MyContactsFragment :
     private fun initRecyclerView() {
         with(binding) {
             recyclerViewMyContacts.layoutManager =
-                LinearLayoutManager(requireContext())
+                LinearLayoutManager(context)
             recyclerViewMyContacts.adapter = adapter
             recyclerViewMyContacts.addItemDecoration(IndentItemDecoration())
+            postponeEnterTransition()
+            recyclerViewMyContacts.doOnPreDraw {
+                startPostponedEnterTransition()
+            }
             recyclerViewMyContacts.onItemTouch {
                 removeItem(it.adapterPosition)
             }
@@ -85,12 +95,14 @@ class MyContactsFragment :
         }.show()
     }
 
-    private fun clickItem(position: Int) {
-        val contact = adapter.currentList[position]
+    private fun clickItem(contact: Contact, imageView: ImageView) {
         if (NAV_GRAPH) {
             val action =
-                MyContactsFragmentDirections.actionMyContactsFragmentToDetailViewFragment2(contact)
-            findNavController().navigate(action)
+                MyContactsFragmentDirections.actionToDetailViewFragment(contact)
+            val extras = FragmentNavigatorExtras(
+                imageView to contact.photo + contact.id
+            )
+            findNavController().navigate(action, extras)
         } else {
             val fragment =
                 DetailViewFragment.newInstance(

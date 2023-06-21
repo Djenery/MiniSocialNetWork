@@ -11,17 +11,15 @@
         android:label="fragment_my_contacts"
         tools:layout="@layout/fragment_my_contacts">
         <action
-            android:id="@+id/action_myContactsFragment_to_detailViewFragment2"
-            app:destination="@id/detailViewFragment2"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            android:id="@+id/actionToDetailViewFragment"
+            app:destination="@id/detailViewFragment" />
     </fragment>
+
     <fragment
-        android:id="@+id/detailViewFragment2"
+        android:id="@+id/detailViewFragment"
         android:name="com.example.minisocialnetwork.presentation.detail.DetailViewFragment"
-        android:label="DetailViewFragment">
+        android:label="DetailViewFragment"
+        tools:layout="@layout/fragment_detail_view">
         <argument
             android:name="Contact"
             app:argType="com.example.minisocialnetwork.domain.model.Contact" />

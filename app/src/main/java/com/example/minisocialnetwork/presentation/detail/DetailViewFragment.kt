@@ -1,6 +1,7 @@
 package com.example.minisocialnetwork.presentation.detail
 
 import android.os.Bundle
+import android.transition.TransitionInflater
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -9,6 +10,7 @@ import com.example.minisocialnetwork.databinding.FragmentDetailViewBinding
 import com.example.minisocialnetwork.presentation.base.BaseFragment
 import com.example.minisocialnetwork.util.Flag.NAV_GRAPH
 import com.example.minisocialnetwork.util.extentions.urlLoader
+import java.util.concurrent.TimeUnit
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -29,16 +31,23 @@ class DetailViewFragment :
     private var param2: String? = null
     private var param3: String? = null
     private val args: DetailViewFragmentArgs by navArgs()
-    private val navController by lazy { findNavController() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-            param3 = it.getString(ARG_PARAM3)
+        if (NAV_GRAPH) {
+            sharedElementEnterTransition = TransitionInflater.from(context)
+                .inflateTransition(android.R.transition.move)
+            postponeEnterTransition(250, TimeUnit.MILLISECONDS)
+        } else {
+            arguments?.let {
+                param1 = it.getString(ARG_PARAM1)
+                param2 = it.getString(ARG_PARAM2)
+                param3 = it.getString(ARG_PARAM3)
+            }
         }
+
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -53,6 +62,7 @@ class DetailViewFragment :
             if (NAV_GRAPH) {
                 tvDetailViewUserName.text = args.Contact.name
                 ivDetailViewIconUser.urlLoader(args.Contact.photo)
+                ivDetailViewIconUser.transitionName = args.Contact.photo + args.Contact.id
                 tvDetailViewCareer.text = args.Contact.profession
 
             } else {
@@ -66,7 +76,7 @@ class DetailViewFragment :
 
     private fun onBackPress() {
         if (NAV_GRAPH) {
-            navController.popBackStack()
+            findNavController().popBackStack()
         } else {
             requireActivity().supportFragmentManager
                 .popBackStack()

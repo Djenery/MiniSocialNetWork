@@ -50,7 +50,6 @@ class ContactsAdapter(private val listener: ItemListener) :
      */
     override fun onBindViewHolder(holder: ContactsViewHolder, position: Int) {
         holder.bind(getItem(position))
-        holder.setListeners()
     }
 
 }
