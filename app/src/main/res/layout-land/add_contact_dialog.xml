@@ -2,24 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/background_my_profile"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    >
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_add_contacts_main"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.2" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_add_contact_top"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.01" />
+    android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_vertical_start"
@@ -36,16 +20,26 @@
         app:layout_constraintGuide_percent="0.95" />
 
     <View
+        android:id="@+id/view_dialog_top"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/dark_blue"
-        app:layout_constraintBottom_toBottomOf="@id/guideline_add_contacts_main"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view_dialog_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        style="@style/background_view_bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/view_dialog_top">
 
     </View>
-
 
 
     <ImageButton
@@ -55,28 +49,23 @@
         android:background="@android:color/transparent"
         android:contentDescription="@string/bt_go_back"
         android:src="@drawable/arrow_back"
+        app:layout_constraintBottom_toBottomOf="@id/view_dialog_top"
         app:layout_constraintStart_toEndOf="@id/guideline_vertical_start"
-        app:layout_constraintTop_toTopOf="@id/guideline_add_contact_top"
-        app:layout_constraintBottom_toBottomOf="@id/guideline_add_contacts_main"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TouchTargetSizeCheck" />
-
-
-
-
 
     <TextView
         android:id="@+id/tv_add_contacts_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/audio_wide"
+        android:fontFamily="@font/open_sans_semi_bold"
         android:text="@string/tv_add_contact_title"
         android:textColor="@color/white"
         android:textSize="@dimen/medium_text"
+        app:layout_constraintBottom_toBottomOf="@id/view_dialog_top"
         app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
         app:layout_constraintStart_toStartOf="@+id/guideline_vertical_start"
-        app:layout_constraintTop_toTopOf="@+id/guideline_add_contact_top"
-        app:layout_constraintBottom_toBottomOf="@id/guideline_add_contacts_main"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <com.google.android.material.textfield.TextInputEditText
@@ -90,7 +79,7 @@
         android:textSize="@dimen/input_sing_up"
         app:layout_constraintEnd_toEndOf="@+id/guideline_vertical_end"
         app:layout_constraintStart_toStartOf="@+id/guideline_vertical_start"
-        app:layout_constraintTop_toBottomOf="@id/guideline_add_contacts_main"
+        app:layout_constraintTop_toBottomOf="@id/view_dialog_top"
         tools:ignore="TouchTargetSizeCheck" />
 
     <com.google.android.material.textfield.TextInputEditText
@@ -116,17 +105,15 @@
         android:text="@string/bt_add_contacts_dialog_save"
         app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
         app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
-        app:layout_constraintTop_toBottomOf="@+id/et_add_contact_profession"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/et_add_contact_profession" />
 
     <Space
         android:layout_width="wrap_content"
         android:layout_height="20dp"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/bt_add_contact_save"
         app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
         app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
-        />
+        app:layout_constraintTop_toBottomOf="@id/bt_add_contact_save" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

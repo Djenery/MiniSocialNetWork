@@ -4,6 +4,8 @@
     <dimen name="tv_my_profile_user_name">18sp</dimen>
     <dimen name="tv_secondary_my_profile">14sp</dimen>
     <dimen name="tv_settings_my_profile">22sp</dimen>
+    <dimen name="margin_top_my_profile_linear">40dp</dimen>
+    <dimen name="margin_bottom_bt_my_profile">16dp</dimen>
 
     <!-- sizes for sing_up layout -->
     <dimen name="title_sing_up">24sp</dimen>
@@ -16,12 +18,11 @@
     <dimen name="bt_google_sing_up_icon_padding">16dp</dimen>
 
     <!-- common used sized -->
+    <dimen name="medium_padding">16dp</dimen>
     <dimen name="medium_text">16sp</dimen>
     <dimen name="small_text">12sp</dimen>
+    <dimen name="micro_padding">8sp</dimen>
 
-    <!-- Recycler screen -->
-    <dimen name="recyclerView_bottom_margin">16dp</dimen>
-
-    <!-- sizes for sing_up layout -->
+    <!-- sizes for my contacts layout -->
     <dimen name="tv_add_contacts_my_contacts">14sp</dimen>
 </resources>

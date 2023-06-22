@@ -111,7 +111,7 @@
         android:id="@+id/recycler_view_my_contacts"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="@dimen/recyclerView_bottom_margin"
+        android:layout_marginBottom="@dimen/medium_padding"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
         app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"

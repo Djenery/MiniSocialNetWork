@@ -10,6 +10,7 @@
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/grey</item>
         <!-- Customize your theme here. -->
 
     </style>
@@ -31,7 +32,7 @@
     </style>
 
     <!--background my profile activity for light mode-->
-    <style name="background_my_profile">
+    <style name="background_view_bottom">
         <item name="android:background">@color/white</item>
     </style>
 

@@ -33,7 +33,7 @@ class ContactsViewHolder(
      * The listener triggers the removal of the item at the current adapter position.
      */
     fun setListeners() {
-        binding.userItem.setOnClickListener {
+        binding.ivItemUserDeleteUser.setOnClickListener {
             val position = adapterPosition
             if (position != RecyclerView.NO_POSITION) {
                 listener.onRemoveItem(position)
