@@ -12,11 +12,4 @@ object Constants {
     const val LOWERCASE_LETTERS = ".*[a-z].*"
     const val UPPERCASE_LETTERS = ".*[A-Z].*"
 
-    const val ERROR_EMPTY_STRING = "Required Field!"
-    const val ERROR_INVALID_EMAIL = "Invalid email!"
-    const val ERROR_TOO_SHORT_PASSWORD = "password can't be less than 8"
-    const val ERROR_AT_LEAST_ONE_DIGIT = "Required at least 1 digit"
-    const val ERROR_UPPER_AND_LOWER = "Password must contain upper and lower case letters"
-
-
 }

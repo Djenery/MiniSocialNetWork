@@ -56,6 +56,4 @@ class StoreUserData(private val context: Context) {
             it[PASSWORD_KEY] = password
         }
     }
-
-
 }

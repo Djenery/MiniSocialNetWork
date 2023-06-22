@@ -9,11 +9,6 @@ import com.example.minisocialnetwork.R
 import com.example.minisocialnetwork.databinding.ActivitySingUpBinding
 import com.example.minisocialnetwork.datastore.StoreUserData
 import com.example.minisocialnetwork.util.Constants.EMAIL
-import com.example.minisocialnetwork.util.Constants.ERROR_AT_LEAST_ONE_DIGIT
-import com.example.minisocialnetwork.util.Constants.ERROR_EMPTY_STRING
-import com.example.minisocialnetwork.util.Constants.ERROR_INVALID_EMAIL
-import com.example.minisocialnetwork.util.Constants.ERROR_TOO_SHORT_PASSWORD
-import com.example.minisocialnetwork.util.Constants.ERROR_UPPER_AND_LOWER
 import com.example.minisocialnetwork.util.FieldsValidations.isMixedCase
 import com.example.minisocialnetwork.util.FieldsValidations.isStringContainNumber
 import com.example.minisocialnetwork.util.FieldsValidations.isValidEmail
@@ -73,19 +68,13 @@ class AuthActivity : AppCompatActivity() {
                 validatePassword()
             }
             singUpRegisterBt.setOnClickListener {
-                if (isValidate()) {
+                if (validateEmail() && validatePassword()) {
                     saveData()
                     passDataToAnotherActivity()
                 }
             }
         }
     }
-
-    /**
-     * Checks if email and password fields are valid.
-     * @return true if fields are valid to all checks otherwise false
-     */
-    private fun isValidate() = validateEmail() && validatePassword()
 
     /**
      * Saves email and password inputs in dataStore.
@@ -109,10 +98,10 @@ class AuthActivity : AppCompatActivity() {
      */
     private fun validateEmail(): Boolean {
         if (binding.singUpEMailEt.text.toString().trim().isEmpty()) {
-            binding.singUpEMail.error = ERROR_EMPTY_STRING
+            binding.singUpEMail.error = getString(R.string.error_empty_string)
             return false
         } else if (!isValidEmail(binding.singUpEMailEt.text.toString())) {
-            binding.singUpEMail.error = ERROR_INVALID_EMAIL
+            binding.singUpEMail.error = getString(R.string.error_invalid_email)
             return false
         } else {
             binding.singUpEMail.isErrorEnabled = false
@@ -126,16 +115,16 @@ class AuthActivity : AppCompatActivity() {
      */
     private fun validatePassword(): Boolean {
         if (binding.singUpPasswordT.text.toString().trim().isEmpty()) {
-            binding.singUpPassword.error = ERROR_EMPTY_STRING
+            binding.singUpPassword.error = getString(R.string.error_empty_string)
             return false
         } else if (binding.singUpPasswordT.text.toString().length < 8) {
-            binding.singUpPassword.error = ERROR_TOO_SHORT_PASSWORD
+            binding.singUpPassword.error = getString(R.string.error_too_short_passowrd)
             return false
         } else if (!isStringContainNumber(binding.singUpPasswordT.text.toString())) {
-            binding.singUpPassword.error = ERROR_AT_LEAST_ONE_DIGIT
+            binding.singUpPassword.error = getString(R.string.error_atleast_one_digit)
             return false
         } else if (!isMixedCase(binding.singUpPasswordT.text.toString())) {
-            binding.singUpPassword.error = ERROR_UPPER_AND_LOWER
+            binding.singUpPassword.error = getString(R.string.error_upper_and_lower_case)
             return false
         } else {
             binding.singUpPassword.isErrorEnabled = false
