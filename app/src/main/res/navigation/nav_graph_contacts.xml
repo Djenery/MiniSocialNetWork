@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/myContactsFragment"
-        android:name="com.example.minisocialnetwork.presentation.contactsList.MyContactsFragment"
+        android:name="com.example.minisocialnetwork.presentation.fragments.MyContactsFragment"
         android:label="fragment_my_contacts"
         tools:layout="@layout/fragment_my_contacts">
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/detailViewFragment"
-        android:name="com.example.minisocialnetwork.presentation.detail.DetailViewFragment"
+        android:name="com.example.minisocialnetwork.presentation.fragments.DetailViewFragment"
         android:label="DetailViewFragment"
         tools:layout="@layout/fragment_detail_view">
         <argument

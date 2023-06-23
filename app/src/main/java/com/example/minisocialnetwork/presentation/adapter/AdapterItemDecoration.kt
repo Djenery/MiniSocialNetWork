@@ -1,11 +1,10 @@
-package com.example.minisocialnetwork.presentation.contactsList.adapter
+package com.example.minisocialnetwork.presentation.adapter
 
 import android.content.res.Resources
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.example.minisocialnetwork.util.Constants.ITEM_VERTICAL_MARGIN
-
 
 /**
 
@@ -15,9 +14,7 @@ This class extends RecyclerView.ItemDecoration and overrides the getItemOffsets 
 
 to apply vertical and top indentation to each item in the RecyclerView.
  */
-class IndentItemDecoration :
-    RecyclerView.ItemDecoration() {
-
+class IndentItemDecoration : RecyclerView.ItemDecoration() {
 
     override fun getItemOffsets(
         outRect: Rect,

@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -31,6 +29,7 @@
             android:id="@+id/sing_up_activity_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_padding"
             android:text="@string/tv_sing_up_title"
             android:textColor="@color/white"
             android:textSize="@dimen/title_sing_up"
@@ -43,6 +42,7 @@
             android:id="@+id/sing_up_activity_fill_out_hint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_padding"
             android:text="@string/tv_sing_up_fill_out_profile"
             android:textColor="@color/grey"
             android:textSize="@dimen/small_text"
@@ -56,6 +56,7 @@
             style="@style/edit_text_auth_activity"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_padding"
             android:hint="@string/et_sing_up_e_mail"
             app:boxStrokeColor="@color/white"
             app:endIconMode="clear_text"
@@ -79,6 +80,7 @@
             style="@style/edit_text_auth_activity"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_padding"
             android:hint="@string/et_sing_up_password"
             app:boxStrokeColor="@color/white"
             app:errorEnabled="true"
@@ -102,50 +104,44 @@
         <CheckBox
             android:id="@+id/sing_up_checkbox"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:buttonTint="@color/white"
+            android:layout_height="0dp"
             android:button="@drawable/checkbox_selector"
-            android:paddingStart="@dimen/checkbox_text_padding"
-            android:paddingEnd="@dimen/checkbox_text_padding"
+            android:buttonTint="@color/white"
+            android:checked="true"
             android:clickable="true"
             android:focusable="true"
+            android:paddingStart="@dimen/checkbox_text_padding"
+            android:paddingEnd="@dimen/checkbox_text_padding"
             android:text="@string/cb_sing_up_remember_me"
             android:textColor="@color/grey"
             android:textSize="@dimen/checkbox_text_sing_up"
             app:layout_constraintStart_toStartOf="@+id/guideline_sing_up_land_start"
             app:layout_constraintTop_toBottomOf="@id/sing_up_password" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/sing_up_guideline_fifth"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.652" />
-
-
-        <com.example.minisocialnetwork.presentation.auth.custom.MyCustomButton
+        <com.example.minisocialnetwork.presentation.custom.MyCustomButton
             android:id="@+id/sing_up_with_google_bt"
+            style="@style/background_google_bt_sing_up"
             android:layout_width="0dp"
             android:layout_height="48dp"
-            style="@style/background_google_bt_sing_up"
+            android:layout_marginTop="@dimen/large_padding"
 
+            android:fontFamily="@font/open_sans_semi_bold"
+            android:text="@string/sing_up_google_text_in_button"
+
+            android:textColor="@color/black"
+            android:textSize="@dimen/medium_text"
             app:icon="@drawable/group_google_icon"
             app:iconPadding="@dimen/bt_google_sing_up_icon_padding"
 
-            android:text="@string/sing_up_google_text_in_button"
-            android:textColor="@color/black"
-            android:textSize="@dimen/medium_text"
-            android:fontFamily="@font/open_sans_semi_bold"
-
             app:layout_constraintEnd_toEndOf="@+id/guideline_sing_up_land_end"
             app:layout_constraintStart_toStartOf="@+id/guideline_sing_up_land_start"
-            app:layout_constraintTop_toBottomOf="@id/sing_up_guideline_fifth" />
+            app:layout_constraintTop_toBottomOf="@id/sing_up_checkbox" />
 
         <TextView
             android:id="@+id/sing_up_activity_or_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/micro_padding"
             android:fontFamily="@font/open_sans_semi_bold"
             android:gravity="center"
             android:text="@string/tv_sing_up_or"
@@ -159,6 +155,7 @@
             android:id="@+id/sing_up_register_bt"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/micro_padding"
             android:background="@drawable/sing_up_register_bt"
             android:letterSpacing="0.2"
             android:text="@string/bt_sing_up_register"
@@ -172,6 +169,7 @@
             android:id="@+id/message_terms_and_conditions"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_padding"
             android:gravity="center"
             android:text="@string/tv_sing_up_message_terms_and_conditions"
             android:textColor="@color/grey"
@@ -185,6 +183,7 @@
             android:id="@+id/message_already_have_an_account"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_padding"
             android:text="@string/tv_sing_up_message_already_have_an_account"
             android:textColor="@color/grey"
             android:textSize="@dimen/bottom_text_sing_up"
@@ -198,6 +197,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="@dimen/medium_padding"
             android:clickable="true"
             android:focusable="true"
             android:text="@string/tv_sing_up_sing_in"

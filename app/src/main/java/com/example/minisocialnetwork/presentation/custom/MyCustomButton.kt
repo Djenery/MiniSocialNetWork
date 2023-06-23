@@ -1,4 +1,4 @@
-package com.example.minisocialnetwork.presentation.auth.custom
+package com.example.minisocialnetwork.presentation.custom
 
 import android.content.Context
 import android.graphics.Canvas

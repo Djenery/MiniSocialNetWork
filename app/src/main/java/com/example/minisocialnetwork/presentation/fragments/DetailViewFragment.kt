@@ -1,16 +1,21 @@
-package com.example.minisocialnetwork.presentation.detail
+package com.example.minisocialnetwork.presentation.fragments
 
 import android.os.Bundle
 import android.transition.TransitionInflater
 import android.view.View
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.minisocialnetwork.databinding.FragmentDetailViewBinding
-import com.example.minisocialnetwork.presentation.base.BaseFragment
-import com.example.minisocialnetwork.util.Flag.NAV_GRAPH
+import com.example.minisocialnetwork.presentation.fragments.base.BaseFragment
+import com.example.minisocialnetwork.util.Flag
 import com.example.minisocialnetwork.util.extentions.urlLoader
 import java.util.concurrent.TimeUnit
+
+/**
+ * A simple [Fragment] subclass.
+ * Use the [DetailViewFragment.newInstance] factory method to
+ * create an instance of this fragment.
+ */
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -18,11 +23,6 @@ private const val ARG_PARAM1 = "param2"
 private const val ARG_PARAM2 = "param3"
 private const val ARG_PARAM3 = "param4"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [DetailViewFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class DetailViewFragment :
     BaseFragment<FragmentDetailViewBinding>(FragmentDetailViewBinding::inflate) {
 
@@ -34,7 +34,7 @@ class DetailViewFragment :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (NAV_GRAPH) {
+        if (Flag.NAV_GRAPH) {
             sharedElementEnterTransition = TransitionInflater.from(context)
                 .inflateTransition(android.R.transition.move)
             postponeEnterTransition(250, TimeUnit.MILLISECONDS)
@@ -45,9 +45,7 @@ class DetailViewFragment :
                 param3 = it.getString(ARG_PARAM3)
             }
         }
-
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -59,7 +57,7 @@ class DetailViewFragment :
 
     private fun navigate() {
         with(binding) {
-            if (NAV_GRAPH) {
+            if (Flag.NAV_GRAPH) {
                 tvDetailViewUserName.text = args.Contact.name
                 ivDetailViewIconUser.urlLoader(args.Contact.photo)
                 ivDetailViewIconUser.transitionName = args.Contact.photo + args.Contact.id
@@ -75,14 +73,13 @@ class DetailViewFragment :
     }
 
     private fun onBackPress() {
-        if (NAV_GRAPH) {
+        if (Flag.NAV_GRAPH) {
             findNavController().popBackStack()
         } else {
             requireActivity().supportFragmentManager
                 .popBackStack()
         }
     }
-
 
     companion object {
         /**

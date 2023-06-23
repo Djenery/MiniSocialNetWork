@@ -7,8 +7,7 @@
 
     <!--  Strings for SingUp Activity  -->
     <string name="tv_sing_up_title">Let\'s get acquainted</string>
-    <string name="tv_sing_up_fill_out_profile">Fill out the profile and
-        go to the application!</string>
+    <string name="tv_sing_up_fill_out_profile">Fill out the profile and go to the application!</string>
     <string name="et_sing_up_e_mail">E-mail</string>
     <string name="et_sing_up_password">Password</string>
     <string name="cb_sing_up_remember_me">Remember me</string>
@@ -60,5 +59,7 @@
     <string name="error_too_short_passowrd">Password can\'t be less than 8</string>
     <string name="contact_was_deleted">Contact was deleted</string>
     <string name="undo">UNDO</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

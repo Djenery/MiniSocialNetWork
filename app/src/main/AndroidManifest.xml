@@ -16,10 +16,11 @@
         android:theme="@style/Theme.MiniSocialNetWork"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
-            android:exported="false" />
+            android:name=".presentation.activities.MyContactsActivity"
+            android:exported="false">
+        </activity>
         <activity
-            android:name=".presentation.contactsList.MyContactsActivity"
+            android:name=".presentation.activities.AuthActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,16 +28,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".presentation.myProfile.MyProfileActivity"
-            android:exported="false" />
-        <activity
-            android:name=".presentation.auth.AuthActivity"
-            android:exported="false" />
 
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

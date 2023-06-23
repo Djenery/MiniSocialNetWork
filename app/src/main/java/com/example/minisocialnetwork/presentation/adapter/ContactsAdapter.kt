@@ -1,4 +1,4 @@
-package com.example.minisocialnetwork.presentation.contactsList.adapter
+package com.example.minisocialnetwork.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

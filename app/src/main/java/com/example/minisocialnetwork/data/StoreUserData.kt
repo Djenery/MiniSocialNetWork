@@ -10,7 +10,6 @@ import com.example.minisocialnetwork.domain.repository.LocalAuthRepository
 import com.example.minisocialnetwork.util.Constants.DATA_STORE_NAME
 import com.example.minisocialnetwork.util.Constants.EMAIL
 import com.example.minisocialnetwork.util.Constants.PASSWORD
-import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.first
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -20,7 +19,7 @@ import javax.inject.Singleton
  * @param appContext The application context.
  */
 @Singleton
-class StoreUserData @Inject constructor(@ApplicationContext val appContext: Context) :
+class StoreUserData @Inject constructor(private val appContext: Context) :
     LocalAuthRepository {
     companion object {
         val Context.dataStore: DataStore<Preferences> by preferencesDataStore(

@@ -1,4 +1,4 @@
-package com.example.minisocialnetwork.presentation.contactsList
+package com.example.minisocialnetwork.presentation.fragments
 
 import android.os.Bundle
 import android.transition.TransitionInflater
@@ -16,10 +16,10 @@ import com.example.minisocialnetwork.databinding.FragmentMyContactsBinding
 import com.example.minisocialnetwork.domain.model.Contact
 import com.example.minisocialnetwork.domain.repository.AddContactListener
 import com.example.minisocialnetwork.domain.repository.ItemListener
-import com.example.minisocialnetwork.presentation.base.BaseFragment
-import com.example.minisocialnetwork.presentation.contactsList.adapter.ContactsAdapter
-import com.example.minisocialnetwork.presentation.contactsList.adapter.IndentItemDecoration
-import com.example.minisocialnetwork.presentation.detail.DetailViewFragment
+import com.example.minisocialnetwork.presentation.adapter.ContactsAdapter
+import com.example.minisocialnetwork.presentation.adapter.IndentItemDecoration
+import com.example.minisocialnetwork.presentation.fragments.base.BaseFragment
+import com.example.minisocialnetwork.presentation.viewmodels.MyContactsViewModel
 import com.example.minisocialnetwork.util.Flag.NAV_GRAPH
 import com.example.minisocialnetwork.util.extentions.onItemTouch
 import com.google.android.material.snackbar.Snackbar

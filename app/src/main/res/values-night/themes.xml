@@ -31,7 +31,7 @@
 
 
     <!--background my profile activity for light mode-->
-    <style name="background_my_profile">
+    <style name="background_view_bottom">
         <item name="android:background">@color/black</item>
     </style>
 

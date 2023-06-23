@@ -1,4 +1,4 @@
-package com.example.minisocialnetwork.presentation.base
+package com.example.minisocialnetwork.presentation.fragments.base
 
 import android.os.Bundle
 import android.view.LayoutInflater

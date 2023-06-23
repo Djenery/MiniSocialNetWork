@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_vertical_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_vertical_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <View
+        android:id="@+id/view_my_profile_top"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/dark_blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view_my_profile_bottom"
+        style="@style/background_view_bottom"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_my_profile_top" />
+
+    <TextView
+        android:id="@+id/tv_my_profile_setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/audio_wide"
+        android:text="@string/tv_my_profile_settings"
+        android:textColor="@color/white"
+        android:textSize="@dimen/tv_settings_my_profile"
+        app:layout_constraintStart_toStartOf="@+id/guideline_vertical_start"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_top_my_profile_linear"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
+        app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
+        app:layout_constraintTop_toBottomOf="@id/tv_my_profile_setting">
+
+        <ImageView
+            android:id="@+id/iv_my_profile_icon_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/iv_my_profile_person"
+            android:maxWidth="@dimen/max_size_of_image_my_profile"
+            android:maxHeight="@dimen/max_size_of_image_my_profile"
+            android:src="@mipmap/me_round" />
+
+        <TextView
+            android:id="@+id/tv_my_profile_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/audio_wide"
+            android:text="@string/tv_user_name"
+            android:textColor="@color/white"
+            android:textSize="@dimen/tv_user_name" />
+
+        <TextView
+            android:id="@+id/tv_my_profile_career"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/audio_wide"
+            android:text="@string/tv_profession"
+            android:textColor="@color/semi_transparent_blue_gray"
+            android:textSize="@dimen/tv_secondary_my_profile" />
+
+        <TextView
+            android:id="@+id/tv_my_profile_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/audio_wide"
+            android:text="@string/tv_address"
+            android:textColor="@color/semi_transparent_blue_gray"
+            android:textSize="@dimen/tv_secondary_my_profile" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/social_media_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_top_my_profile_linear"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
+        app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
+        app:layout_constraintTop_toBottomOf="@id/view_my_profile_top">
+
+        <ImageView
+            android:id="@+id/iv_my_profile_land_facebook_icon"
+            style="@style/facebook_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/iv_link_to_facebook" />
+
+        <ImageView
+            android:id="@+id/iv_my_profile_linkedin_land_icon"
+            style="@style/linkedin_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/iv_link_to_linkedin" />
+
+        <ImageView
+            android:id="@+id/iv_my_profile_land_instagram_icon"
+            style="@style/instagram_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/iv_link_to_instagram" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/buttons_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
+        app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
+        app:layout_constraintTop_toBottomOf="@id/social_media_layout">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/my_profile_button_edit"
+            style="@style/edit_bt_background"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/medium_padding"
+            android:text="@string/bt_my_profile_edit_profile" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/my_profile_button_view_my_contacts"
+            style="@style/view_my_contacts_bt_background"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/medium_padding"
+            android:text="@string/bt_my_profile_view_my_contacts" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     style="@style/background_sing_up"
-    tools:context=".presentation.auth.SingUpFragment">
+    tools:context=".presentation.fragments.SingUpFragment">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_sing_up_top"
@@ -128,7 +128,7 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.66" />
 
-    <com.example.minisocialnetwork.presentation.auth.custom.MyCustomButton
+    <com.example.minisocialnetwork.presentation.custom.MyCustomButton
         android:id="@+id/sing_up_with_google_bt"
         android:layout_width="0dp"
         android:layout_height="48dp"
