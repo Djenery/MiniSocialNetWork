@@ -25,6 +25,10 @@ import com.example.minisocialnetwork.util.extentions.onItemTouch
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 
+/**
+
+ * A fragment that displays a list of contacts.
+ */
 class MyContactsFragment :
     BaseFragment<FragmentMyContactsBinding>(FragmentMyContactsBinding::inflate),
     AddContactListener {
@@ -86,6 +90,13 @@ class MyContactsFragment :
 
     }
 
+    /**
+
+     * Displays a SnackBar with a message indicating that a contact was deleted.
+     * The SnackBar includes an "Undo" action that allows the user to undo the deletion.
+     * When the "Undo" action is clicked, the RecyclerView is scrolled to the position
+     * where the contact was originally inserted.
+     */
     private fun showSnackBar() {
         Snackbar.make(
             binding.recyclerViewMyContacts, getString(R.string.contact_was_deleted),
@@ -95,31 +106,58 @@ class MyContactsFragment :
         }.show()
     }
 
+    /**
+
+     * Handles the click event on a contact item.
+     * @param contact The clicked contact.
+     * @param imageView The ImageView associated with the contact item.
+     */
     private fun clickItem(contact: Contact, imageView: ImageView) {
         if (NAV_GRAPH) {
-            val action =
-                MyContactsFragmentDirections.actionToDetailViewFragment(contact)
-            val extras = FragmentNavigatorExtras(
-                imageView to contact.photo + contact.id
-            )
-            findNavController().navigate(action, extras)
+            navigateToDetailViewByNavComponent(contact, imageView)
         } else {
-            val fragment =
+            navigateToDetailViewByFragmentManager(contact)
+
+        }
+    }
+
+    /**
+
+     * Navigates to the detail view of a contact using the Navigation component.
+     * @param contact The contact to display in the detail view.
+     * @param imageView The ImageView associated with the contact item.
+     */
+    private fun navigateToDetailViewByNavComponent(contact: Contact, imageView: ImageView) {
+        val action =
+            MyContactsFragmentDirections.actionToDetailViewFragment(contact)
+        val extras = FragmentNavigatorExtras(
+            imageView to contact.photo + contact.id
+        )
+        findNavController().navigate(action, extras)
+    }
+
+    /**
+
+     * Navigates to the detail view of a contact using the FragmentManager.
+     * @param contact The contact to display in the detail view.
+     */
+    private fun navigateToDetailViewByFragmentManager(contact: Contact) {
+        parentFragmentManager.commit {
+            setCustomAnimations(
+                R.anim.slide_in_right,
+                R.anim.slide_out_left,
+                R.anim.slide_in_left,
+                R.anim.slide_out_right
+            )
+            replace(
+                R.id.fragment_container,
                 DetailViewFragment.newInstance(
                     contact.name,
                     contact.photo,
                     contact.profession
                 )
-            parentFragmentManager.commit {
-                setCustomAnimations(
-                    R.anim.slide_in_right,
-                    R.anim.slide_out_left,
-                    R.anim.slide_in_left,
-                    R.anim.slide_out_right
-                )
-                replace(R.id.fragment_container, fragment)
-                addToBackStack(null)
-            }
+            )
+            addToBackStack(null)
         }
 
     }

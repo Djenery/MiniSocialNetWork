@@ -12,7 +12,7 @@ import com.example.minisocialnetwork.domain.repository.AddContactListener
 
 
 /**
-A dialog fragment used for adding a contact.
+ * A dialog fragment used for adding a contact.
  */
 class AddContactDialogFragment : DialogFragment() {
 

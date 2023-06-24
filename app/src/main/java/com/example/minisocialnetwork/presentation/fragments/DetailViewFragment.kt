@@ -12,21 +12,12 @@ import com.example.minisocialnetwork.util.extentions.urlLoader
 import java.util.concurrent.TimeUnit
 
 /**
- * A simple [Fragment] subclass.
- * Use the [DetailViewFragment.newInstance] factory method to
- * create an instance of this fragment.
+
+ * A fragment that displays the detailed view of a contact.
  */
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param2"
-private const val ARG_PARAM2 = "param3"
-private const val ARG_PARAM3 = "param4"
-
 class DetailViewFragment :
     BaseFragment<FragmentDetailViewBinding>(FragmentDetailViewBinding::inflate) {
 
-    // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
     private var param3: String? = null
@@ -55,6 +46,10 @@ class DetailViewFragment :
         }
     }
 
+    /**
+
+     * Performs the navigation and sets up the views.
+     */
     private fun navigate() {
         with(binding) {
             if (Flag.NAV_GRAPH) {
@@ -72,6 +67,10 @@ class DetailViewFragment :
 
     }
 
+    /**
+
+     * Handles the back press event and navigates back.
+     */
     private fun onBackPress() {
         if (Flag.NAV_GRAPH) {
             findNavController().popBackStack()
@@ -82,15 +81,18 @@ class DetailViewFragment :
     }
 
     companion object {
+        private const val ARG_PARAM1 = "param2"
+        private const val ARG_PARAM2 = "param3"
+        private const val ARG_PARAM3 = "param4"
+
         /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
+         * Creates a new instance of DetailViewFragment with the provided parameters.
          *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment DetailViewFragment.
+         * @param param1 The first parameter.
+         * @param param2 The second parameter.
+         * @param param3 The third parameter.
+         * @return A new instance of DetailViewFragment.
          */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String, param3: String) =
             DetailViewFragment().apply {

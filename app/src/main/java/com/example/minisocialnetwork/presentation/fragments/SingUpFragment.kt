@@ -1,7 +1,9 @@
 package com.example.minisocialnetwork.presentation.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.commit
@@ -16,6 +18,17 @@ import com.example.minisocialnetwork.util.FieldsValidations.isValidEmail
 import com.example.minisocialnetwork.util.Flag.NAV_GRAPH
 import dagger.hilt.android.AndroidEntryPoint
 
+/**
+
+ * A sign-up fragment that allows the user to register with an email and password.
+ * This fragment extends the BaseFragment class and
+ * provides functionality for validating the email and password fields,
+ * saving the entered data in dataStore, and
+ * navigating to the MyProfileFragment upon successful registration.
+ * It also handles hiding the keyboard when the user interacts with the fragment.
+ * @see BaseFragment
+ * @see AuthViewModel
+ */
 @AndroidEntryPoint
 class SingUpFragment : BaseFragment<FragmentAuthBinding>(FragmentAuthBinding::inflate) {
     private val mViewModel: AuthViewModel by activityViewModels()
@@ -26,7 +39,7 @@ class SingUpFragment : BaseFragment<FragmentAuthBinding>(FragmentAuthBinding::in
     }
 
     /**
-     * Set listeners which user can interact with in current activity
+     *Sets up listeners for user interaction in the current fragment.
      */
     private fun setListeners() {
         with(binding) {
@@ -39,9 +52,11 @@ class SingUpFragment : BaseFragment<FragmentAuthBinding>(FragmentAuthBinding::in
             singUpRegisterBt.setOnClickListener {
                 if (validateEmail() && validatePassword()) {
                     saveData()
-                    moveToMyProfile()
+                    navigateToMyProfile()
                 }
-
+            }
+            binding.root.setOnClickListener {
+                hideKeyboard()
             }
         }
 
@@ -54,10 +69,10 @@ class SingUpFragment : BaseFragment<FragmentAuthBinding>(FragmentAuthBinding::in
     private fun validateEmail(): Boolean {
         with(binding) {
             if (singUpEMailEt.text.toString().trim().isEmpty()) {
-                singUpEMail.error = R.string.error_empty_string.toString()
+                singUpEMail.error = getString(R.string.error_empty_string)
                 return false
             } else if (!isValidEmail(singUpEMailEt.text.toString())) {
-                singUpEMail.error = R.string.error_invalid_email.toString()
+                singUpEMail.error = getString(R.string.error_invalid_email)
                 return false
             } else {
                 singUpEMail.isErrorEnabled = false
@@ -73,16 +88,16 @@ class SingUpFragment : BaseFragment<FragmentAuthBinding>(FragmentAuthBinding::in
     private fun validatePassword(): Boolean {
         with(binding) {
             if (singUpPasswordT.text.toString().trim().isEmpty()) {
-                singUpPassword.error = R.string.error_empty_string.toString()
+                singUpPassword.error = getString(R.string.error_empty_string)
                 return false
             } else if (singUpPasswordT.text.toString().length < 8) {
-                singUpPassword.error = R.string.error_too_short_passowrd.toString()
+                singUpPassword.error = getString(R.string.error_too_short_passwщrd)
                 return false
             } else if (!isStringContainNumber(singUpPasswordT.text.toString())) {
-                singUpPassword.error = R.string.error_at_least_one_digit.toString()
+                singUpPassword.error = getString(R.string.error_at_least_one_digit)
                 return false
             } else if (!isMixedCase(singUpPasswordT.text.toString())) {
-                singUpPassword.error = R.string.error_upper_and_lower_case.toString()
+                singUpPassword.error = getString(R.string.error_upper_and_lower_case)
                 return false
             } else {
                 singUpPassword.isErrorEnabled = false
@@ -92,53 +107,51 @@ class SingUpFragment : BaseFragment<FragmentAuthBinding>(FragmentAuthBinding::in
     }
 
     /**
-     * Saves email and password inputs in dataStore
+     * Saves email and password inputs in dataStore.
      */
     private fun saveData() {
         with(binding) {
             if (singUpCheckbox.isChecked) {
                 mViewModel.saveCredentials(
-                    singUpEMailEt.text.toString(),
-                    singUpPasswordT.text.toString()
+                    singUpEMailEt.text.toString(), singUpPasswordT.text.toString()
                 )
             }
         }
     }
 
     /**
-     * Passes data to another activity
+
+     * Navigates to the MyProfileFragment.
+     * The navigation is performed either using the Navigation component or the FragmentManager,
+     * depending on the value of NAV_GRAPH.
      */
-    private fun moveToMyProfile() {
+    private fun navigateToMyProfile() {
         if (NAV_GRAPH) {
             val action = SingUpFragmentDirections.actionSingUpFragmentToMyProfileFragment()
             findNavController().navigate(action)
         } else {
             parentFragmentManager.commit {
-                replace(R.id.authFragmentContainer, MyContactsFragment.newInstance())
+                replace(R.id.authFragmentContainer, MyProfileFragment.newInstance())
             }
         }
     }
-    //        val intent = Intent(this, MyProfileActivity::class.java)
-//        intent.putExtra(Constants.EMAIL, binding.singUpEMailEt.text.toString())
-//        startActivity(intent)
-//        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
-//        finish()
 
+    /**
 
-//    /**
-//     * Overrides the activity's dispatchTouchEvent method to handle touch events.
-//     * This method is used to hide the keyboard when a touch is made outside of TextInputEditText.
-//     * @param event The touch screen event.
-//     * @return true if this event was consumed; otherwise, false.
-//     */
-//    override fun dispatchTouchEvent(event: MotionEvent): Boolean {
-//        hideKeyboardOnOutsideTouch(event)
-//        return super.dispatchTouchEvent(event)
-
-
-//    }
+     * Hides the keyboard.
+     */
+    private fun hideKeyboard() {
+        val imm =
+            requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(view?.windowToken, 0)
+    }
 
     companion object {
+        /**
+         * Creates a new instance of the SingUpFragment.
+         *
+         * @return A new instance of SingUpFragment.
+         */
         fun newInstance() = SingUpFragment()
     }
 }

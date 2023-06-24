@@ -7,6 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 
+/**
+
+ * An abstract base class for fragments that provides binding functionality.
+ * @param vBinding The type of the view binding.
+ * @property inflaterMethod The method reference for inflating the view binding.
+ */
 abstract class BaseFragment<vBinding : ViewBinding>(
     private val inflaterMethod: (LayoutInflater, ViewGroup?, Boolean) -> vBinding
 ) : Fragment() {

@@ -54,9 +54,7 @@ class MyContactsViewModel : ViewModel() {
 
     /**
      * Inserts a contact at a specific position in the contacts list.
-     *
-     * @param contact The contact to be inserted.
-     * @param position The position at which the contact should be inserted.
+     * @return position of inserted element
      */
     fun insertAt(): Int {
         _contactsList.value = contactsList.value?.toMutableList()?.apply {

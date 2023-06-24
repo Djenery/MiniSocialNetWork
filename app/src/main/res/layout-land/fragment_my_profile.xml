@@ -163,7 +163,7 @@
         app:layout_constraintGuide_percent="0.6" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/bt_my_profile_land_my_contacts"
+        android:id="@+id/bt_my_profile_my_contacts"
         style="@style/view_my_contacts_bt_background"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
