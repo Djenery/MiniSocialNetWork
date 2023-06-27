@@ -91,7 +91,7 @@ class SingUpFragment : BaseFragment<FragmentAuthBinding>(FragmentAuthBinding::in
                 singUpPassword.error = getString(R.string.error_empty_string)
                 return false
             } else if (singUpPasswordT.text.toString().length < 8) {
-                singUpPassword.error = getString(R.string.error_too_short_passwщrd)
+                singUpPassword.error = getString(R.string.error_too_short_password)
                 return false
             } else if (!isStringContainNumber(singUpPasswordT.text.toString())) {
                 singUpPassword.error = getString(R.string.error_at_least_one_digit)
