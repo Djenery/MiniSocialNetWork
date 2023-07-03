@@ -58,6 +58,7 @@
         lower case letters</string>
     <string name="error_too_short_password">Password can\'t be less than 8</string>
     <string name="contact_was_deleted">Contact was deleted</string>
+    <string name="contacts_was_deleted">contacts was deleted</string>
     <string name="undo">UNDO</string>
 
     <!--  tabs for view pager fragment  -->

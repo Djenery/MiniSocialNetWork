@@ -17,19 +17,22 @@ class MyContactsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_contacts)
-        if (NAV_GRAPH) {
-            val navHostFragment = NavHostFragment.create(R.navigation.nav_graph_contacts)
-            supportFragmentManager.commit {
-                add(R.id.container, navHostFragment)
-                setPrimaryNavigationFragment(navHostFragment) // equivalent to app:defaultNavHost="true"
-            }
-        } else {
-            val fragment = ViewPagerFragment.newInstance()
-            supportFragmentManager.commit {
-                add(R.id.container, fragment)
-                setReorderingAllowed(true)
+        if (savedInstanceState == null){
+            if (NAV_GRAPH) {
+                val navHostFragment = NavHostFragment.create(R.navigation.nav_graph_contacts)
+                supportFragmentManager.commit {
+                    add(R.id.container, navHostFragment)
+                    setPrimaryNavigationFragment(navHostFragment) // equivalent to app:defaultNavHost="true"
+                }
+            } else {
+                val fragment = ViewPagerFragment.newInstance()
+                supportFragmentManager.commit {
+                    add(R.id.container, fragment)
+                    setReorderingAllowed(true)
+                }
             }
         }
+
 
     }
 

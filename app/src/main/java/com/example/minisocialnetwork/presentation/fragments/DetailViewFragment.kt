@@ -67,6 +67,7 @@ class DetailViewFragment :
                 tvDetailViewCareer.text = param3
             }
         }
+        startPostponedEnterTransition()
 
     }
 

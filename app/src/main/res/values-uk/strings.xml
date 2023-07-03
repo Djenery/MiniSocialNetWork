@@ -62,4 +62,5 @@
     <string name="tab1">Мій профіль</string>
     <string name="tab2">Контакти</string>
     <string name="button_to_delete_selected_items">Кнопка для видалення виділенних елементів</string>
+    <string name="contacts_was_deleted">контактів було видалено</string>
 </resources>

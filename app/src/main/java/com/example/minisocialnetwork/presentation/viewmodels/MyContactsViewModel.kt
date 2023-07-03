@@ -93,15 +93,17 @@ class MyContactsViewModel : ViewModel() {
         }
     }
 
-    fun deleteAllSelectedItems() {
-        val currentItems = _contactsList.value ?: return
-        val selectedItems = _selectedItems.value ?: return
+    fun deleteAllSelectedItems(): Int {
+        val itemsToRemove = _selectedItems.value
+        val currentItems = _contactsList.value ?: emptyList()
+        val selectedItems = _selectedItems.value ?: emptyList()
         val updatedItems = currentItems.filter { item ->
             !selectedItems.contains(item)
         }
         _contactsList.value = updatedItems
         _selectedItems.value = emptyList()
         _multiSelectedState.value = false
+        return itemsToRemove.orEmpty().size
     }
 
     fun insertMultipleItems() {

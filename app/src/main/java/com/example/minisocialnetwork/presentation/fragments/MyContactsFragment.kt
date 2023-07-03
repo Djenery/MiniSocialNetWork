@@ -32,6 +32,7 @@ import com.example.minisocialnetwork.util.extentions.onItemTouch
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import java.util.concurrent.TimeUnit
 
 /**
 
@@ -71,6 +72,7 @@ class MyContactsFragment :
         super.onViewCreated(view, savedInstanceState)
         sharedElementReturnTransition =
             TransitionInflater.from(context).inflateTransition(R.transition.move)
+        postponeEnterTransition(250, TimeUnit.MILLISECONDS)
         initRecyclerView()
         setObservers()
         setListeners()
@@ -82,8 +84,7 @@ class MyContactsFragment :
      */
     private fun initRecyclerView() {
         with(binding) {
-            recyclerViewMyContacts.layoutManager =
-                LinearLayoutManager(context)
+            recyclerViewMyContacts.layoutManager = LinearLayoutManager(context)
             recyclerViewMyContacts.adapter = adapter
             recyclerViewMyContacts.addItemDecoration(IndentItemDecoration())
             postponeEnterTransition()
@@ -110,15 +111,15 @@ class MyContactsFragment :
     }
 
     private fun removeSelectedItems() {
-        mViewModel.deleteAllSelectedItems()
+        val itemsToRemove = mViewModel.deleteAllSelectedItems()
         Snackbar.make(
-            binding.recyclerViewMyContacts, getString(R.string.contact_was_deleted),
+            binding.recyclerViewMyContacts,
+            "$itemsToRemove ${getString(R.string.contacts_was_deleted)}",
             Snackbar.LENGTH_LONG
         ).setAction(getString(R.string.undo)) {
             mViewModel.insertMultipleItems()
         }.show()
     }
-
 
 
     /**
@@ -130,7 +131,8 @@ class MyContactsFragment :
      */
     private fun showSnackBar() {
         Snackbar.make(
-            binding.recyclerViewMyContacts, getString(R.string.contact_was_deleted),
+            binding.recyclerViewMyContacts,
+            getString(R.string.contact_was_deleted),
             Snackbar.LENGTH_LONG
         ).setAction(getString(R.string.undo)) {
             binding.recyclerViewMyContacts.smoothScrollToPosition(mViewModel.insertAt())
@@ -181,11 +183,8 @@ class MyContactsFragment :
                 R.anim.slide_out_right
             )
             replace(
-                R.id.container,
-                DetailViewFragment.newInstance(
-                    contact.name,
-                    contact.photo,
-                    contact.profession
+                R.id.container, DetailViewFragment.newInstance(
+                    contact.name, contact.photo, contact.profession
                 )
             )
             addToBackStack(null)
@@ -224,8 +223,7 @@ class MyContactsFragment :
         with(binding) {
             tvAddContactMyContacts.setOnClickListener {
                 AddContactDialogFragment().show(
-                    childFragmentManager,
-                    AddContactDialogFragment.TAG
+                    childFragmentManager, AddContactDialogFragment.TAG
                 )
             }
             viewMyContactsArrowBack.setOnClickListener {
@@ -253,7 +251,6 @@ class MyContactsFragment :
 
 
     companion object {
-        const val TAG = "MyContactsFragment"
         /**
          * Use this factory method to create a new instance of
          * this fragment using the provided parameters.
