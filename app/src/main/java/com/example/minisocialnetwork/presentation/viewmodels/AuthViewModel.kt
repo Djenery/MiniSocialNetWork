@@ -28,7 +28,7 @@ class AuthViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val liveData = MutableLiveData<SingUpModel>()
-    val result: LiveData<SingUpModel> = liveData
+    private val result: LiveData<SingUpModel> = liveData
 
     private val _isAutoLoginEnabled = MutableLiveData<Boolean>()
     val isAutoLoginEnabled: LiveData<Boolean> = _isAutoLoginEnabled
@@ -38,7 +38,6 @@ class AuthViewModel @Inject constructor(
         viewModelScope.launch {
             while (isActive) {
                 val data = authRepositoryImpl.getCredentials()
-                liveData.value = data
                 _isAutoLoginEnabled.value = data.email.isNotEmpty() && data.password.isNotEmpty()
                 break
 

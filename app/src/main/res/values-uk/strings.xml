@@ -57,4 +57,9 @@
     <string name="tv_detail_view_profile">Профіль</string>
     <string name="contact_was_deleted">Контакт був видаленний</string>
     <string name="undo">Скасувати</string>
+
+    <!--  tabs for view pager fragment  -->
+    <string name="tab1">Мій профіль</string>
+    <string name="tab2">Контакти</string>
+    <string name="button_to_delete_selected_items">Кнопка для видалення виділенних елементів</string>
 </resources>

@@ -2,33 +2,42 @@ package com.example.minisocialnetwork.presentation.fragments
 
 import android.os.Bundle
 import android.transition.TransitionInflater
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.viewpager2.widget.ViewPager2
 import com.example.minisocialnetwork.R
 import com.example.minisocialnetwork.databinding.FragmentMyContactsBinding
 import com.example.minisocialnetwork.domain.model.Contact
 import com.example.minisocialnetwork.domain.repository.AddContactListener
 import com.example.minisocialnetwork.domain.repository.ItemListener
+import com.example.minisocialnetwork.domain.repository.MultiSelectListener
 import com.example.minisocialnetwork.presentation.adapter.ContactsAdapter
 import com.example.minisocialnetwork.presentation.adapter.IndentItemDecoration
 import com.example.minisocialnetwork.presentation.fragments.base.BaseFragment
+import com.example.minisocialnetwork.presentation.pager.ViewPagerFragmentDirections
 import com.example.minisocialnetwork.presentation.viewmodels.MyContactsViewModel
+import com.example.minisocialnetwork.util.Constants
 import com.example.minisocialnetwork.util.Flag.NAV_GRAPH
 import com.example.minisocialnetwork.util.extentions.onItemTouch
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 /**
 
  * A fragment that displays a list of contacts.
  */
+@AndroidEntryPoint
 class MyContactsFragment :
     BaseFragment<FragmentMyContactsBinding>(FragmentMyContactsBinding::inflate),
     AddContactListener {
@@ -45,13 +54,23 @@ class MyContactsFragment :
                 clickItem(contact, imageView)
             }
 
+        }, object : MultiSelectListener {
+
+            override fun addItemToSelectedState(item: Contact) {
+                mViewModel.addSelectedItem(item)
+            }
+
+            override fun removeItemFromSelectedState(item: Contact) {
+                mViewModel.removeSelectedItem(item)
+            }
+
         })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         sharedElementReturnTransition =
-            TransitionInflater.from(context).inflateTransition(android.R.transition.move)
+            TransitionInflater.from(context).inflateTransition(R.transition.move)
         initRecyclerView()
         setObservers()
         setListeners()
@@ -89,6 +108,18 @@ class MyContactsFragment :
         showSnackBar()
 
     }
+
+    private fun removeSelectedItems() {
+        mViewModel.deleteAllSelectedItems()
+        Snackbar.make(
+            binding.recyclerViewMyContacts, getString(R.string.contact_was_deleted),
+            Snackbar.LENGTH_LONG
+        ).setAction(getString(R.string.undo)) {
+            mViewModel.insertMultipleItems()
+        }.show()
+    }
+
+
 
     /**
 
@@ -129,7 +160,7 @@ class MyContactsFragment :
      */
     private fun navigateToDetailViewByNavComponent(contact: Contact, imageView: ImageView) {
         val action =
-            MyContactsFragmentDirections.actionToDetailViewFragment(contact)
+            ViewPagerFragmentDirections.actionMyContactsFragmentToDetailViewFragment(contact)
         val extras = FragmentNavigatorExtras(
             imageView to contact.photo + contact.id
         )
@@ -142,7 +173,7 @@ class MyContactsFragment :
      * @param contact The contact to display in the detail view.
      */
     private fun navigateToDetailViewByFragmentManager(contact: Contact) {
-        parentFragmentManager.commit {
+        requireActivity().supportFragmentManager.commit {
             setCustomAnimations(
                 R.anim.slide_in_right,
                 R.anim.slide_out_left,
@@ -150,7 +181,7 @@ class MyContactsFragment :
                 R.anim.slide_out_right
             )
             replace(
-                R.id.fragment_container,
+                R.id.container,
                 DetailViewFragment.newInstance(
                     contact.name,
                     contact.photo,
@@ -166,11 +197,24 @@ class MyContactsFragment :
      * Sets up observers for the ViewModel's contacts list.
      */
     private fun setObservers() {
-        lifecycleScope.launch {
-            mViewModel.contactsList.observe(viewLifecycleOwner) { contacts ->
-                adapter.submitList(contacts.toMutableList())
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+
+                mViewModel.contactsList.observe(viewLifecycleOwner) { contacts ->
+                    adapter.submitList(contacts.toMutableList())
+                }
+                mViewModel.multiSelectedState.observe(viewLifecycleOwner) {
+                    binding.floating.visibility = if (it) View.VISIBLE else View.GONE
+                    adapter.changeMultiselectState(it)
+                }
+                mViewModel.selectedItems.observe(viewLifecycleOwner) {
+                    Log.d("MyContactsFragment", "$it")
+                    adapter.changeMultiselectItems(it)
+                }
             }
         }
+
     }
 
     /**
@@ -185,11 +229,12 @@ class MyContactsFragment :
                 )
             }
             viewMyContactsArrowBack.setOnClickListener {
-                requireActivity().finish()
-                requireActivity().overridePendingTransition(
-                    R.anim.slide_in_left,
-                    R.anim.slide_out_right
-                )
+                val viewPager = requireActivity().findViewById<ViewPager2>(R.id.pager)
+                viewPager.currentItem = Constants.MY_PROFILE_PAGE
+            }
+
+            floating.setOnClickListener {
+                removeSelectedItems()
             }
 
         }
@@ -208,6 +253,7 @@ class MyContactsFragment :
 
 
     companion object {
+        const val TAG = "MyContactsFragment"
         /**
          * Use this factory method to create a new instance of
          * this fragment using the provided parameters.

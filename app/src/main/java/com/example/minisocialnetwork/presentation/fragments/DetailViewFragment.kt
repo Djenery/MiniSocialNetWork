@@ -5,16 +5,19 @@ import android.transition.TransitionInflater
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.minisocialnetwork.R
 import com.example.minisocialnetwork.databinding.FragmentDetailViewBinding
 import com.example.minisocialnetwork.presentation.fragments.base.BaseFragment
-import com.example.minisocialnetwork.util.Flag
+import com.example.minisocialnetwork.util.Flag.NAV_GRAPH
 import com.example.minisocialnetwork.util.extentions.urlLoader
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.concurrent.TimeUnit
 
 /**
 
  * A fragment that displays the detailed view of a contact.
  */
+@AndroidEntryPoint
 class DetailViewFragment :
     BaseFragment<FragmentDetailViewBinding>(FragmentDetailViewBinding::inflate) {
 
@@ -25,9 +28,9 @@ class DetailViewFragment :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (Flag.NAV_GRAPH) {
+        if (NAV_GRAPH) {
             sharedElementEnterTransition = TransitionInflater.from(context)
-                .inflateTransition(android.R.transition.move)
+                .inflateTransition(R.transition.move)
             postponeEnterTransition(250, TimeUnit.MILLISECONDS)
         } else {
             arguments?.let {
@@ -52,7 +55,7 @@ class DetailViewFragment :
      */
     private fun navigate() {
         with(binding) {
-            if (Flag.NAV_GRAPH) {
+            if (NAV_GRAPH) {
                 tvDetailViewUserName.text = args.Contact.name
                 ivDetailViewIconUser.urlLoader(args.Contact.photo)
                 ivDetailViewIconUser.transitionName = args.Contact.photo + args.Contact.id
@@ -72,7 +75,7 @@ class DetailViewFragment :
      * Handles the back press event and navigates back.
      */
     private fun onBackPress() {
-        if (Flag.NAV_GRAPH) {
+        if (NAV_GRAPH) {
             findNavController().popBackStack()
         } else {
             requireActivity().supportFragmentManager

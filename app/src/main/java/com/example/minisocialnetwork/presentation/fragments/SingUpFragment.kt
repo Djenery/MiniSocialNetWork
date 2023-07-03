@@ -1,15 +1,16 @@
 package com.example.minisocialnetwork.presentation.fragments
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.commit
 import androidx.navigation.fragment.findNavController
 import com.example.minisocialnetwork.R
 import com.example.minisocialnetwork.databinding.FragmentAuthBinding
+import com.example.minisocialnetwork.presentation.activities.MyContactsActivity
 import com.example.minisocialnetwork.presentation.fragments.base.BaseFragment
 import com.example.minisocialnetwork.presentation.viewmodels.AuthViewModel
 import com.example.minisocialnetwork.util.FieldsValidations.isMixedCase
@@ -31,6 +32,7 @@ import dagger.hilt.android.AndroidEntryPoint
  */
 @AndroidEntryPoint
 class SingUpFragment : BaseFragment<FragmentAuthBinding>(FragmentAuthBinding::inflate) {
+
     private val mViewModel: AuthViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -91,7 +93,7 @@ class SingUpFragment : BaseFragment<FragmentAuthBinding>(FragmentAuthBinding::in
                 singUpPassword.error = getString(R.string.error_empty_string)
                 return false
             } else if (singUpPasswordT.text.toString().length < 8) {
-                singUpPassword.error = getString(R.string.error_too_short_passwщrd)
+                singUpPassword.error = getString(R.string.error_too_short_password)
                 return false
             } else if (!isStringContainNumber(singUpPasswordT.text.toString())) {
                 singUpPassword.error = getString(R.string.error_at_least_one_digit)
@@ -127,12 +129,16 @@ class SingUpFragment : BaseFragment<FragmentAuthBinding>(FragmentAuthBinding::in
      */
     private fun navigateToMyProfile() {
         if (NAV_GRAPH) {
-            val action = SingUpFragmentDirections.actionSingUpFragmentToMyProfileFragment()
+            val action = SingUpFragmentDirections.actionSingUpFragmentToMyContactsActivity()
             findNavController().navigate(action)
         } else {
-            parentFragmentManager.commit {
-                replace(R.id.authFragmentContainer, MyProfileFragment.newInstance())
-            }
+            val intent = Intent(context, MyContactsActivity::class.java)
+            requireActivity().finish()
+            startActivity(intent)
+            requireActivity().overridePendingTransition(
+                R.anim.slide_in_right,
+                R.anim.slide_out_left
+            )
         }
     }
 

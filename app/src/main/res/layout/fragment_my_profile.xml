@@ -154,7 +154,7 @@
             style="@style/edit_bt_background"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/medium_padding"
+            android:layout_marginBottom="@dimen/medium_size"
             android:text="@string/bt_my_profile_edit_profile" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -162,7 +162,7 @@
             style="@style/view_my_contacts_bt_background"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/medium_padding"
+            android:layout_marginBottom="@dimen/medium_size"
             android:text="@string/bt_my_profile_view_my_contacts" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>

@@ -1,16 +1,14 @@
 package com.example.minisocialnetwork.presentation.fragments
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.viewModels
+import androidx.viewpager2.widget.ViewPager2
 import com.example.minisocialnetwork.R
 import com.example.minisocialnetwork.databinding.FragmentMyProfileBinding
-import com.example.minisocialnetwork.presentation.activities.MyContactsActivity
 import com.example.minisocialnetwork.presentation.fragments.base.BaseFragment
 import com.example.minisocialnetwork.presentation.viewmodels.AuthViewModel
-import com.example.minisocialnetwork.util.Flag.NAV_GRAPH
+import com.example.minisocialnetwork.presentation.viewmodels.MyProfileViewModel
 import com.example.minisocialnetwork.util.ParsingData
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -29,7 +27,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class MyProfileFragment :
     BaseFragment<FragmentMyProfileBinding>(FragmentMyProfileBinding::inflate) {
 
-    private val mViewModel: AuthViewModel by activityViewModels()
+    private val mViewModel: MyProfileViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -48,19 +46,8 @@ class MyProfileFragment :
      */
     private fun setListeners() {
         binding.btMyProfileMyContacts.setOnClickListener {
-            if (NAV_GRAPH) {
-                val action =
-                    MyProfileFragmentDirections.actionMyProfileFragmentToMyContactsActivity()
-                findNavController().navigate(action)
-            } else {
-                val intent = Intent(context, MyContactsActivity::class.java)
-                startActivity(intent)
-                requireActivity().overridePendingTransition(
-                    R.anim.slide_in_right,
-                    R.anim.slide_out_left
-                )
-            }
-
+            val viewPager = requireActivity().findViewById<ViewPager2>(R.id.pager)
+            viewPager.currentItem = 1
         }
     }
 

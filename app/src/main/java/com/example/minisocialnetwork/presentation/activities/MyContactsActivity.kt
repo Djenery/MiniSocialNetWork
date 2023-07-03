@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
 import androidx.navigation.fragment.NavHostFragment
 import com.example.minisocialnetwork.R
-import com.example.minisocialnetwork.presentation.fragments.MyContactsFragment
+import com.example.minisocialnetwork.presentation.pager.ViewPagerFragment
 import com.example.minisocialnetwork.util.Flag.NAV_GRAPH
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * The main activity for managing contacts.
  */
+@AndroidEntryPoint
 class MyContactsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,17 +20,17 @@ class MyContactsActivity : AppCompatActivity() {
         if (NAV_GRAPH) {
             val navHostFragment = NavHostFragment.create(R.navigation.nav_graph_contacts)
             supportFragmentManager.commit {
-                add(R.id.fragment_container, navHostFragment)
+                add(R.id.container, navHostFragment)
                 setPrimaryNavigationFragment(navHostFragment) // equivalent to app:defaultNavHost="true"
             }
         } else {
-            val fragment = MyContactsFragment.newInstance()
+            val fragment = ViewPagerFragment.newInstance()
             supportFragmentManager.commit {
-                add(R.id.fragment_container, fragment)
-                addToBackStack(null)
+                add(R.id.container, fragment)
                 setReorderingAllowed(true)
             }
         }
+
     }
 
 }

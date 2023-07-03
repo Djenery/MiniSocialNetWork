@@ -60,4 +60,9 @@
     <string name="contact_was_deleted">Contact was deleted</string>
     <string name="undo">UNDO</string>
 
+    <!--  tabs for view pager fragment  -->
+    <string name="tab1">My profile</string>
+    <string name="tab2">Contacts</string>
+    <string name="button_to_delete_selected_items">button to delete selected items</string>
+
 </resources>

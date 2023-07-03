@@ -25,9 +25,9 @@
     <dimen name="bt_google_sing_up_icon_padding">16dp</dimen>
 
     <!-- common used sized -->
-    <dimen name="large_padding">32dp</dimen>
-    <dimen name="medium_padding">16dp</dimen>
-    <dimen name="micro_padding">8dp</dimen>
+    <dimen name="large_size">32dp</dimen>
+    <dimen name="medium_size">16dp</dimen>
+    <dimen name="micro_size">8dp</dimen>
     <dimen name="medium_text">16sp</dimen>
     <dimen name="small_text">12sp</dimen>
 

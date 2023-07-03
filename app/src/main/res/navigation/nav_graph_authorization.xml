@@ -13,27 +13,19 @@
             android:id="@+id/action_loadingFragment_to_singUpFragment"
             app:destination="@id/singUpFragment" />
         <action
-            android:id="@+id/action_loadingFragment_to_myProfileFragment"
-            app:destination="@id/myProfileFragment" />
+            android:id="@+id/action_loadingFragment_to_myContactsActivity"
+            app:destination="@id/myContactsActivity" />
     </fragment>
     <fragment
         android:id="@+id/singUpFragment"
         android:name="com.example.minisocialnetwork.presentation.fragments.SingUpFragment"
         android:label="fragment_auth"
-        tools:layout="@layout/fragment_auth" >
+        tools:layout="@layout/fragment_auth">
         <action
-            android:id="@+id/action_singUpFragment_to_myProfileFragment"
-            app:destination="@id/myProfileFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/myProfileFragment"
-        android:name="com.example.minisocialnetwork.presentation.fragments.MyProfileFragment"
-        android:label="MyProfileFragment"
-        tools:layout="@layout/fragment_my_profile">
-        <action
-            android:id="@+id/action_myProfileFragment_to_myContactsActivity"
+            android:id="@+id/action_singUpFragment_to_myContactsActivity"
             app:destination="@id/myContactsActivity" />
     </fragment>
+
     <activity
         android:id="@+id/myContactsActivity"
         android:name="com.example.minisocialnetwork.presentation.activities.MyContactsActivity"

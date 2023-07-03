@@ -1,9 +1,11 @@
-package com.example.minisocialnetwork.presentation.adapter
+package com.example.minisocialnetwork.presentation.adapter.viewHolders
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.minisocialnetwork.databinding.ItemUserBinding
 import com.example.minisocialnetwork.domain.model.Contact
 import com.example.minisocialnetwork.domain.repository.ItemListener
+import com.example.minisocialnetwork.domain.repository.MultiSelectListener
+import com.example.minisocialnetwork.util.Flag.NAV_GRAPH
 import com.example.minisocialnetwork.util.extentions.urlLoader
 
 /**
@@ -13,7 +15,8 @@ import com.example.minisocialnetwork.util.extentions.urlLoader
  */
 class ContactsViewHolder(
     private val binding: ItemUserBinding,
-    private val listener: ItemListener
+    private val listener: ItemListener,
+    private val multiselectListener: MultiSelectListener
 ) : RecyclerView.ViewHolder(binding.root) {
 
 
@@ -26,7 +29,7 @@ class ContactsViewHolder(
             tvItemUserUserName.text = item.name
             tvItemUserProfession.text = item.profession
             ivItemUserUserIcon.urlLoader(item.photo)
-            ivItemUserUserIcon.transitionName = item.photo + item.id
+            if (NAV_GRAPH) ivItemUserUserIcon.transitionName = item.photo + item.id
         }
         setListeners(item)
     }
@@ -39,15 +42,14 @@ class ContactsViewHolder(
     private fun setListeners(item: Contact) {
         with(binding) {
             ivItemUserDeleteUser.setOnClickListener {
-                val position = adapterPosition
-                if (position != RecyclerView.NO_POSITION) {
-                    listener.onRemoveItem(position)
-                }
+                    listener.onRemoveItem(adapterPosition)
             }
             itemUser.setOnClickListener {
-                listener.onClickItem(
-                    item, ivItemUserUserIcon
-                )
+                listener.onClickItem(item, ivItemUserUserIcon)
+            }
+            itemUser.setOnLongClickListener {
+                multiselectListener.addItemToSelectedState(item)
+                true
             }
         }
     }

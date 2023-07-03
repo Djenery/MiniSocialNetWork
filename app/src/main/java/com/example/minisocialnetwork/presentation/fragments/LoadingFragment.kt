@@ -1,5 +1,6 @@
 package com.example.minisocialnetwork.presentation.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
@@ -7,6 +8,7 @@ import androidx.fragment.app.commit
 import androidx.navigation.fragment.findNavController
 import com.example.minisocialnetwork.R
 import com.example.minisocialnetwork.databinding.FragmentAuthBinding
+import com.example.minisocialnetwork.presentation.activities.MyContactsActivity
 import com.example.minisocialnetwork.presentation.fragments.base.BaseFragment
 import com.example.minisocialnetwork.presentation.viewmodels.AuthViewModel
 import com.example.minisocialnetwork.util.Flag.NAV_GRAPH
@@ -58,10 +60,9 @@ class LoadingFragment : BaseFragment<FragmentAuthBinding>(FragmentAuthBinding::i
     private fun navigateByNavGraph(isEnabled: Boolean) {
         with(findNavController()) {
             if (isEnabled) {
-                navigate(LoadingFragmentDirections.actionLoadingFragmentToMyProfileFragment())
+                navigate(LoadingFragmentDirections.actionLoadingFragmentToMyContactsActivity())
             } else {
                 navigate(LoadingFragmentDirections.actionLoadingFragmentToSingUpFragment())
-
             }
         }
 
@@ -77,18 +78,25 @@ class LoadingFragment : BaseFragment<FragmentAuthBinding>(FragmentAuthBinding::i
      */
     private fun navigateByFragmentManager(isEnabled: Boolean) {
         parentFragmentManager.commit {
-            setCustomAnimations(
-                R.anim.slide_in_right,
-                R.anim.slide_out_left,
-                R.anim.slide_in_left,
-                R.anim.slide_out_right
-            )
             if (isEnabled) {
-                replace(R.id.authFragmentContainer, MyProfileFragment.newInstance())
+                val intent = Intent(context, MyContactsActivity::class.java)
+                requireActivity().finish()
+                startActivity(intent)
+                requireActivity().overridePendingTransition(
+                    R.anim.slide_in_right,
+                    R.anim.slide_out_left
+                )
             } else {
+                setCustomAnimations(
+                    R.anim.slide_in_right,
+                    R.anim.slide_out_left,
+                    R.anim.slide_in_left,
+                    R.anim.slide_out_right
+                )
                 replace(R.id.authFragmentContainer, SingUpFragment.newInstance())
             }
         }
+
     }
 
     companion object {

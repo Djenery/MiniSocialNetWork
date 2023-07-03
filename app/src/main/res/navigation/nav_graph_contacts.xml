@@ -3,17 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/myContactsFragment">
-
-    <fragment
-        android:id="@+id/myContactsFragment"
-        android:name="com.example.minisocialnetwork.presentation.fragments.MyContactsFragment"
-        android:label="fragment_my_contacts"
-        tools:layout="@layout/fragment_my_contacts">
-        <action
-            android:id="@+id/actionToDetailViewFragment"
-            app:destination="@id/detailViewFragment" />
-    </fragment>
+    app:startDestination="@id/viewPagerFragment">
 
     <fragment
         android:id="@+id/detailViewFragment"
@@ -24,5 +14,25 @@
             android:name="Contact"
             app:argType="com.example.minisocialnetwork.domain.model.Contact" />
     </fragment>
+
+    <fragment
+        android:id="@+id/viewPagerFragment"
+        android:name="com.example.minisocialnetwork.presentation.pager.ViewPagerFragment"
+        android:label="PagerFragment"
+        tools:layout="@layout/fragment_view_pager"
+        >
+        <action
+            android:id="@+id/action_myContactsFragment_to_detailViewFragment"
+            app:destination="@id/detailViewFragment" />
+        <action
+            android:id="@+id/action_viewPagerFragment_to_myContactsFragment"
+            app:destination="@id/myContactsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myContactsFragment"
+        android:name="com.example.minisocialnetwork.presentation.fragments.MyContactsFragment"
+        android:label="fragment_my_contacts"
+        tools:layout="@layout/fragment_my_contacts" />
+
 
 </navigation>

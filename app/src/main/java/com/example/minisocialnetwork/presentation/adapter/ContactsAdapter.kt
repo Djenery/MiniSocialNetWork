@@ -1,55 +1,77 @@
 package com.example.minisocialnetwork.presentation.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.example.minisocialnetwork.databinding.ItemUserBinding
+import com.example.minisocialnetwork.databinding.ItemUserCheckboxBinding
 import com.example.minisocialnetwork.domain.model.Contact
 import com.example.minisocialnetwork.domain.repository.ItemListener
+import com.example.minisocialnetwork.domain.repository.MultiSelectListener
+import com.example.minisocialnetwork.presentation.adapter.viewHolders.ContactsMultiSelectionViewHolder
+import com.example.minisocialnetwork.presentation.adapter.viewHolders.ContactsViewHolder
 
 
-/**
+class ContactsAdapter(
+    private val itemListener: ItemListener,
+    private val multiselectListener: MultiSelectListener
+) :
+    ListAdapter<Contact, RecyclerView.ViewHolder>(ContactsDiffUtil()) {
+    private var isMultiselectEnabled = false
+    private var selectedItems = listOf<Contact>()
 
-Adapter class for the Contacts RecyclerView.
-
-This class extends the ListAdapter class and provides the necessary implementation
-
-to bind the Contact items to the ContactsViewHolder and handle item removal through
-
-the RemoveItemListener.
-
-@param listener The listener for item removal events.
- */
-class ContactsAdapter(private val listener: ItemListener) :
-    ListAdapter<Contact, ContactsViewHolder>(ContactsDiffUtil()) {
-
-    /**
-
-    Creates a new ContactsViewHolder and initializes it with the inflated view
-    from the specified parent ViewGroup.
-
-    @param parent The parent ViewGroup.
-
-    @param viewType The view type of the new view.
-
-    @return The created ContactsViewHolder.
-     */
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactsViewHolder {
-        return ContactsViewHolder(
-            ItemUserBinding.inflate(LayoutInflater.from(parent.context), parent, false), listener
-        )
+    private enum class ViewType {
+        Normal, Multiselect
     }
 
-    /**
-
-    Binds the Contact item at the specified position to the ContactsViewHolder.
-
-    @param holder The ContactsViewHolder to bind the item to.
-
-    @param position The position of the item in the list.
-     */
-    override fun onBindViewHolder(holder: ContactsViewHolder, position: Int) {
-        holder.bind(getItem(position))
+    override fun getItemViewType(position: Int): Int {
+        return if (isMultiselectEnabled) ViewType.Multiselect.ordinal else ViewType.Normal.ordinal
     }
 
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return if (isMultiselectEnabled) {
+            ContactsMultiSelectionViewHolder(
+                ItemUserCheckboxBinding.inflate(LayoutInflater.from(parent.context), parent, false),
+                ::onMultiselectItemStateChange
+            )
+        } else {
+            ContactsViewHolder(
+                ItemUserBinding.inflate(LayoutInflater.from(parent.context), parent, false),
+                itemListener,
+                multiselectListener
+            )
+        }
+
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun changeMultiselectState(isMultiselectEnabled: Boolean) {
+        this.isMultiselectEnabled = isMultiselectEnabled
+        notifyDataSetChanged()
+    }
+
+    fun changeMultiselectItems(selectedItems: List<Contact>) {
+        this.selectedItems = selectedItems
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when (holder) {
+            is ContactsViewHolder -> holder.bind(getItem(position))
+            is ContactsMultiSelectionViewHolder -> holder.bind(
+                getItem(position),
+                selectedItems.contains(getItem(position))
+            )
+        }
+    }
+
+    private fun onMultiselectItemStateChange(isChecked: Boolean, item: Contact) {
+        if (isChecked) {
+            multiselectListener.addItemToSelectedState(item)
+        } else {
+            multiselectListener.removeItemFromSelectedState(item)
+        }
+    }
 }
+
