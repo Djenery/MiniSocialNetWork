@@ -24,15 +24,6 @@
         <action
             android:id="@+id/action_myContactsFragment_to_detailViewFragment"
             app:destination="@id/detailViewFragment" />
-        <action
-            android:id="@+id/action_viewPagerFragment_to_myContactsFragment"
-            app:destination="@id/myContactsFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/myContactsFragment"
-        android:name="com.example.minisocialnetwork.presentation.fragments.MyContactsFragment"
-        android:label="fragment_my_contacts"
-        tools:layout="@layout/fragment_my_contacts" />
-
 
 </navigation>

@@ -32,8 +32,5 @@ class MyContactsActivity : AppCompatActivity() {
                 }
             }
         }
-
-
     }
-
 }

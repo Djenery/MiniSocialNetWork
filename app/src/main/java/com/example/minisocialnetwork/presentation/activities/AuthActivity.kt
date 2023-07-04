@@ -18,22 +18,24 @@ class AuthActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
-        if (NAV_GRAPH) {
-            val navHostFragment = NavHostFragment.create(R.navigation.nav_graph_authorization)
-            supportFragmentManager.commit {
-                add(R.id.authFragmentContainer, navHostFragment)
-                setPrimaryNavigationFragment(navHostFragment)
-            }
-        } else {
-            val fragment = LoadingFragment.newInstance()
-            supportFragmentManager.commit {
-                add(R.id.authFragmentContainer, fragment)
-                setReorderingAllowed(true)
+        if (savedInstanceState == null) {
+            if (NAV_GRAPH) {
+                val navHostFragment = NavHostFragment.create(R.navigation.nav_graph_authorization)
+                supportFragmentManager.commit {
+                    add(R.id.authFragmentContainer, navHostFragment)
+                    setPrimaryNavigationFragment(navHostFragment)
+                }
+            } else {
+                val fragment = LoadingFragment.newInstance()
+                supportFragmentManager.commit {
+                    add(R.id.authFragmentContainer, fragment)
+                    setReorderingAllowed(true)
+                }
             }
         }
-
     }
 
 }
+
 
 

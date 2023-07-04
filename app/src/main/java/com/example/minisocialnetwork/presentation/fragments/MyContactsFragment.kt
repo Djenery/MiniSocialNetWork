@@ -70,9 +70,7 @@ class MyContactsFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        sharedElementReturnTransition =
-            TransitionInflater.from(context).inflateTransition(R.transition.move)
-        postponeEnterTransition(250, TimeUnit.MILLISECONDS)
+
         initRecyclerView()
         setObservers()
         setListeners()
