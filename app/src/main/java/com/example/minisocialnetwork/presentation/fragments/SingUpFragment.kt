@@ -3,6 +3,7 @@ package com.example.minisocialnetwork.presentation.fragments
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.core.widget.doOnTextChanged
@@ -37,6 +38,7 @@ class SingUpFragment : BaseFragment<FragmentAuthBinding>(FragmentAuthBinding::in
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Log.d("singUpFragment", "singUpFragment was launched")
         setListeners()
     }
 
@@ -55,13 +57,13 @@ class SingUpFragment : BaseFragment<FragmentAuthBinding>(FragmentAuthBinding::in
                 if (validateEmail() && validatePassword()) {
                     saveData()
                     navigateToMyProfile()
+                    requireActivity().finish()
                 }
             }
             binding.root.setOnClickListener {
                 hideKeyboard()
             }
         }
-
     }
 
     /**
@@ -133,7 +135,6 @@ class SingUpFragment : BaseFragment<FragmentAuthBinding>(FragmentAuthBinding::in
             findNavController().navigate(action)
         } else {
             val intent = Intent(context, MyContactsActivity::class.java)
-            requireActivity().finish()
             startActivity(intent)
             requireActivity().overridePendingTransition(
                 R.anim.slide_in_right,

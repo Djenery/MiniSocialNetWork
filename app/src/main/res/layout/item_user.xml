@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/item_user"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/item_user_background"
-    >
+    android:background="@drawable/item_user_background">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_item_user_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.08"
-        />
+        app:layout_constraintGuide_percent="0.08" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_item_user_start"
@@ -48,41 +45,40 @@
         android:id="@+id/iv_item_user_user_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_person"
         android:contentDescription="@string/iv_user_icon"
+        android:src="@drawable/ic_person_black"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_item_user_bottom"
         app:layout_constraintStart_toStartOf="@id/guideline_item_user_start"
-        app:layout_constraintTop_toTopOf="@id/guideline_item_user_top"
-        app:layout_constraintBottom_toBottomOf="@id/guideline_item_user_bottom" />
+        app:layout_constraintTop_toTopOf="@id/guideline_item_user_top" />
 
     <TextView
         android:id="@+id/tv_item_user_user_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/tv_user_name"
-        android:textSize="@dimen/medium_text"
-        android:textColor="@color/black"
+        android:ellipsize="end"
+        android:lines="1"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
-        android:lines="1"
-        android:ellipsize="end"
-        app:layout_constraintVertical_chainStyle="spread"
-        app:layout_constraintTop_toTopOf="@id/guideline_item_user_top"
-        app:layout_constraintStart_toEndOf="@id/guideline_item_user_text_views"
-        app:layout_constraintEnd_toStartOf="@+id/iv_item_user_delete_user"
+        android:text="@string/tv_user_name"
+        android:textColor="@color/black"
+        android:textSize="@dimen/medium_text"
         app:layout_constraintBottom_toTopOf="@id/tv_item_user_profession"
-        />
+        app:layout_constraintEnd_toStartOf="@+id/iv_item_user_delete_user"
+        app:layout_constraintStart_toEndOf="@id/guideline_item_user_text_views"
+        app:layout_constraintTop_toTopOf="@id/guideline_item_user_top"
+        app:layout_constraintVertical_chainStyle="spread" />
 
     <TextView
         android:id="@+id/tv_item_user_profession"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/tv_profession"
-        android:textSize="@dimen/small_text"
-        android:textColor="@color/black"
+        android:ellipsize="end"
+        android:lines="1"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
-        android:lines="1"
-        android:ellipsize="end"
+        android:text="@string/tv_profession"
+        android:textColor="@color/black"
+        android:textSize="@dimen/small_text"
         app:layout_constraintBottom_toBottomOf="@id/guideline_item_user_bottom"
         app:layout_constraintEnd_toStartOf="@+id/iv_item_user_delete_user"
         app:layout_constraintStart_toEndOf="@id/guideline_item_user_text_views"
@@ -92,13 +88,11 @@
         android:id="@+id/iv_item_user_delete_user"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:contentDescription="@string/iv_item_user_delete_ic"
         android:src="@drawable/delete"
-        app:layout_constraintEnd_toEndOf="@id/guideline_item_user_end"
-        app:layout_constraintTop_toTopOf="@id/guideline_item_user_top"
         app:layout_constraintBottom_toBottomOf="@id/tv_item_user_profession"
-        android:contentDescription="@string/iv_item_user_delete_ic" />
-
-
+        app:layout_constraintEnd_toEndOf="@id/guideline_item_user_end"
+        app:layout_constraintTop_toTopOf="@id/guideline_item_user_top" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

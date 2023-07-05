@@ -42,14 +42,23 @@ class ContactsViewHolder(
     private fun setListeners(item: Contact) {
         with(binding) {
             ivItemUserDeleteUser.setOnClickListener {
-                    listener.onRemoveItem(adapterPosition)
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    listener.onRemoveItem(position)
+                }
             }
             itemUser.setOnClickListener {
-                listener.onClickItem(item, ivItemUserUserIcon)
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    listener.onClickItem(item, ivItemUserUserIcon)
+                }
             }
             itemUser.setOnLongClickListener {
-                multiselectListener.addItemToSelectedState(item)
-                true
+                val position = adapterPosition
+                if(position != RecyclerView.NO_POSITION){
+                    multiselectListener.addItemToSelectedState(item)
+                }
+                    true
             }
         }
     }

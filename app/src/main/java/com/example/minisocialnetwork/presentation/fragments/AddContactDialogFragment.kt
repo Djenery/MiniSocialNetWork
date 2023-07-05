@@ -10,7 +10,6 @@ import androidx.fragment.app.DialogFragment
 import com.example.minisocialnetwork.databinding.AddContactDialogBinding
 import com.example.minisocialnetwork.domain.repository.AddContactListener
 
-
 /**
  * A dialog fragment used for adding a contact.
  */
@@ -42,6 +41,10 @@ class AddContactDialogFragment : DialogFragment() {
      */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setListeners()
+    }
+
+    private fun setListeners() {
         with(binding) {
             btAddContactSave.setOnClickListener {
                 listener?.onAddContact(
@@ -53,11 +56,12 @@ class AddContactDialogFragment : DialogFragment() {
             ibAddContactArrow.setOnClickListener {
                 dismiss()
             }
+            listener = parentFragment as? AddContactListener
+            root.setOnClickListener {
+                hideKeyboard()
+            }
         }
-        listener = parentFragment as? AddContactListener
-        view.setOnClickListener {
-            hideKeyboard()
-        }
+
     }
 
     private fun hideKeyboard() {
@@ -72,9 +76,9 @@ class AddContactDialogFragment : DialogFragment() {
      * It releases references to the binding and listener to avoid memory leaks.
      */
     override fun onDestroyView() {
-        super.onDestroyView()
         _binding = null
         listener = null
+        super.onDestroyView()
     }
 
     companion object {

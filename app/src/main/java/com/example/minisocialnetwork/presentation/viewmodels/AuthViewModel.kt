@@ -8,6 +8,7 @@ import com.example.minisocialnetwork.data.AuthRepositoryImpl
 import com.example.minisocialnetwork.data.SingUpModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -36,6 +37,7 @@ class AuthViewModel @Inject constructor(
     init {
         // Initialize the ViewModel and observe the authentication state
         viewModelScope.launch {
+            delay(5000)
             while (isActive) {
                 val data = authRepositoryImpl.getCredentials()
                 _isAutoLoginEnabled.value = data.email.isNotEmpty() && data.password.isNotEmpty()

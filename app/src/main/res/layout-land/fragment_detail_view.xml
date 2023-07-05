@@ -21,7 +21,7 @@
 
     <View
         android:id="@+id/view_detail_view_top"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/dark_blue"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,7 +31,6 @@
 
     <View
         android:id="@+id/view_detail_view_bottom"
-        style="@style/background_view_bottom"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,10 +40,10 @@
 
 
     <TextView
-        android:id="@+id/tv_title_detail_view"
+        android:id="@+id/tv_detail_view_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/large_size"
+        android:layout_marginTop="@dimen/medium_size"
         android:fontFamily="@font/audio_wide"
         android:text="@string/tv_detail_view_profile"
         android:textColor="@color/white"
@@ -57,7 +56,7 @@
         android:id="@+id/iv_detail_view_arrow_back"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/large_size"
+        android:layout_marginTop="@dimen/medium_size"
         android:clickable="true"
         android:contentDescription="@string/bt_go_back"
         android:focusable="true"
@@ -66,64 +65,63 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TouchTargetSizeCheck" />
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <ImageView
+        android:id="@+id/iv_detail_view_icon_user"
+        android:layout_width="90dp"
+        android:layout_height="80dp"
+        android:contentDescription="@string/iv_user_icon"
+        android:src="@drawable/ic_person"
+        app:layout_constraintBottom_toBottomOf="@id/view_detail_view_top"
+        app:layout_constraintEnd_toStartOf="@id/tv_detail_view_profile"
+        app:layout_constraintStart_toEndOf="@id/iv_detail_view_arrow_back"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/tv_detail_view_user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/large_size"
-        android:gravity="center"
-        android:orientation="vertical"
+        android:fontFamily="@font/audio_wide"
+        android:text="@string/tv_user_name"
+        android:textColor="@color/white"
+        android:textSize="@dimen/tv_user_name"
+        app:layout_constraintBottom_toTopOf="@id/tv_detail_view_career"
         app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
-        app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
-        app:layout_constraintTop_toBottomOf="@id/tv_title_detail_view">
+        app:layout_constraintStart_toEndOf="@id/tv_detail_view_profile"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
 
-        <ImageView
-            android:id="@+id/iv_detail_view_icon_user"
-            android:layout_width="@dimen/profiles_image_size"
-            android:layout_height="@dimen/profiles_image_size"
-            android:contentDescription="@string/iv_user_icon"
-            android:src="@drawable/ic_person"
-            />
+    <TextView
+        android:id="@+id/tv_detail_view_career"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/audio_wide"
+        android:text="@string/tv_profession"
+        android:textColor="@color/semi_transparent_blue_gray"
+        android:textSize="@dimen/tv_detail_view_career"
+        app:layout_constraintBottom_toTopOf="@id/tv_detail_view_address"
+        app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
+        app:layout_constraintStart_toEndOf="@id/tv_detail_view_profile"
+        app:layout_constraintTop_toBottomOf="@id/tv_detail_view_user_name" />
 
-        <TextView
-            android:id="@+id/tv_detail_view_user_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/medium_size"
-            android:fontFamily="@font/audio_wide"
-            android:text="@string/tv_user_name"
-            android:textColor="@color/white"
-            android:textSize="@dimen/tv_user_name"
-            />
-
-
-        <TextView
-            android:id="@+id/tv_detail_view_career"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/medium_size"
-            android:fontFamily="@font/audio_wide"
-            android:text="@string/tv_profession"
-            android:textColor="@color/semi_transparent_blue_gray"
-            android:textSize="@dimen/tv_detail_view_career"
-            />
-
-        <TextView
-            android:id="@+id/tv_detail_view_address"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/medium_size"
-            android:fontFamily="@font/audio_wide"
-            android:text="@string/tv_address"
-            android:textColor="@color/semi_transparent_blue_gray"
-            android:textSize="@dimen/tv_detail_view_address" />
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
+    <TextView
+        android:id="@+id/tv_detail_view_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/audio_wide"
+        android:text="@string/tv_address"
+        android:textColor="@color/semi_transparent_blue_gray"
+        android:textSize="@dimen/tv_detail_view_address"
+        app:layout_constraintBottom_toBottomOf="@id/view_detail_view_top"
+        app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
+        app:layout_constraintStart_toEndOf="@id/tv_detail_view_profile"
+        app:layout_constraintTop_toBottomOf="@id/tv_detail_view_career" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/social_media_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_top_profiles_linear"
+        android:layout_marginTop="@dimen/large_size"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
@@ -131,7 +129,7 @@
         app:layout_constraintTop_toBottomOf="@id/view_detail_view_top">
 
         <ImageView
-            android:id="@+id/iv_detail_view_facebook_icon"
+            android:id="@+id/iv_my_profile_land_facebook_icon"
             style="@style/facebook_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -139,7 +137,7 @@
             android:contentDescription="@string/iv_link_to_facebook" />
 
         <ImageView
-            android:id="@+id/iv_detail_view_linkedin_land_icon"
+            android:id="@+id/iv_my_profile_linkedin_land_icon"
             style="@style/linkedin_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -147,13 +145,12 @@
             android:contentDescription="@string/iv_link_to_linkedin" />
 
         <ImageView
-            android:id="@+id/iv_detail_view_instagram_icon"
+            android:id="@+id/iv_my_profile_land_instagram_icon"
             style="@style/instagram_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:contentDescription="@string/iv_link_to_instagram" />
-
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.AppCompatButton
@@ -166,8 +163,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
         app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
-
         tools:ignore="VisualLintButtonSize" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

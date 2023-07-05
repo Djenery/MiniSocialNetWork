@@ -43,7 +43,7 @@
         android:id="@+id/setting_my_profile_tv_land"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/medium_size"
         android:fontFamily="@font/audio_wide"
         android:text="@string/tv_my_profile_settings"
         android:textColor="@color/white"
@@ -53,8 +53,8 @@
 
     <ImageView
         android:id="@+id/my_profile_icon_iv_land"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/profiles_image_size"
+        android:layout_height="@dimen/profiles_image_size"
         android:contentDescription="@string/iv_my_profile_person"
         android:src="@mipmap/me_round"
         app:layout_constraintBottom_toBottomOf="@+id/view_my_profile_top"

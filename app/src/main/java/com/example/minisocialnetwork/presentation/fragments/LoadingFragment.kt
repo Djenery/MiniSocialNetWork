@@ -2,9 +2,11 @@ package com.example.minisocialnetwork.presentation.fragments
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.commit
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.minisocialnetwork.R
 import com.example.minisocialnetwork.databinding.FragmentAuthBinding
@@ -13,6 +15,8 @@ import com.example.minisocialnetwork.presentation.fragments.base.BaseFragment
 import com.example.minisocialnetwork.presentation.viewmodels.AuthViewModel
 import com.example.minisocialnetwork.util.Flag.NAV_GRAPH
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 /**
 
@@ -39,6 +43,7 @@ class LoadingFragment : BaseFragment<FragmentAuthBinding>(FragmentAuthBinding::i
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         mViewModel.isAutoLoginEnabled.observe(viewLifecycleOwner) {
             it?.let {
                 if (NAV_GRAPH) {
@@ -60,8 +65,11 @@ class LoadingFragment : BaseFragment<FragmentAuthBinding>(FragmentAuthBinding::i
     private fun navigateByNavGraph(isEnabled: Boolean) {
         with(findNavController()) {
             if (isEnabled) {
+                Log.d("autoLogin", "autoLogin is inside of true scope")
                 navigate(LoadingFragmentDirections.actionLoadingFragmentToMyContactsActivity())
+                requireActivity().finish()
             } else {
+                Log.d("autoLogin", "autoLogin is out of true scope")
                 navigate(LoadingFragmentDirections.actionLoadingFragmentToSingUpFragment())
             }
         }
