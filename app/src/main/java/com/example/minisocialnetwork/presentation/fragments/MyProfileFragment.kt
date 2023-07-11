@@ -31,10 +31,10 @@ class MyProfileFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         mViewModel.result.observe(viewLifecycleOwner) { data ->
             val userName = ParsingData.getUserName(data.email)
             binding.tvMyProfileUserName.text = userName
-
         }
         setListeners()
 

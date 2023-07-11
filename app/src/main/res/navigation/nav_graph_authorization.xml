@@ -16,6 +16,7 @@
             android:id="@+id/action_loadingFragment_to_myContactsActivity"
             app:destination="@id/myContactsActivity" />
     </fragment>
+
     <fragment
         android:id="@+id/singUpFragment"
         android:name="com.example.minisocialnetwork.presentation.fragments.SingUpFragment"
@@ -31,4 +32,5 @@
         android:name="com.example.minisocialnetwork.presentation.activities.MyContactsActivity"
         android:label="activity_my_contacts"
         tools:layout="@layout/activity_my_contacts" />
+
 </navigation>

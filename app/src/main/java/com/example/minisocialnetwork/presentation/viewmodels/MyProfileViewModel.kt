@@ -21,7 +21,7 @@ class MyProfileViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            liveData.value = authRepositoryImpl.getCredentials()
+            liveData.value = authRepositoryImpl.getSignUpCredentials()
         }
     }
 

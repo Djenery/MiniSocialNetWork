@@ -1,4 +1,4 @@
-package com.example.minisocialnetwork.data
+package com.example.minisocialnetwork.data.repository
 
 import android.content.Context
 import androidx.datastore.core.DataStore
@@ -6,21 +6,20 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import com.example.minisocialnetwork.data.SingUpModel
 import com.example.minisocialnetwork.domain.repository.LocalAuthRepository
 import com.example.minisocialnetwork.util.Constants.DATA_STORE_NAME
 import com.example.minisocialnetwork.util.Constants.EMAIL
 import com.example.minisocialnetwork.util.Constants.PASSWORD
 import kotlinx.coroutines.flow.first
 import javax.inject.Inject
-import javax.inject.Singleton
 
 /**
  * Class responsible for storing and retrieving user data using DataStore.
  * @param appContext The application context.
  */
-@Singleton
 class StoreUserData @Inject constructor(private val appContext: Context) :
-    LocalAuthRepository {
+    DataStoreInterface {
     companion object {
         val Context.dataStore: DataStore<Preferences> by preferencesDataStore(
             DATA_STORE_NAME

@@ -6,16 +6,6 @@
     app:startDestination="@id/viewPagerFragment">
 
     <fragment
-        android:id="@+id/detailViewFragment"
-        android:name="com.example.minisocialnetwork.presentation.fragments.DetailViewFragment"
-        android:label="DetailViewFragment"
-        tools:layout="@layout/fragment_detail_view">
-        <argument
-            android:name="Contact"
-            app:argType="com.example.minisocialnetwork.domain.model.Contact" />
-    </fragment>
-
-    <fragment
         android:id="@+id/viewPagerFragment"
         android:name="com.example.minisocialnetwork.presentation.pager.ViewPagerFragment"
         android:label="PagerFragment"
@@ -24,6 +14,17 @@
         <action
             android:id="@+id/action_myContactsFragment_to_detailViewFragment"
             app:destination="@id/detailViewFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailViewFragment"
+        android:name="com.example.minisocialnetwork.presentation.fragments.DetailViewFragment"
+        android:label="DetailViewFragment"
+        tools:layout="@layout/fragment_detail_view">
+        <argument
+            android:name="Contact"
+            app:argType="com.example.minisocialnetwork.domain.model.Contact" />
+
     </fragment>
 
 </navigation>

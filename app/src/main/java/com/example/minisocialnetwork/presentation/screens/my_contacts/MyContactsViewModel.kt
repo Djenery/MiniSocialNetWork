@@ -1,4 +1,4 @@
-package com.example.minisocialnetwork.presentation.viewmodels
+package com.example.minisocialnetwork.presentation.screens.my_contacts
 
 import android.util.Log
 import androidx.lifecycle.LiveData

@@ -1,7 +1,6 @@
-package com.example.minisocialnetwork.presentation.fragments
+package com.example.minisocialnetwork.presentation.screens.my_contacts
 
 import android.os.Bundle
-import android.transition.TransitionInflater
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
@@ -23,16 +22,16 @@ import com.example.minisocialnetwork.domain.repository.ItemListener
 import com.example.minisocialnetwork.domain.repository.MultiSelectListener
 import com.example.minisocialnetwork.presentation.adapter.ContactsAdapter
 import com.example.minisocialnetwork.presentation.adapter.IndentItemDecoration
+import com.example.minisocialnetwork.presentation.fragments.AddContactDialogFragment
+import com.example.minisocialnetwork.presentation.fragments.DetailViewFragment
 import com.example.minisocialnetwork.presentation.fragments.base.BaseFragment
 import com.example.minisocialnetwork.presentation.pager.ViewPagerFragmentDirections
-import com.example.minisocialnetwork.presentation.viewmodels.MyContactsViewModel
 import com.example.minisocialnetwork.util.Constants
 import com.example.minisocialnetwork.util.Flag.NAV_GRAPH
 import com.example.minisocialnetwork.util.extentions.onItemTouch
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import java.util.concurrent.TimeUnit
 
 /**
 

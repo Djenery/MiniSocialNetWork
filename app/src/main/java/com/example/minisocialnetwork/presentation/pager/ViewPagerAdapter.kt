@@ -2,7 +2,7 @@ package com.example.minisocialnetwork.presentation.pager
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.minisocialnetwork.presentation.fragments.MyContactsFragment
+import com.example.minisocialnetwork.presentation.screens.my_contacts.MyContactsFragment
 import com.example.minisocialnetwork.presentation.fragments.MyProfileFragment
 
 class ViewPagerAdapter(

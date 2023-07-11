@@ -6,7 +6,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.minisocialnetwork.data.AuthRepositoryImpl
 import com.example.minisocialnetwork.data.SingUpModel
+import com.example.minisocialnetwork.domain.repository.LocalAuthRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
@@ -25,7 +27,7 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class AuthViewModel @Inject constructor(
-    private val authRepositoryImpl: AuthRepositoryImpl
+    private val authRepositoryImpl: LocalAuthRepository
 ) : ViewModel() {
 
     private val liveData = MutableLiveData<SingUpModel>()
@@ -36,13 +38,12 @@ class AuthViewModel @Inject constructor(
 
     init {
         // Initialize the ViewModel and observe the authentication state
-        viewModelScope.launch {
+        viewModelScope.launch(IO) {
             delay(5000)
             while (isActive) {
-                val data = authRepositoryImpl.getCredentials()
-                _isAutoLoginEnabled.value = data.email.isNotEmpty() && data.password.isNotEmpty()
+                val data = authRepositoryImpl.getSignUpCredentials()
+                _isAutoLoginEnabled.postValue(data.email.isNotEmpty() && data.password.isNotEmpty())
                 break
-
             }
         }
     }
@@ -58,7 +59,7 @@ class AuthViewModel @Inject constructor(
         updateAutoLoginState(data)
 
         viewModelScope.launch(IO) {
-            authRepositoryImpl.saveCredentials(data)
+            authRepositoryImpl.saveSignUpCredentials(data)
         }
     }
 
