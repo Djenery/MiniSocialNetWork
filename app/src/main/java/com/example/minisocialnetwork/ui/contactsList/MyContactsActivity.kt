@@ -1,6 +1,7 @@
 package com.example.minisocialnetwork.ui.contactsList
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +11,7 @@ import com.example.minisocialnetwork.R
 import com.example.minisocialnetwork.databinding.ActivityMyContactsBinding
 import com.example.minisocialnetwork.domain.contracts.AddContactListener
 import com.example.minisocialnetwork.domain.contracts.RemoveItemListener
+import com.example.minisocialnetwork.domain.model.Contact
 import com.example.minisocialnetwork.ui.contactsList.adapter.ContactsAdapter
 import com.example.minisocialnetwork.ui.contactsList.adapter.IndentItemDecoration
 import com.example.minisocialnetwork.util.Constants.UNDO
@@ -22,7 +24,7 @@ import kotlinx.coroutines.launch
  */
 class MyContactsActivity : AppCompatActivity(), AddContactListener, RemoveItemListener {
     private lateinit var binding: ActivityMyContactsBinding
-    private val adapter: ContactsAdapter by lazy {
+    private val contactsAdapter: ContactsAdapter by lazy {
         ContactsAdapter(this)
     }
 
@@ -47,13 +49,15 @@ class MyContactsActivity : AppCompatActivity(), AddContactListener, RemoveItemLi
      * Initializes the RecyclerView for displaying contacts.
      */
     private fun initRecyclerView() {
-        with(binding) {
-            recyclerViewMyContacts.layoutManager = LinearLayoutManager(this@MyContactsActivity)
-            recyclerViewMyContacts.adapter = adapter
-            recyclerViewMyContacts.addItemDecoration(IndentItemDecoration())
-            recyclerViewMyContacts.onItemTouch { item ->
+        with(binding.recyclerViewMyContacts) {
+            layoutManager = LinearLayoutManager(this@MyContactsActivity)
+            adapter = contactsAdapter
+            addItemDecoration(IndentItemDecoration())
+            onItemTouch { item ->
                 val position = item.adapterPosition
-                onRemoveItem(position)
+                contactsAdapter.currentList.getOrNull(position)?.let {
+                    onRemoveItem(position, it)
+                }
             }
         }
     }
@@ -63,12 +67,10 @@ class MyContactsActivity : AppCompatActivity(), AddContactListener, RemoveItemLi
      *
      * @param position The position of the removed item.
      */
-    override fun onRemoveItem(position: Int) {
-        val contact = adapter.currentList[position]
-        val listPosition = adapter.currentList.indexOf(contact)
+    override fun onRemoveItem(position: Int, contact: Contact) {
         viewModel.deleteContact(contact)
         Snackbar.make(
-            binding.recyclerViewMyContacts, listPosition.toString(),
+            binding.recyclerViewMyContacts, position.toString(),
             Snackbar.LENGTH_LONG
         ).setAction(UNDO) { _: View? ->
             viewModel.insertAt(contact, position)
@@ -81,7 +83,7 @@ class MyContactsActivity : AppCompatActivity(), AddContactListener, RemoveItemLi
     private fun setObservers() {
         lifecycleScope.launch {
             viewModel.contactsList.observe(this@MyContactsActivity) { contacts ->
-                adapter.submitList(contacts.toMutableList())
+                contactsAdapter.submitList(contacts.toMutableList())
             }
         }
     }

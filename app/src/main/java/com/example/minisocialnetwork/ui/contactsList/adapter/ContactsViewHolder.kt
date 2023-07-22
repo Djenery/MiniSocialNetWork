@@ -26,17 +26,18 @@ class ContactsViewHolder(
             tvItemUserProfession.text = item.profession
             ivItemUserUserIcon.urlLoader(item.photo)
         }
+        setListeners(item)
     }
 
     /**
      * Sets the click listener for the user item view.
      * The listener triggers the removal of the item at the current adapter position.
      */
-    fun setListeners() {
+    private fun setListeners(contact: Contact) {
         binding.ivItemUserDeleteUser.setOnClickListener {
             val position = adapterPosition
             if (position != RecyclerView.NO_POSITION) {
-                listener.onRemoveItem(position)
+                listener.onRemoveItem(position, contact)
             }
         }
     }

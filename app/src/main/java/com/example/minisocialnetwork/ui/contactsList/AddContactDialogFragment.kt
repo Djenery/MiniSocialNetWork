@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.activityViewModels
 import com.example.minisocialnetwork.databinding.AddContactDialogBinding
 import com.example.minisocialnetwork.domain.contracts.AddContactListener
 

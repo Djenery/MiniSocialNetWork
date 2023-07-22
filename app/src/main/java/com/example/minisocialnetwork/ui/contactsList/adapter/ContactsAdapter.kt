@@ -35,9 +35,10 @@ class ContactsAdapter(private val listener: RemoveItemListener) :
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactsViewHolder {
         return ContactsViewHolder(
-            ItemUserBinding.inflate(
+            binding = ItemUserBinding.inflate(
                 LayoutInflater.from(parent.context), parent, false
-            ), listener
+            ),
+            listener = listener
         )
     }
 
@@ -51,7 +52,6 @@ class ContactsAdapter(private val listener: RemoveItemListener) :
      */
     override fun onBindViewHolder(holder: ContactsViewHolder, position: Int) {
         holder.bind(getItem(position))
-        holder.setListeners()
     }
 
 }

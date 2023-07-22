@@ -52,9 +52,11 @@ class AuthActivity : AppCompatActivity() {
      * Passes data to another activity
      */
     private fun passDataToAnotherActivity() {
-        val intent = Intent(this, MyProfileActivity::class.java)
-        intent.putExtra(EMAIL, binding.singUpEMailEt.text.toString())
-        startActivity(intent)
+        startActivity(
+            Intent(this, MyProfileActivity::class.java).apply {
+                putExtra(EMAIL, binding.singUpEMailEt.text.toString())
+            }
+        )
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         finish()
     }
@@ -105,20 +107,19 @@ class AuthActivity : AppCompatActivity() {
      * Checks if email field is valid
      * @return true if password is valid to all checks, false otherwise
      */
-    private fun validateEmail(): Boolean {
-        with(binding) {
-            if (singUpEMailEt.text.toString().trim().isEmpty()) {
-                singUpEMail.error = R.string.error_empty_string.toString()
-                return false
-            } else if (!isValidEmail(singUpEMailEt.text.toString())) {
-                singUpEMail.error = R.string.error_invalid_email.toString()
-                return false
-            } else {
-                singUpEMail.isErrorEnabled = false
-            }
+    private fun validateEmail() = with(binding) {
+        if (singUpEMailEt.text.toString().trim().isEmpty()) {
+            singUpEMail.error = getString(R.string.error_empty_string)
+            false
+        } else if (!isValidEmail(singUpEMailEt.text.toString())) {
+            singUpEMail.error = R.string.error_invalid_email.toString()
+            false
+        } else {
+            singUpEMail.isErrorEnabled = false
+            true
         }
-        return true
     }
+
 
     /**
      * Checks if password field is valid
@@ -129,8 +130,9 @@ class AuthActivity : AppCompatActivity() {
             if (singUpPasswordT.text.toString().trim().isEmpty()) {
                 singUpPassword.error = R.string.error_empty_string.toString()
                 return false
-            } else if (singUpPasswordT.text.toString().length < 8) {
-                singUpPassword.error = R.string.error_too_short_passowrd.toString()
+            } else if (singUpPasswordT.text.toString().length < MIN_PASSWORD_LENGTH) {
+                singUpPassword.error =
+                    getString(R.string.error_too_short_passowrd, MIN_PASSWORD_LENGTH)
                 return false
             } else if (!isStringContainNumber(singUpPasswordT.text.toString())) {
                 singUpPassword.error = R.string.error_atleast_one_digit.toString()
@@ -156,5 +158,7 @@ class AuthActivity : AppCompatActivity() {
         return super.dispatchTouchEvent(event)
     }
 
-
+    companion object {
+        private const val MIN_PASSWORD_LENGTH = 8
+    }
 }

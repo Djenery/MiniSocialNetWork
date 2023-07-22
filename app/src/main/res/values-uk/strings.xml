@@ -49,7 +49,7 @@
     <!--  Strings for email and password validation in sing_up  -->
     <string name="error_empty_string">Обов\'язкове поле!</string>
     <string name="error_invalid_email">Недійсна електронна адреса!</string>
-    <string name="error_too_short_passowrd">Пароль не може бути менше 8</string>
+    <string name="error_too_short_passowrd">Пароль не може бути менше %d</string>
     <string name="error_atleast_one_digit">Потрібна принаймні 1 цифра</string>
     <string name="error_upper_and_lower_case">Пароль повинен містити великі та малі літери</string>
 </resources>

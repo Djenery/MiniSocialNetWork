@@ -55,5 +55,5 @@
     <string name="error_atleast_one_digit">Required at least 1 digit</string>
     <string name="error_upper_and_lower_case">Password must contain upper and
         lower case letters</string>
-    <string name="error_too_short_passowrd">Password can\'t be less than 8</string>
+    <string name="error_too_short_passowrd">Password can\'t be less than %d</string>
 </resources>

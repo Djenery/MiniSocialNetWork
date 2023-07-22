@@ -15,7 +15,7 @@ object FakeContacts {
      */
     fun getContacts(): List<Contact> {
         val faker = Faker.instance()
-        val generatedContacts = (1..10).map {
+        return (1..10).map {
             Contact(
                 id = AutoIdIncrement.getId(),
                 photo = getRandomPhoto(),
@@ -23,13 +23,12 @@ object FakeContacts {
                 profession = faker.job().title()
             )
         }
-        return generatedContacts
     }
 
     /**
      * Gets random photo from chosen list.
      */
-    fun getRandomPhoto() = IMAGES[Random.nextInt(0, 9)]
+    fun getRandomPhoto() = IMAGES[Random.nextInt(9)]
 
     private val IMAGES = mutableListOf(
         "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=512&h=512&q=80",
